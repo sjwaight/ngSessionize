@@ -19,31 +19,40 @@ angular.module("ecs")
 
 		  vm.initialized = false;
 
+		  vm.createList = function (type) {
 
-		  vm.createList = function(type) {
+			  var list = [];
 
-		  	var list = [];
+			  for (var i = 0; i < vm.data.sessions.length; i++) {
+				  var session = vm.data.sessions[i];
 
-		  	for(var i=0; i < vm.data.sessions.length; i++) {
-		  		var session = vm.data.sessions[i];
+				  var thisCategory = $filter("filter")(session.categories, {name: type})[0];
 
-				var thisCategory = $filter("filter")(session.categories, { name: type })[0];
+				  for (var j = 0; j < thisCategory.categoryItems.length; j++) {
 
-				for(var j=0; j < thisCategory.categoryItems.length; j++) {
+					  var thisItem = thisCategory.categoryItems[j];
 
-					var thisItem = thisCategory.categoryItems[j];
+					  var thisListItem = $filter("filter")(list, {name: thisItem.name})[0];
 
-					list.push(thisItem);
+					  if (thisListItem) {
+						  thisListItem.count++;
+					  } else {
 
-				}
+						  var newItem = thisItem;
+						  newItem.count = 1;
+						  list.push(newItem);
 
-		    }
+					  }
 
-		    return list;
+				  }
+
+			  }
+
+			  return list;
 
 		  };
 
-		  vm.filterSessions = function() {
+		  vm.filterSessions = function () {
 
 		  };
 
