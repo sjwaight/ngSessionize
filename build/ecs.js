@@ -143,7 +143,7 @@ angular.module("ecs")
 
 					var thisItem = thisCategory.categoryItems[j];
 
-					list.push(thisItem)
+					list.push(thisItem);
 
 				}
 
@@ -159,9 +159,9 @@ angular.module("ecs")
 
 			  ecsService.initEcs().then(function () {
 
-				  vm.formats = createList("Session format");
-				  vm.tracks = createList("Track");
-				  vm.tags = createList("Tags");
+				  vm.formats = vm.createList("Session format");
+				  vm.tracks = vm.createList("Track");
+				  vm.tags = vm.createList("Tags");
 
 				  vm.initialized = true;
 
@@ -295,7 +295,7 @@ module.exports = function() {
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"sessionize\">\r\n\r\n    <div class=\"ecs-refiners\">\r\n\r\n        <h5>Refine results</h5>\r\n\r\n        <h2>Session format</h2>\r\n        <ul>\r\n            <li ng-repeat=\"tag in vm.formats\"></li>\r\n        </ul>\r\n\r\n        <h2>Track</h2>\r\n        <ul>\r\n            <li ng-repeat=\"tag in vm.tracks\"></li>\r\n        </ul>\r\n\r\n        <h2>Tag</h2>\r\n        <ul>\r\n            <li ng-repeat=\"tag in vm.tags\"></li>\r\n        </ul>\r\n\r\n    </div>\r\n\r\n\r\n    <div class=\"ecs-sessions\">\r\n\r\n        <h1>Session Catalog</h1>\r\n\r\n        <span ng-bind=\"vm.data.sessions.length\"></span> sessions\r\n\r\n        <div ng-repeat=\"session in vm.data.sessions\">\r\n\r\n            <h3 class=\"sz-session__title\" ng-bind=\"session.title\"></h3>\r\n\r\n            <ul class=\"sz-session__speakers\">\r\n                <li class=\"sz-session__speaker\" ng-repeat=\"speaker in session.speakers\" ng-bind=\"speaker.name\"></li>\r\n            </ul>\r\n\r\n            <p class=\"sz-session__description\" ng-bind=\"session.description\"></p>\r\n\r\n            <div ng-repeat=\"category in session.categories\">\r\n\r\n                <ul class=\"sz-session__tags\">\r\n                    <li ng-repeat=\"item in category.categoryItems\" ng-bind=\"item.name\"></li>\r\n                </ul>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n</div>";
+module.exports = "<div id=\"sessionize\">\r\n\r\n    <div class=\"ecs-refiners\">\r\n\r\n        <h5>Refine results</h5>\r\n\r\n        <h2>Session format</h2>\r\n        <ul>\r\n            <li ng-repeat=\"format in vm.formats\" ng-bind=\"format.name\"></li>\r\n        </ul>\r\n\r\n        <h2>Track</h2>\r\n        <ul>\r\n            <li ng-repeat=\"track in vm.tracks\" ng-bind=\"track.name\"></li>\r\n        </ul>\r\n\r\n        <h2>Tag</h2>\r\n        <ul>\r\n            <li ng-repeat=\"tag in vm.tags\" ng-bind=\"tag.name\"></li>\r\n        </ul>\r\n\r\n    </div>\r\n\r\n\r\n    <div class=\"ecs-sessions\">\r\n\r\n        <h1>Session Catalog</h1>\r\n\r\n        <span ng-bind=\"vm.data.sessions.length\"></span> sessions\r\n\r\n        <div ng-repeat=\"session in vm.data.sessions\">\r\n\r\n            <h3 class=\"sz-session__title\" ng-bind=\"session.title\"></h3>\r\n\r\n            <ul class=\"sz-session__speakers\">\r\n                <li class=\"sz-session__speaker\" ng-repeat=\"speaker in session.speakers\" ng-bind=\"speaker.name\"></li>\r\n            </ul>\r\n\r\n            <p class=\"sz-session__description\" ng-bind=\"session.description\"></p>\r\n\r\n            <div ng-repeat=\"category in session.categories\">\r\n\r\n                <ul class=\"sz-session__tags\">\r\n                    <li ng-repeat=\"item in category.categoryItems\" ng-bind=\"item.name\"></li>\r\n                </ul>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n</div>";
 
 /***/ }),
 /* 8 */

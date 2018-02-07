@@ -31,7 +31,7 @@ angular.module("ecs")
 
 					var thisItem = thisCategory.categoryItems[j];
 
-					list.push(thisItem)
+					list.push(thisItem);
 
 				}
 
@@ -47,9 +47,9 @@ angular.module("ecs")
 
 			  ecsService.initEcs().then(function () {
 
-				  vm.formats = createList("Session format");
-				  vm.tracks = createList("Track");
-				  vm.tags = createList("Tags");
+				  vm.formats = vm.createList("Session format");
+				  vm.tracks = vm.createList("Track");
+				  vm.tags = vm.createList("Tags");
 
 				  vm.initialized = true;
 

@@ -6,17 +6,17 @@
 
         <h2>Session format</h2>
         <ul>
-            <li ng-repeat="tag in vm.formats"></li>
+            <li ng-repeat="format in vm.formats" ng-bind="format.name"></li>
         </ul>
 
         <h2>Track</h2>
         <ul>
-            <li ng-repeat="tag in vm.tracks"></li>
+            <li ng-repeat="track in vm.tracks" ng-bind="track.name"></li>
         </ul>
 
         <h2>Tag</h2>
         <ul>
-            <li ng-repeat="tag in vm.tags"></li>
+            <li ng-repeat="tag in vm.tags" ng-bind="tag.name"></li>
         </ul>
 
     </div>
