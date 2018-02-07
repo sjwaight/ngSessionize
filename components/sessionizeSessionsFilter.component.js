@@ -21,10 +21,7 @@ angular.module("ecs")
 
 			  vm.statusMessage = "Loading sessions...";
 
-
-
 			  ecsService.initEcs().then(function () {
-
 
 				  vm.initialized = true;
 

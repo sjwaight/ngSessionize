@@ -19,7 +19,9 @@ angular.module("ecsService", [])
 			    url: "https://sessionize.com/api/v2/57c0xuih/view/sessions"
 		    }).then(function(response) {
 
-		    	deferred.resolve(response);
+		    	self.ecs.sessions = response.data[0].sessions;
+
+		    	deferred.resolve();
 
 		    });
 

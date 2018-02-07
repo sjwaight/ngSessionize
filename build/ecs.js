@@ -133,10 +133,7 @@ angular.module("ecs")
 
 			  vm.statusMessage = "Loading sessions...";
 
-
-
 			  ecsService.initEcs().then(function () {
-
 
 				  vm.initialized = true;
 
@@ -270,7 +267,7 @@ module.exports = function() {
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n\r\n    <h1>Hello!</h1>\r\n\r\n\r\n</div>";
+module.exports = "<div>\r\n\r\n    <h1>Hello!</h1>\r\n\r\n    <div ng-repeat=\"session in sessions\">\r\n\r\n        <div ng-bind=\"session.title\"></div>\r\n\r\n    </div>\r\n\r\n\r\n</div>";
 
 /***/ }),
 /* 8 */
@@ -550,11 +547,13 @@ angular.module("ecsService", [])
 			    url: "https://sessionize.com/api/v2/57c0xuih/view/sessions"
 		    }).then(function(response) {
 
-		    	deferred.resolve(response);
+		    	self.ecs.sessions = response.data[0].sessions;
+
+		    	deferred.resolve();
 
 		    });
 
-		  	return deferred.promise();
+		  	return deferred.promise;
 
 		  }
 
