@@ -15,6 +15,8 @@ angular.module("ecs")
 
 		  vm.data = ecsService.ecs;
 
+		  vm.filteredSessions = [];
+
 		  vm.initialized = false;
 
 
@@ -25,7 +27,7 @@ angular.module("ecs")
 		  	for(var i=0; i < vm.data.sessions.length; i++) {
 		  		var session = vm.data.sessions[i];
 
-				var thisCategory = $filter("filter")(session.categories, { name: type });
+				var thisCategory = $filter("filter")(session.categories, { name: type })[0];
 
 				for(var j=0; j < thisCategory.categoryItems.length; j++) {
 
@@ -41,6 +43,10 @@ angular.module("ecs")
 
 		  };
 
+		  vm.filterSessions = function() {
+
+		  }
+
 		  vm.$onInit = function () {
 
 			  vm.statusMessage = "Loading sessions...";
@@ -49,6 +55,7 @@ angular.module("ecs")
 
 				  vm.formats = vm.createList("Session format");
 				  vm.tracks = vm.createList("Track");
+				  vm.levels = vm.createList("Level");
 				  vm.tags = vm.createList("Tags");
 
 				  vm.initialized = true;
