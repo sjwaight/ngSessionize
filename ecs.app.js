@@ -32,7 +32,7 @@ var ecsApp = angular.module("ecs", [
   });
 
 ecsApp.init = function () {
-	angular.bootstrap(document, ["ecs-app"]);
+	angular.bootstrap(document, ["ecsApp"]);
 };
 
 require("./components");
