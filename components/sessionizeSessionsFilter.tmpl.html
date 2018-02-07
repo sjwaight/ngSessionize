@@ -6,22 +6,34 @@
 
         <h2>Session format</h2>
         <ul>
-            <li ng-repeat="format in vm.formats" ng-bind="format.name"></li>
+            <li ng-repeat="item in vm.formats">
+                <div ng-bind="item.name"></div>
+                <div ng-bind="item.count"></div>
+            </li>
         </ul>
 
         <h2>Track</h2>
         <ul>
-            <li ng-repeat="track in vm.tracks" ng-bind="track.name"></li>
+            <li ng-repeat="track in vm.tracks">
+                <div ng-bind="item.name"></div>
+                <div ng-bind="item.count"></div>
+            </li>
         </ul>
 
         <h2>Level</h2>
         <ul>
-            <li ng-repeat="level in vm.levels" ng-bind="level.name"></li>
+            <li ng-repeat="level in vm.levels">
+                <div ng-bind="item.name"></div>
+                <div ng-bind="item.count"></div>
+            </li>
         </ul>
 
         <h2>Tag</h2>
         <ul>
-            <li ng-repeat="tag in vm.tags" ng-bind="tag.name"></li>
+            <li ng-repeat="tag in vm.tags">
+                <div ng-bind="item.name"></div>
+                <div ng-bind="item.count"></div>
+            </li>
         </ul>
 
     </div>
