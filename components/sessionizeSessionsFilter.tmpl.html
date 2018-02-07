@@ -1,27 +1,52 @@
 <div id="sessionize">
 
-    <h1>Session Catalog</h1>
+    <div class="ecs-refiners">
 
-    <span ng-bind="vm.data.sessions.length"></span> sessions
-
-    <div ng-repeat="session in vm.data.sessions">
-
-        <h3 class="sz-session__title" ng-bind="session.title"></h3>
-
-        <ul class="sz-session__speakers">
-            <li class="sz-session__speaker" ng-repeat="speaker in session.speakers" ng-bind="speaker.name"></li>
+        <h2>Session format</h2>
+        <ul>
+            <li ng-repeat="tag in vm.formats"></li>
         </ul>
 
-        <p class="sz-session__description" ng-bind="session.description"></p>
+        <h2>Track</h2>
+        <ul>
+            <li ng-repeat="tag in vm.tracks"></li>
+        </ul>
 
-        <div ng-repeat="category in session.categories">
+        <h2>Tag</h2>
+        <ul>
+            <li ng-repeat="tag in vm.tags"></li>
+        </ul>
 
-            <ul>
-                <li  ng-repeat="item in category.categoryItems" ng-bind="item.name"></li>
+    </div>
+
+
+    <div class="ecs-sessions">
+
+        <h1>Session Catalog</h1>
+
+        <span ng-bind="vm.data.sessions.length"></span> sessions
+
+        <div ng-repeat="session in vm.data.sessions">
+
+            <h3 class="sz-session__title" ng-bind="session.title"></h3>
+
+            <ul class="sz-session__speakers">
+                <li class="sz-session__speaker" ng-repeat="speaker in session.speakers" ng-bind="speaker.name"></li>
             </ul>
+
+            <p class="sz-session__description" ng-bind="session.description"></p>
+
+            <div ng-repeat="category in session.categories">
+
+                <ul class="sz-session__tags">
+                    <li ng-repeat="item in category.categoryItems" ng-bind="item.name"></li>
+                </ul>
+
+            </div>
 
         </div>
 
     </div>
+
 
 </div>
