@@ -23,7 +23,7 @@ angular.module("ecsService", [])
 
 		    });
 
-		  	return deferred.promise();
+		  	return deferred.promise;
 
 		  }
 
