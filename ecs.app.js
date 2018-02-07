@@ -5,7 +5,7 @@ import "./scss/ecs.scss";
 
 import "./services";
 
-angular.module("ecs", [
+var ecsApp = angular.module("ecs", [
 	"ngRoute",
 	"angular.filter",
 	"ecsService"
@@ -31,8 +31,8 @@ angular.module("ecs", [
 
   });
 
-ecs.init = function() {
-	angular.bootstrap(document, ['ecs-app']);
+ecsApp.init = function () {
+	angular.bootstrap(document, ["ecs-app"]);
 };
 
 require("./components");

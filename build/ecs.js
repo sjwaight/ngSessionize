@@ -164,7 +164,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-angular.module("ecs", [
+var ecsApp = angular.module("ecs", [
 	"ngRoute",
 	"angular.filter",
 	"ecsService"
@@ -190,8 +190,8 @@ angular.module("ecs", [
 
   });
 
-ecs.init = function() {
-	angular.bootstrap(document, ['ecs-app']);
+ecsApp.init = function () {
+	angular.bootstrap(document, ["ecs-app"]);
 };
 
 __webpack_require__(0);
