@@ -26,7 +26,7 @@ angular.module("ecs")
 			  ecsService.initEcs().then(function () {
 
 
-
+				  vm.initialized = true;
 
 			  });
 
