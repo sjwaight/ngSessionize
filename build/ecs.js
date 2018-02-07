@@ -190,6 +190,10 @@ angular.module("ecs", [
 
   });
 
+ecs.init = function() {
+	angular.bootstrap(document, ['ecs-app']);
+};
+
 __webpack_require__(0);
 
 /***/ }),

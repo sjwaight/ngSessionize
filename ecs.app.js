@@ -31,4 +31,8 @@ angular.module("ecs", [
 
   });
 
+ecs.init = function() {
+	angular.bootstrap(document, ['ecs-app']);
+};
+
 require("./components");
