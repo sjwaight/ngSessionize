@@ -1,10 +1,22 @@
 <div>
 
-    <h1>Hello!</h1>
+    <h1>Session Catalog</h1>
+
+    <span ng-bind="vm.data.sessions.length"></span> sessions
 
     <div ng-repeat="session in vm.data.sessions">
 
         <div ng-bind="session.title"></div>
+
+        <div ng-repeat="speaker in session.speakers" ng-bind="speaker.name"></div>
+
+        <div ng-bind="session.description"></div>
+
+        <div ng-repeat="category in session.categories">
+
+            <div ng-repeat="item in category.categoryItems" ng-bind="item.name"></div>
+
+        </div>
 
     </div>
 

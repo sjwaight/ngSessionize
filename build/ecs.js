@@ -267,7 +267,7 @@ module.exports = function() {
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n\r\n    <h1>Hello!</h1>\r\n\r\n    <div ng-repeat=\"session in vm.data.sessions\">\r\n\r\n        <div ng-bind=\"session.title\"></div>\r\n\r\n    </div>\r\n\r\n</div>";
+module.exports = "<div>\r\n\r\n    <h1>Session Catalog</h1>\r\n\r\n    <span ng-bind=\"vm.data.sessions.length\"></span> sessions\r\n\r\n    <div ng-repeat=\"session in vm.data.sessions\">\r\n\r\n        <div ng-bind=\"session.title\"></div>\r\n\r\n        <div ng-repeat=\"speaker in session.speakers\" ng-bind=\"speaker.name\"></div>\r\n\r\n        <div ng-bind=\"session.description\"></div>\r\n\r\n        <div ng-repeat=\"category in session.categories\">\r\n\r\n            <div ng-repeat=\"item in category.categoryItems\" ng-bind=\"item.name\"></div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>";
 
 /***/ }),
 /* 8 */
