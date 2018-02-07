@@ -45,7 +45,7 @@ angular.module("ecs")
 
 		  vm.filterSessions = function() {
 
-		  }
+		  };
 
 		  vm.$onInit = function () {
 
