@@ -9,21 +9,27 @@
     color: #A5416F;
   }
 
-}
-.ecs-refiner-group li {
-  width:100%;
-  list-style: none;
-
-  > div {
-    float: left;
+  ul {
+    padding-left:0;
   }
 
-  div:first-child {
-    width:80%;
+  .ecs-refiner-group li {
+    width:100%;
+    list-style: none;
+
+    > div {
+      float: left;
+    }
+
+    div:first-child {
+      width:80%;
+    }
+    div:last-child {
+      width:20%;
+    }
   }
-  div:last-child {
-    width:20%;
-  }
+
+
 }
 
 .ecs-sessions {
