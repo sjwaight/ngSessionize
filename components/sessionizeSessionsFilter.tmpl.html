@@ -5,7 +5,7 @@
         <h5>Refine results</h5>
 
         <h2>Session format</h2>
-        <ul>
+        <ul class="ecs-refiner-group">
             <li ng-repeat="item in vm.formats">
                 <div ng-bind="item.name"></div>
                 <div ng-bind="item.count"></div>
@@ -13,7 +13,7 @@
         </ul>
 
         <h2>Track</h2>
-        <ul>
+        <ul class="ecs-refiner-group">
             <li ng-repeat="item in vm.tracks">
                 <div ng-bind="item.name"></div>
                 <div ng-bind="item.count"></div>
@@ -21,7 +21,7 @@
         </ul>
 
         <h2>Level</h2>
-        <ul>
+        <ul class="ecs-refiner-group">
             <li ng-repeat="item in vm.levels">
                 <div ng-bind="item.name"></div>
                 <div ng-bind="item.count"></div>
@@ -29,7 +29,7 @@
         </ul>
 
         <h2>Tag</h2>
-        <ul>
+        <ul class="ecs-refiner-group">
             <li ng-repeat="item in vm.tags">
                 <div ng-bind="item.name"></div>
                 <div ng-bind="item.count"></div>

@@ -10,6 +10,17 @@
   }
 
 }
+.ecs-refiner-group li {
+  width:100%;
+  list-style: none;
+
+  span:first-child {
+    width:80%;
+  }
+  span:last-child {
+    width:20%;
+  }
+}
 
 .ecs-sessions {
   width:75%;
