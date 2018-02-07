@@ -267,7 +267,7 @@ module.exports = function() {
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n\r\n    <h1>Hello!</h1>\r\n\r\n    <div ng-repeat=\"session in sessions\">\r\n\r\n        <div ng-bind=\"session.title\"></div>\r\n\r\n    </div>\r\n\r\n\r\n</div>";
+module.exports = "<div>\r\n\r\n    <h1>Hello!</h1>\r\n\r\n    <div ng-repeat=\"session in vm.data.sessions\">\r\n\r\n        <div ng-bind=\"session.title\"></div>\r\n\r\n    </div>\r\n\r\n</div>";
 
 /***/ }),
 /* 8 */
