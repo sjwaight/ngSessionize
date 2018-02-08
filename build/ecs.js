@@ -185,22 +185,22 @@ angular.module("ecs")
 
 			  for (var s = 0; s < vm.data.sessions.length; s++) {
 
-			  	var thisSession = vm.data.sessions[i];
+			  	var thisSession = vm.data.sessions[s];
 
 				  for (var f in vm.filters) {
 					  if (vm.filters.hasOwnProperty(f)) {
 
-						  var filterVals = vm.filters[f].map(function (item) {
-							  if (item.selected) {
-								  return item.id;
-							  }
+						  var filterVals = vm.filters[f].filter(function (item) {
+							return item.selected;
+						  }).map(function(item) {
+						  	return item.id;
 						  });
 
 						  for (var i = 0; i < filterVals.length; i++) {
-						  	var thisCategoryItems = $filter("filter")(thisSession.categories, { name: f });
-							if(thisCategoryItems.indexOf(filterVals[i]) === -1) {
-								match = false;
-							}
+							  var thisCategoryItems = $filter("filter")(thisSession.categories, { name: f });
+							  if(thisCategoryItems.indexOf(filterVals[i]) === -1) {
+								  match = false;
+							  }
 						  }
 					  }
 				  }
