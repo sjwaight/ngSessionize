@@ -1024,9 +1024,8 @@ $color-purple: #a5416f;
     > div > div {
       float: left;
       background-color: #EEEEEE;
-      margin-right: 5px;
-      margin-bottom: 5px;
-      padding: 5px;
+      padding:3px 5px 3px 5px;
+      margin: 0 5px 5px 0;
     }
 
     .ecs-clear {
@@ -1049,8 +1048,10 @@ $color-purple: #a5416f;
     float: left;
 
     .ecs-session-tag {
+      float: left;
       background-color: rgba(17, 17, 17, 0.1);
-      padding:5px;
+      padding:3px 5px 3px 5px;
+      margin: 0 5px 5px 0;
     }
 
   }
