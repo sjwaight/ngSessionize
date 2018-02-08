@@ -26,7 +26,7 @@
             <span ng-bind="vm.data.sessions.length"></span> sessions
         </div>
 
-        <div ng-repeat="session in vm.data.sessions">
+        <div ng-repeat="session in vm.data.sessions | filteredSessions:vm.filters">
 
             <h3 class="sz-session__title" ng-bind="session.title"></h3>
 
@@ -35,7 +35,7 @@
             </ul>
             <ul class="ecs-speaker-photo">
                 <li ng-repeat="speaker in session.speakers">
-                    <img ng-src="{{ vm.getSpeakerPhoto(speaker.id) }}"/>
+                    <img ng-src="{{ vm.getSpeakerPhoto(speaker.id) }}}"/>
                 </li>
             </ul>
 

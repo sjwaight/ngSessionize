@@ -79,7 +79,23 @@ angular.module("ecs")
 		  };
 
 	  }
-  ]);
+  ])
+
+  .filter("filteredSessions", function () {
+	  return function (sessions, filters) {
+		  var filtered = [];
+
+		  for (var i = 0; i < sessions.length; i++) {
+
+			  var session = sessions[i];
+
+			  filtered.push(session);
+
+		  }
+		  return filtered;
+	  };
+  });
+
 
 
 require("./sessionizeSessionsRefiner.component");
