@@ -67,12 +67,12 @@ angular.module("ecs")
 
 		  vm.filterSessions = function () {
 
-			  var match = true;
 			  var showSessions = [];
 
 			  for (var s = 0; s < vm.data.sessions.length; s++) {
 
-			  	var thisSession = vm.data.sessions[s];
+				  var matches = 0;
+				  var thisSession = vm.data.sessions[s];
 
 				  for (var f in vm.filters) {
 					  if (vm.filters.hasOwnProperty(f)) {
@@ -87,14 +87,14 @@ angular.module("ecs")
 							  var thisCategoryItems = $filter("filter")(thisSession.categories, { name: f })[0].categoryItems.map(function(item) {
 							  	return item.id;
 							  });
-							  if(thisCategoryItems.indexOf(filterVals[i]) === -1) {
-								  match = false;
+							  if(thisCategoryItems.indexOf(filterVals[i]) !== -1) {
+								  matches++;
 							  }
 						  }
 					  }
 				  }
 
-				  if (match) {
+				  if (matches === vm.filterCount) {
 					  showSessions.push(session);
 				  }
 
