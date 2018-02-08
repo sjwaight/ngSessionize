@@ -63,7 +63,11 @@ $color-purple: #a5416f;
     float: left;
     background-color: #EEEEEE;
     margin-right:5px;
+    margin-bottom: 5px;
     padding:5px;
+  }
+  .applied-filters:after {
+  content: " x";
   }
 
   h3.sz-session__title {
