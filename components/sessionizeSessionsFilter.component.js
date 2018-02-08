@@ -20,6 +20,10 @@ angular.module("ecs")
 
 		  vm.initialized = false;
 
+		  vm.getSpeakerPhoto = function(speakerId) {
+		  	return $filter("filter")(vm.data.speakers, { id: speakerId } )[0].profilePicture;
+		  };
+
 		  vm.createList = function (type) {
 
 			  var list = [];
