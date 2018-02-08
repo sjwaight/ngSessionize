@@ -13,7 +13,7 @@ angular.module("ecs")
 		  items: "="
 	  },
 
-	  controller: function (ecsService, $filter) {
+	  controller: function () {
 
 		  var self = this;
 
