@@ -1017,7 +1017,11 @@ $color-purple: #a5416f;
   .applied-filters {
     min-height: 80px;
 
-    > div, > div > div {
+    > div {
+      float: left;
+    }
+
+    > div > div {
       float: left;
       background-color: #EEEEEE;
       margin-right: 5px;
