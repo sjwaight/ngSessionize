@@ -76,3 +76,6 @@ angular.module("ecs")
 
 	  }
   ]);
+
+
+require("./sessionizeSessionsRefiner.component");
