@@ -125,7 +125,7 @@ angular.module("ecs")
 				  }
 			  }
 			  vm.filterCount = 0;
-			  vm.filteredSessions = vm.sessions;
+			  vm.filteredSessions = vm.data.sessions;
 
 		  };
 
@@ -141,6 +141,7 @@ angular.module("ecs")
 						  vm.filters[f] = vm.createList(f);
 					  }
 				  }
+				  vm.filteredSessions = vm.data.sessions;
 				  vm.initialized = true;
 
 			  });
