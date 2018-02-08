@@ -316,7 +316,7 @@ module.exports = function() {
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"sessionize\" ng-cloak>\r\n\r\n    <div class=\"ecs-refiners\">\r\n\r\n        <h5>Refine results</h5>\r\n\r\n\r\n        <sessionize-sessions-refiner vm=\"vm\" type=\"formats\" items=\"vm.formats\"></sessionize-sessions-refiner>\r\n        <sessionize-sessions-refiner vm=\"vm\" type=\"tracks\" items=\"vm.tracks\"></sessionize-sessions-refiner>\r\n        <sessionize-sessions-refiner vm=\"vm\" type=\"levels\" items=\"vm.levels\"></sessionize-sessions-refiner>\r\n        <sessionize-sessions-refiner vm=\"vm\" type=\"tags\" items=\"vm.tags\"></sessionize-sessions-refiner>\r\n<!--\r\n        <h2>Format</h2>\r\n        <ul class=\"ecs-refiner-group\">\r\n            <li ng-repeat=\"item in vm.formats | orderBy: '-item.count'\">\r\n                <div ng-bind=\"item.name\"></div>\r\n                <div ng-bind=\"item.count\"></div>\r\n            </li>\r\n        </ul>\r\n\r\n        <h2>Track</h2>\r\n        <ul class=\"ecs-refiner-group\">\r\n            <li ng-repeat=\"item in vm.tracks | orderBy: '-item.count'\">\r\n                <div ng-bind=\"item.name\"></div>\r\n                <div ng-bind=\"item.count\"></div>\r\n            </li>\r\n        </ul>\r\n\r\n        <h2>Level</h2>\r\n        <ul class=\"ecs-refiner-group\">\r\n            <li ng-repeat=\"item in vm.levels | orderBy: '-item.count'\">\r\n                <div ng-bind=\"item.name\"></div>\r\n                <div ng-bind=\"item.count\"></div>\r\n            </li>\r\n        </ul>\r\n\r\n        <h2>Tag</h2>\r\n        <ul class=\"ecs-refiner-group\">\r\n            <li ng-repeat=\"item in vm.tags | orderBy: '-item.count'\">\r\n                <div ng-bind=\"item.name\"></div>\r\n                <div ng-bind=\"item.count\"></div>\r\n            </li>\r\n        </ul>\r\n-->\r\n    </div>\r\n\r\n\r\n    <div class=\"ecs-sessions\">\r\n\r\n        <h1>Session Catalog</h1>\r\n\r\n        <div>\r\n            <div ng-repeat=\"filter in vm.filters\">\r\n                <div ng-bind=\"filter.name\"></div>\r\n            </div>\r\n        </div>\r\n\r\n        <div>\r\n            <span ng-bind=\"vm.data.sessions.length\"></span> sessions\r\n        </div>\r\n\r\n        <div ng-repeat=\"session in vm.data.sessions\">\r\n\r\n            <h3 class=\"sz-session__title\" ng-bind=\"session.title\"></h3>\r\n\r\n            <ul class=\"sz-session__speakers\">\r\n                <li class=\"sz-session__speaker\" ng-repeat=\"speaker in session.speakers\" ng-bind=\"speaker.name\"></li>\r\n            </ul>\r\n\r\n            <p class=\"sz-session__description\" ng-bind=\"session.description\"></p>\r\n\r\n            <div class=\"ecs-session-tags\" ng-repeat=\"category in session.categories\">\r\n                <div class=\"sz-session__tags\" ng-repeat=\"item in category.categoryItems\" ng-bind=\"item.name\"></div>\r\n            </div>\r\n            <div class=\"clear\"></div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n</div>";
+module.exports = "<div id=\"sessionize\" ng-cloak>\r\n\r\n    <div class=\"ecs-refiners\">\r\n\r\n        <h5>Refine results</h5>\r\n\r\n        <sessionize-sessions-refiner vm=\"vm\" type=\"formats\" items=\"vm.formats\"></sessionize-sessions-refiner>\r\n        <sessionize-sessions-refiner vm=\"vm\" type=\"tracks\" items=\"vm.tracks\"></sessionize-sessions-refiner>\r\n        <sessionize-sessions-refiner vm=\"vm\" type=\"levels\" items=\"vm.levels\"></sessionize-sessions-refiner>\r\n        <sessionize-sessions-refiner vm=\"vm\" type=\"tags\" items=\"vm.tags\"></sessionize-sessions-refiner>\r\n\r\n    </div>\r\n\r\n\r\n    <div class=\"ecs-sessions\">\r\n\r\n        <h1>Session Catalog</h1>\r\n\r\n        <div>\r\n            <div ng-repeat=\"filter in vm.filters\">\r\n                <div ng-bind=\"filter.name\"></div>\r\n            </div>\r\n        </div>\r\n\r\n        <div>\r\n            <span ng-bind=\"vm.data.sessions.length\"></span> sessions\r\n        </div>\r\n\r\n        <div ng-repeat=\"session in vm.data.sessions\">\r\n\r\n            <h3 class=\"sz-session__title\" ng-bind=\"session.title\"></h3>\r\n\r\n            <ul class=\"sz-session__speakers\">\r\n                <li class=\"sz-session__speaker\" ng-repeat=\"speaker in session.speakers\" ng-bind=\"speaker.name\"></li>\r\n            </ul>\r\n\r\n            <p class=\"sz-session__description\" ng-bind=\"session.description\"></p>\r\n\r\n            <div class=\"ecs-session-tags\" ng-repeat=\"category in session.categories\">\r\n                <div class=\"sz-session__tags\" ng-repeat=\"item in category.categoryItems\" ng-bind=\"item.name\"></div>\r\n            </div>\r\n            <div class=\"clear\"></div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n</div>";
 
 /***/ }),
 /* 8 */
@@ -587,24 +587,60 @@ angular.module("ecsService", [])
 		  self.ecs = {};
 		  self.ecs.initialized = false;
 
-		  self.initEcs = function() {
+		  self.getSessions = function () {
 
-		  	var deferred = $q.defer();
+			  var deferred = $q.defer();
 
-		  	$http({
-			    method: "GET",
-			    url: "https://sessionize.com/api/v2/57c0xuih/view/sessions"
-		    }).then(function(response) {
+			  $http({
+				  method: "GET",
+				  url: "https://sessionize.com/api/v2/57c0xuih/view/sessions"
+			  }).then(function (response) {
 
-		    	self.ecs.sessions = response.data[0].sessions;
+				  self.ecs.sessions = response.data[0].sessions;
 
-		    	deferred.resolve();
+				  deferred.resolve();
 
-		    });
+			  });
 
-		  	return deferred.promise;
+			  return deferred.promise;
+		  };
 
-		  }
+		  self.getSpeakers = function () {
+
+			  var deferred = $q.defer();
+
+			  $http({
+				  method: "GET",
+				  url: "https://sessionize.com/api/v2/57c0xuih/view/speakers"
+			  }).then(function (response) {
+
+				  self.ecs.speakers = response.data[0].speakers;
+
+				  deferred.resolve();
+
+			  });
+
+			  return deferred.promise;
+		  };
+
+		  self.initEcs = function () {
+
+			  var deferred = $q.defer();
+
+			  var p = [];
+
+			  p.push(self.getSessions());
+			  p.push(self.getSpeakers());
+
+			  $q.all(p).then(function () {
+
+				  deferred.resolve();
+
+			  });
+
+			  return deferred.promise;
+
+		  };
 
 	  }
   ]);

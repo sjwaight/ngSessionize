@@ -10,24 +10,60 @@ angular.module("ecsService", [])
 		  self.ecs = {};
 		  self.ecs.initialized = false;
 
-		  self.initEcs = function() {
+		  self.getSessions = function () {
 
-		  	var deferred = $q.defer();
+			  var deferred = $q.defer();
 
-		  	$http({
-			    method: "GET",
-			    url: "https://sessionize.com/api/v2/57c0xuih/view/sessions"
-		    }).then(function(response) {
+			  $http({
+				  method: "GET",
+				  url: "https://sessionize.com/api/v2/57c0xuih/view/sessions"
+			  }).then(function (response) {
 
-		    	self.ecs.sessions = response.data[0].sessions;
+				  self.ecs.sessions = response.data[0].sessions;
 
-		    	deferred.resolve();
+				  deferred.resolve();
 
-		    });
+			  });
 
-		  	return deferred.promise;
+			  return deferred.promise;
+		  };
 
-		  }
+		  self.getSpeakers = function () {
+
+			  var deferred = $q.defer();
+
+			  $http({
+				  method: "GET",
+				  url: "https://sessionize.com/api/v2/57c0xuih/view/speakers"
+			  }).then(function (response) {
+
+				  self.ecs.speakers = response.data[0].speakers;
+
+				  deferred.resolve();
+
+			  });
+
+			  return deferred.promise;
+		  };
+
+		  self.initEcs = function () {
+
+			  var deferred = $q.defer();
+
+			  var p = [];
+
+			  p.push(self.getSessions());
+			  p.push(self.getSpeakers());
+
+			  $q.all(p).then(function () {
+
+				  deferred.resolve();
+
+			  });
+
+			  return deferred.promise;
+
+		  };
 
 	  }
   ]);
