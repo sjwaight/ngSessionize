@@ -65,11 +65,11 @@
             <div class="clear"></div>
 
             <div>
-                <span ng-bind="vm.data.filteredSessions.length"></span> sessions
+                <span ng-bind="vm.filteredSessions.length"></span> sessions
             </div>
 
             <div class="sz-session sz-session--full"
-                 ng-repeat="session in vm.data.filteredSessions">
+                 ng-repeat="session in vm.filteredSessions">
 
                 <h3 class="sz-session__title" ng-bind="session.title"></h3>
 
