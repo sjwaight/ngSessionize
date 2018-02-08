@@ -1046,6 +1046,7 @@ $color-purple: #a5416f;
 
   .ecs-session-tags-container > div {
     float: left;
+    display: inline-block;
 
     .ecs-session-tag {
       float: left;
