@@ -69,8 +69,10 @@ angular.module("ecs")
 		  };
 
 		  vm.toggle = function (item) {
-
 			  item.selected = !item.selected;
+		  };
+
+		  vm.clearAll = function() {
 
 		  };
 

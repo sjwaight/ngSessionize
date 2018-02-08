@@ -65,6 +65,9 @@ $color-purple: #a5416f;
     width: 70%;
     padding-left: 25px;
 
+    .applied-filters {
+      min-height: 80px;
+    }
     .applied-filters > div, .applied-filters > div > div {
       float: left;
       background-color: #EEEEEE;
