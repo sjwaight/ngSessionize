@@ -2,6 +2,9 @@
 <ul class="ecs-refiner-group">
     <li ng-class="{ 'selected': item.selected }" ng-repeat="item in $ctrl.items | orderBy: '-count'" ng-click="$ctrl.toggle(item)">
         <div ng-bind="item.name"></div>
-        <div ng-bind="item.count"></div>
+        <div ng-if="!item.selected" ng-bind="item.count"></div>
+        <div ng-if="item.selected">
+            <i class="far fa-trash-alt fa-sm"></i>
+        </div>
     </li>
 </ul>
