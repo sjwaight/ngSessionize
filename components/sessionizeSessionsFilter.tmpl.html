@@ -39,7 +39,7 @@
                     </div>
 
                 </div>
-                <div class="ecs-clear" ng-if="vm.filterValue > 0" ng-click="vm.clearAll()">Clear all</div>
+                <div class="ecs-clear" ng-show="vm.filterCount > 0" ng-click="vm.clearAll()">Clear all</div>
 
 <!--
                 <div ng-repeat="item in vm.formats | filter:item.selected">
