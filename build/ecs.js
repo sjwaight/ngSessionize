@@ -70,45 +70,11 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-angular.module("ecs")
-
-  .component("sessionizeSessionsRefiner", {
-
-	  template: __webpack_require__(9),
-
-	  restrict: "E",
-	  bindings: {
-		  vm: "=",
-		  refinertype: "=",
-		  items: "="
-	  },
-
-	  controller: function () {
-
-		  var self = this;
-
-
-		  self.$onInit = function () {
-
-			  console.log(self.refinertype);
-
-		  };
-
-	  }
-  });
+__webpack_require__(3);
+__webpack_require__(4);
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(4);
-__webpack_require__(0);
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -117,7 +83,7 @@ __webpack_require__(0);
 var content = __webpack_require__(6);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(10)(content, {});
+var update = __webpack_require__(9)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -134,14 +100,14 @@ if(false) {
 }
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(11);
+__webpack_require__(10);
 
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -150,7 +116,7 @@ __webpack_require__(11);
 angular.module("ecs")
 
   .component("sessionizeSessionsFilter", {
-	  template: __webpack_require__(8),
+	  template: __webpack_require__(11),
 	  controller: "sessionizeSessionsFilterController",
 	  controllerAs: "vm"
   })
@@ -174,8 +140,8 @@ angular.module("ecs")
 
 		  vm.initialized = false;
 
-		  vm.getSpeakerPhoto = function(speakerId) {
-		  	return $filter("filter")(vm.data.speakers, { id: speakerId } )[0].profilePicture;
+		  vm.getSpeakerPhoto = function (speakerId) {
+			  return $filter("filter")(vm.data.speakers, {id: speakerId})[0].profilePicture;
 		  };
 
 		  vm.createList = function (type) {
@@ -214,44 +180,61 @@ angular.module("ecs")
 
 		  vm.filterSessions = function () {
 
-			  for (var f in vm.filters) {
-				  if (vm.filters.hasOwnProperty(f)) {
+			  var match = true;
+			  var showSessions = [];
 
-				  	var filterVals = vm.filters[f].map(function(item) {
-				  		if(item.selected) {
-				  			return item;
-					    }
-				    });
+			  for (var s = 0; s < vm.sessions.length; s++) {
 
-					  for(var i=0; i < vm.filters[f].length; i++) {
-						  vm.filters[f][i].selected = false;
+			  	var thisSession = vm.sessions[i];
+
+				  for (var f in vm.filters) {
+					  if (vm.filters.hasOwnProperty(f)) {
+
+						  var filterVals = vm.filters[f].map(function (item) {
+							  if (item.selected) {
+								  return item.id;
+							  }
+						  });
+
+						  for (var i = 0; i < filterVals.length; i++) {
+						  	var thisCategoryItems = $filter("filter")(thisSession.categories, { name: f });
+							if(thisCategoryItems.indexOf(filterVals[i]) === -1) {
+								match = false;
+							}
+						  }
 					  }
 				  }
+
+				  if (match) {
+					  showSessions.push(session);
+				  }
+
 			  }
 
+			  vm.filteredSessions = showSessions;
 
 		  };
 
 		  vm.toggle = function (item) {
-			  if(item.selected) {
+			  if (item.selected) {
 				  vm.filterCount--;
 				  item.selected = false;
 			  } else {
 				  vm.filterCount++;
-			  	item.selected = true;
+				  item.selected = true;
 			  }
 			  vm.filteredSessions();
 		  };
 
-		  vm.clearAll = function() {
+		  vm.clearAll = function () {
 
 			  // Clear the filter values
 			  for (var f in vm.filters) {
 				  if (vm.filters.hasOwnProperty(f)) {
 
-				  	for(var i=0; i < vm.filters[f].length; i++) {
-					    vm.filters[f][i].selected = false;
-				    }
+					  for (var i = 0; i < vm.filters[f].length; i++) {
+						  vm.filters[f][i].selected = false;
+					  }
 				  }
 			  }
 			  vm.filterCount = 0;
@@ -265,7 +248,7 @@ angular.module("ecs")
 
 			  ecsService.initEcs().then(function () {
 
-			  	// Get the filter values
+				  // Get the filter values
 				  for (var f in vm.filters) {
 					  if (vm.filters.hasOwnProperty(f)) {
 						  vm.filters[f] = vm.createList(f);
@@ -288,8 +271,6 @@ angular.module("ecs")
 
 			  var session = sessions[i];
 
-
-
 			  filtered.push(session);
 
 		  }
@@ -297,9 +278,41 @@ angular.module("ecs")
 	  };
   });
 
+__webpack_require__(4);
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
-__webpack_require__(0);
+angular.module("ecs")
+
+  .component("sessionizeSessionsRefiner", {
+
+	  template: __webpack_require__(8),
+
+	  restrict: "E",
+	  bindings: {
+		  vm: "=",
+		  refinertype: "=",
+		  items: "="
+	  },
+
+	  controller: function () {
+
+		  var self = this;
+
+
+		  self.$onInit = function () {
+
+			  console.log(self.refinertype);
+
+		  };
+
+	  }
+  });
 
 /***/ }),
 /* 5 */
@@ -307,9 +320,9 @@ __webpack_require__(0);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_ecs_scss__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_ecs_scss__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_ecs_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__scss_ecs_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__services__);
 
 
@@ -348,7 +361,7 @@ ecs.init = function () {
 	angular.bootstrap(document, ["ecs"]);
 };
 
-__webpack_require__(1);
+__webpack_require__(0);
 
 /***/ }),
 /* 6 */
@@ -424,16 +437,10 @@ module.exports = function() {
 /* 8 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"sessionize\" class=\"sessionize-wrapper\" ng-cloak>\r\n\r\n    <div class=\"sz-spinner\" ng-show=\"!vm.initialized\"></div>\r\n\r\n    <div class=\"ecs-sessions-container\" ng-if=\"vm.initialized\">\r\n\r\n\r\n        <div class=\"ecs-refiners\">\r\n\r\n            <h5>Refine results</h5>\r\n\r\n            <div ng-repeat=\"(key, value) in vm.filters\">\r\n\r\n                <sessionize-sessions-refiner vm=\"vm\" refinertype=\"key\" items=\"value\"></sessionize-sessions-refiner>\r\n\r\n            </div>\r\n\r\n<!--\r\n            <sessionize-sessions-refiner vm=\"vm\" refinertype=\"'formats'\"\r\n                                         items=\"vm.formats\"></sessionize-sessions-refiner>\r\n            <sessionize-sessions-refiner vm=\"vm\" refinertype=\"'tracks'\" items=\"vm.tracks\"></sessionize-sessions-refiner>\r\n            <sessionize-sessions-refiner vm=\"vm\" refinertype=\"'levels'\" items=\"vm.levels\"></sessionize-sessions-refiner>\r\n            <sessionize-sessions-refiner vm=\"vm\" refinertype=\"'tags'\" items=\"vm.tags\"></sessionize-sessions-refiner>\r\n-->\r\n        </div>\r\n\r\n\r\n        <div class=\"ecs-sessions\">\r\n\r\n            <h1>Session Catalog</h1>\r\n\r\n            <div class=\"applied-filters\">\r\n\r\n                <div ng-repeat=\"(key, value) in vm.filters\">\r\n\r\n                    <div ng-repeat=\"item in value | filter:{ selected: true} \" ng-click=\"vm.toggle(item)\">\r\n                        <span ng-bind=\"item.name\"></span>\r\n                        <i class=\"far fa-trash-alt fa-sm\"></i>\r\n                    </div>\r\n\r\n                </div>\r\n                <div class=\"ecs-clear\" ng-show=\"vm.filterCount > 0\" ng-click=\"vm.clearAll()\">Clear all</div>\r\n\r\n<!--\r\n                <div ng-repeat=\"item in vm.formats | filter:item.selected\">\r\n                    <span ng-bind=\"item.selected\"></span>\r\n                    <span ng-bind=\"item.name\" ng-click=\"vm.toggle(item)\"></span>\r\n                    <i class=\"far fa-trash-alt fa-sm\"></i>\r\n                </div>\r\n                <div ng-repeat=\"item in vm.tracks | filter:item.selected\">\r\n                    <span ng-bind=\"item.name\" ng-click=\"vm.toggle(item)\"></span>\r\n                    <i class=\"far fa-trash-alt fa-sm\"></i>\r\n                </div>\r\n                <div ng-repeat=\"item in vm.levels | filter:item.selected\">\r\n                    <span ng-bind=\"item.name\" ng-click=\"vm.toggle(item)\"></span>\r\n                    <i class=\"far fa-trash-alt fa-sm\"></i>\r\n                </div>\r\n                <div ng-repeat=\"item in vm.tags | filter:item.selected\">\r\n                    <span ng-bind=\"item.name\" ng-click=\"vm.toggle(item)\"></span>\r\n                    <i class=\"far fa-trash-alt fa-sm\"></i>\r\n                </div>\r\n\r\n-->\r\n            </div>\r\n            <div class=\"clear\"></div>\r\n\r\n            <div>\r\n                <span ng-bind=\"vm.data.filteredSessions.length\"></span> sessions\r\n            </div>\r\n\r\n            <div class=\"sz-session sz-session--full\"\r\n                 ng-repeat=\"session in vm.data.filteredSessions\">\r\n\r\n                <h3 class=\"sz-session__title\" ng-bind=\"session.title\"></h3>\r\n\r\n                <div>\r\n                    <ul class=\"sz-session__speakers\">\r\n                        <li class=\"sz-session__speaker\" ng-repeat=\"speaker in session.speakers\"\r\n                            ng-bind=\"speaker.name\"></li>\r\n                    </ul>\r\n\r\n                    <ul class=\"ecs-speaker-photos\">\r\n                        <li ng-repeat=\"speaker in session.speakers\">\r\n                            <img ng-src=\"{{ vm.getSpeakerPhoto(speaker.id) }}\"/>\r\n                        </li>\r\n                    </ul>\r\n                </div>\r\n                <div class=\"clear\"></div>\r\n\r\n                <div>\r\n                    <p class=\"sz-session__description\" ng-bind=\"session.description\"></p>\r\n                </div>\r\n\r\n                <div class=\"ecs-session-tags\" ng-repeat=\"category in session.categories\">\r\n                    <div class=\"sz-session__tags\">\r\n                        <li ng-repeat=\"item in category.categoryItems\" ng-bind=\"item.name\"></li>\r\n                    </div>\r\n                </div>\r\n\r\n            </div>\r\n\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n</div>";
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
 module.exports = "<h2 ng-bind=\"$ctrl.refinertype\"></h2>\r\n<ul class=\"ecs-refiner-group\">\r\n    <li ng-class=\"{ 'selected': item.selected }\" ng-repeat=\"item in $ctrl.items | orderBy: '-count'\" ng-click=\"$ctrl.vm.toggle(item)\">\r\n        <div ng-bind=\"item.name\"></div>\r\n        <div ng-if=\"!item.selected\" ng-bind=\"item.count\"></div>\r\n        <div ng-if=\"item.selected\">\r\n            <i class=\"far fa-trash-alt fa-sm\"></i>\r\n        </div>\r\n    </li>\r\n</ul>\r\n";
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports) {
 
 /*
@@ -685,7 +692,7 @@ function updateLink(linkElement, obj) {
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -758,6 +765,12 @@ angular.module("ecsService", [])
 
 	  }
   ]);
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"sessionize\" class=\"sessionize-wrapper\" ng-cloak>\r\n\r\n    <div class=\"sz-spinner\" ng-show=\"!vm.initialized\"></div>\r\n\r\n    <div class=\"ecs-sessions-container\" ng-if=\"vm.initialized\">\r\n\r\n\r\n        <div class=\"ecs-refiners\">\r\n\r\n            <h5>Refine results</h5>\r\n\r\n            <div ng-repeat=\"(key, value) in vm.filters\">\r\n\r\n                <sessionize-sessions-refiner vm=\"vm\" refinertype=\"key\" items=\"value\"></sessionize-sessions-refiner>\r\n\r\n            </div>\r\n\r\n<!--\r\n            <sessionize-sessions-refiner vm=\"vm\" refinertype=\"'formats'\"\r\n                                         items=\"vm.formats\"></sessionize-sessions-refiner>\r\n            <sessionize-sessions-refiner vm=\"vm\" refinertype=\"'tracks'\" items=\"vm.tracks\"></sessionize-sessions-refiner>\r\n            <sessionize-sessions-refiner vm=\"vm\" refinertype=\"'levels'\" items=\"vm.levels\"></sessionize-sessions-refiner>\r\n            <sessionize-sessions-refiner vm=\"vm\" refinertype=\"'tags'\" items=\"vm.tags\"></sessionize-sessions-refiner>\r\n-->\r\n        </div>\r\n\r\n\r\n        <div class=\"ecs-sessions\">\r\n\r\n            <h1>Session Catalog</h1>\r\n\r\n            <div class=\"applied-filters\">\r\n\r\n                <div ng-repeat=\"(key, value) in vm.filters\">\r\n\r\n                    <div ng-repeat=\"item in value | filter:{ selected: true} \" ng-click=\"vm.toggle(item)\">\r\n                        <span ng-bind=\"item.name\"></span>\r\n                        <i class=\"far fa-trash-alt fa-sm\"></i>\r\n                    </div>\r\n\r\n                </div>\r\n                <div class=\"ecs-clear\" ng-show=\"vm.filterCount > 0\" ng-click=\"vm.clearAll()\">Clear all</div>\r\n\r\n<!--\r\n                <div ng-repeat=\"item in vm.formats | filter:item.selected\">\r\n                    <span ng-bind=\"item.selected\"></span>\r\n                    <span ng-bind=\"item.name\" ng-click=\"vm.toggle(item)\"></span>\r\n                    <i class=\"far fa-trash-alt fa-sm\"></i>\r\n                </div>\r\n                <div ng-repeat=\"item in vm.tracks | filter:item.selected\">\r\n                    <span ng-bind=\"item.name\" ng-click=\"vm.toggle(item)\"></span>\r\n                    <i class=\"far fa-trash-alt fa-sm\"></i>\r\n                </div>\r\n                <div ng-repeat=\"item in vm.levels | filter:item.selected\">\r\n                    <span ng-bind=\"item.name\" ng-click=\"vm.toggle(item)\"></span>\r\n                    <i class=\"far fa-trash-alt fa-sm\"></i>\r\n                </div>\r\n                <div ng-repeat=\"item in vm.tags | filter:item.selected\">\r\n                    <span ng-bind=\"item.name\" ng-click=\"vm.toggle(item)\"></span>\r\n                    <i class=\"far fa-trash-alt fa-sm\"></i>\r\n                </div>\r\n\r\n-->\r\n            </div>\r\n            <div class=\"clear\"></div>\r\n\r\n            <div>\r\n                <span ng-bind=\"vm.data.filteredSessions.length\"></span> sessions\r\n            </div>\r\n\r\n            <div class=\"sz-session sz-session--full\"\r\n                 ng-repeat=\"session in vm.data.filteredSessions\">\r\n\r\n                <h3 class=\"sz-session__title\" ng-bind=\"session.title\"></h3>\r\n\r\n                <div>\r\n                    <ul class=\"sz-session__speakers\">\r\n                        <li class=\"sz-session__speaker\" ng-repeat=\"speaker in session.speakers\"\r\n                            ng-bind=\"speaker.name\"></li>\r\n                    </ul>\r\n\r\n                    <ul class=\"ecs-speaker-photos\">\r\n                        <li ng-repeat=\"speaker in session.speakers\">\r\n                            <img ng-src=\"{{ vm.getSpeakerPhoto(speaker.id) }}\"/>\r\n                        </li>\r\n                    </ul>\r\n                </div>\r\n                <div class=\"clear\"></div>\r\n\r\n                <div>\r\n                    <p class=\"sz-session__description\" ng-bind=\"session.description\"></p>\r\n                </div>\r\n\r\n                <div class=\"ecs-session-tags\" ng-repeat=\"category in session.categories\">\r\n                    <div class=\"sz-session__tags\">\r\n                        <li ng-repeat=\"item in category.categoryItems\" ng-bind=\"item.name\"></li>\r\n                    </div>\r\n                </div>\r\n\r\n            </div>\r\n\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n</div>";
 
 /***/ })
 /******/ ]);

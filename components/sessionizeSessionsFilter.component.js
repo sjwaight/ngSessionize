@@ -27,8 +27,8 @@ angular.module("ecs")
 
 		  vm.initialized = false;
 
-		  vm.getSpeakerPhoto = function(speakerId) {
-		  	return $filter("filter")(vm.data.speakers, { id: speakerId } )[0].profilePicture;
+		  vm.getSpeakerPhoto = function (speakerId) {
+			  return $filter("filter")(vm.data.speakers, {id: speakerId})[0].profilePicture;
 		  };
 
 		  vm.createList = function (type) {
@@ -67,44 +67,61 @@ angular.module("ecs")
 
 		  vm.filterSessions = function () {
 
-			  for (var f in vm.filters) {
-				  if (vm.filters.hasOwnProperty(f)) {
+			  var match = true;
+			  var showSessions = [];
 
-				  	var filterVals = vm.filters[f].map(function(item) {
-				  		if(item.selected) {
-				  			return item;
-					    }
-				    });
+			  for (var s = 0; s < vm.sessions.length; s++) {
 
-					  for(var i=0; i < vm.filters[f].length; i++) {
-						  vm.filters[f][i].selected = false;
+			  	var thisSession = vm.sessions[i];
+
+				  for (var f in vm.filters) {
+					  if (vm.filters.hasOwnProperty(f)) {
+
+						  var filterVals = vm.filters[f].map(function (item) {
+							  if (item.selected) {
+								  return item.id;
+							  }
+						  });
+
+						  for (var i = 0; i < filterVals.length; i++) {
+						  	var thisCategoryItems = $filter("filter")(thisSession.categories, { name: f });
+							if(thisCategoryItems.indexOf(filterVals[i]) === -1) {
+								match = false;
+							}
+						  }
 					  }
 				  }
+
+				  if (match) {
+					  showSessions.push(session);
+				  }
+
 			  }
 
+			  vm.filteredSessions = showSessions;
 
 		  };
 
 		  vm.toggle = function (item) {
-			  if(item.selected) {
+			  if (item.selected) {
 				  vm.filterCount--;
 				  item.selected = false;
 			  } else {
 				  vm.filterCount++;
-			  	item.selected = true;
+				  item.selected = true;
 			  }
 			  vm.filteredSessions();
 		  };
 
-		  vm.clearAll = function() {
+		  vm.clearAll = function () {
 
 			  // Clear the filter values
 			  for (var f in vm.filters) {
 				  if (vm.filters.hasOwnProperty(f)) {
 
-				  	for(var i=0; i < vm.filters[f].length; i++) {
-					    vm.filters[f][i].selected = false;
-				    }
+					  for (var i = 0; i < vm.filters[f].length; i++) {
+						  vm.filters[f][i].selected = false;
+					  }
 				  }
 			  }
 			  vm.filterCount = 0;
@@ -118,7 +135,7 @@ angular.module("ecs")
 
 			  ecsService.initEcs().then(function () {
 
-			  	// Get the filter values
+				  // Get the filter values
 				  for (var f in vm.filters) {
 					  if (vm.filters.hasOwnProperty(f)) {
 						  vm.filters[f] = vm.createList(f);
@@ -141,15 +158,11 @@ angular.module("ecs")
 
 			  var session = sessions[i];
 
-
-
 			  filtered.push(session);
 
 		  }
 		  return filtered;
 	  };
   });
-
-
 
 require("./sessionizeSessionsRefiner.component");
