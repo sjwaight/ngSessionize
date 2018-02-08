@@ -1,12 +1,25 @@
+$color-purple: $color-purple;
+
+
+#sessionize {
+
+  h1,h2,h3,h4,h5 {
+    text-transform: none;
+  }
+
+}
+
 #sessionize > div {
   float:left;
 }
+
+
 
 .ecs-refiners {
   width:25%;
 
   h2 {
-    color: #A5416F;
+    color: $color-purple;
   }
 
   ul.ecs-refiner-group {
@@ -38,7 +51,7 @@
   width:75%;
 
   h3.sz-session__title {
-    color: #A5416F;
+    color: $color-purple;
   }
 
   .ecs-session-tags > div {
@@ -50,7 +63,7 @@
 /* Sessionize CSS */
 
 #sz-color-main {
-  color: #a5416f
+  color: $color-purple
 }
 
 #sz-color-accent {
@@ -304,9 +317,9 @@
 #sessionize .sz-grid .sz-session__card {
   padding: 12px;
   border-top: 3px solid transparent;
-  border-top-color: #a5416f;
+  border-top-color: $color-purple;
   color: #EEE;
-  background: #a5416f;
+  background: $color-purple;
   border-radius: 2px;
   overflow: hidden
 }
@@ -401,7 +414,7 @@
   font-size: 14px;
   line-height: 1.5;
   font-weight: bold;
-  color: #a5416f
+  color: $color-purple
 }
 
 #sessionize .sz-session.sz-session--full .sz-session__title {
@@ -437,7 +450,7 @@
   text-transform: none;
   opacity: 1;
   color: #EEE;
-  background-color: #a5416f;
+  background-color: $color-purple;
   border-radius: 2px
 }
 
@@ -538,7 +551,7 @@
   border: 1px solid rgba(17, 17, 17, 0.1);
   font-size: 20px;
   line-height: 20px;
-  color: #a5416f;
+  color: $color-purple;
   border-radius: 2px;
   transition: all .15s ease-in
 }
@@ -590,8 +603,8 @@
   width: 128px;
   height: 128px;
   background-color: #fff;
-  border-left-color: #a5416f;
-  border-top-color: #a5416f;
+  border-left-color: $color-purple;
+  border-top-color: $color-purple;
   border-right-color: #843458;
   border-bottom-color: #843458
 }
@@ -654,7 +667,7 @@
   font-size: 20px;
   line-height: 1.25;
   font-weight: bold;
-  color: #a5416f
+  color: $color-purple
 }
 
 #sessionize .sz-speaker.sz-speaker--full .sz-speaker__tagline {
@@ -691,7 +704,7 @@
   left: 0;
   width: 10px;
   height: 2px;
-  background-color: #a5416f;
+  background-color: $color-purple;
   content: ""
 }
 
@@ -728,7 +741,7 @@
 }
 
 #sessionize .sz-gridtable .sz-session__title {
-  color: #a5416f
+  color: $color-purple
 }
 
 #sessionize .sz-gridtable .sz-session--plenum .sz-session__title {
@@ -747,7 +760,7 @@
 
 #sessionize .sz-gridtable .sz-session__room {
   color: #EEE;
-  background-color: #a5416f
+  background-color: $color-purple
 }
 
 @media (max-width: 47.9375em) {
@@ -831,7 +844,7 @@
 
 #sessionize .sz-tabs__link:hover, #sessionize .sz-tabs__link:focus, #sessionize .sz-tabs__link:active {
   color: #EEE;
-  background-color: #a5416f;
+  background-color: $color-purple;
   box-shadow: none !important
 }
 
@@ -841,13 +854,13 @@
 
 #sessionize .sz-tabs__item--active .sz-tabs__link {
   color: #EEE;
-  background-color: #a5416f;
+  background-color: $color-purple;
   box-shadow: none
 }
 
 #sessionize .sz-tabs__item--active .sz-tabs__link:hover, #sessionize .sz-tabs__item--active .sz-tabs__link:focus, #sessionize .sz-tabs__item--active .sz-tabs__link:active {
   color: #EEE;
-  background-color: #a5416f
+  background-color: $color-purple
 }
 
 #sessionize .sz-tab-container {

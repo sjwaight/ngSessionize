@@ -27,7 +27,7 @@ angular.module("ecs")
 
 		  vm.toggle = function(item) {
 
-		  	vm.vm.filters.push(item);
+		  	vm.vm.filters[type].push(item);
 
 		  };
 
