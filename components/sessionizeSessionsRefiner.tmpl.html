@@ -1,0 +1,12 @@
+<div class="ecs-refiners">
+
+    <h2>Format</h2>
+    <ul class="ecs-refiner-group">
+        <li ng-repeat="item in vm.items | orderBy: '-item.count'">
+            <div ng-bind="item.name"></div>
+            <div ng-bind="item.count"></div>
+        </li>
+    </ul>
+
+</div>
+
