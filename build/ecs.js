@@ -297,10 +297,7 @@ angular.module("ecs")
 
 		  var self = this;
 
-
 		  self.$onInit = function () {
-
-			  console.log(self.refinertype);
 
 		  };
 
