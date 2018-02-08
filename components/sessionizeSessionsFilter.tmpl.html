@@ -23,6 +23,7 @@
 
             <div class="applied-filters">
                 <div ng-repeat="item in vm.formats | filter:item.selected">
+                    <span ng-bind="item.selected"></span>
                     <span ng-bind="item.name" ng-click="vm.toggle(item)"></span>
                     <i class="far fa-trash-alt fa-sm"></i>
                 </div>
