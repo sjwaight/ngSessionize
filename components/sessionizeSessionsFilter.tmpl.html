@@ -15,13 +15,6 @@
 
             </div>
 
-<!--
-            <sessionize-sessions-refiner vm="vm" refinertype="'formats'"
-                                         items="vm.formats"></sessionize-sessions-refiner>
-            <sessionize-sessions-refiner vm="vm" refinertype="'tracks'" items="vm.tracks"></sessionize-sessions-refiner>
-            <sessionize-sessions-refiner vm="vm" refinertype="'levels'" items="vm.levels"></sessionize-sessions-refiner>
-            <sessionize-sessions-refiner vm="vm" refinertype="'tags'" items="vm.tags"></sessionize-sessions-refiner>
--->
         </div>
 
 
@@ -41,26 +34,6 @@
                 </div>
                 <div class="ecs-clear" ng-show="vm.filterCount > 0" ng-click="vm.clearAll()">Clear all</div>
 
-<!--
-                <div ng-repeat="item in vm.formats | filter:item.selected">
-                    <span ng-bind="item.selected"></span>
-                    <span ng-bind="item.name" ng-click="vm.toggle(item)"></span>
-                    <i class="far fa-trash-alt fa-sm"></i>
-                </div>
-                <div ng-repeat="item in vm.tracks | filter:item.selected">
-                    <span ng-bind="item.name" ng-click="vm.toggle(item)"></span>
-                    <i class="far fa-trash-alt fa-sm"></i>
-                </div>
-                <div ng-repeat="item in vm.levels | filter:item.selected">
-                    <span ng-bind="item.name" ng-click="vm.toggle(item)"></span>
-                    <i class="far fa-trash-alt fa-sm"></i>
-                </div>
-                <div ng-repeat="item in vm.tags | filter:item.selected">
-                    <span ng-bind="item.name" ng-click="vm.toggle(item)"></span>
-                    <i class="far fa-trash-alt fa-sm"></i>
-                </div>
-
--->
             </div>
             <div class="clear"></div>
 
@@ -95,6 +68,7 @@
                     <div class="sz-session__tags">
                         <li ng-repeat="item in category.categoryItems" ng-bind="item.name"></li>
                     </div>
+                    <div class="clear"></div>
                 </div>
 
             </div>
