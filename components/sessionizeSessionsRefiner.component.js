@@ -17,12 +17,6 @@ angular.module("ecs")
 
 		  var self = this;
 
-		  self.toggle = function (item) {
-
-			  item.selected = !item.selected;
-			  self.vm.filters[self.refinertype].push(item);
-
-		  };
 
 		  self.$onInit = function () {
 

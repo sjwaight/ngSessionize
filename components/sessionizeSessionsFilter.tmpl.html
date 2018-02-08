@@ -9,8 +9,7 @@
 
             <h5>Refine results</h5>
 
-            <sessionize-sessions-refiner vm="vm" refinertype="'formats'"
-                                         items="vm.formats"></sessionize-sessions-refiner>
+            <sessionize-sessions-refiner vm="vm" refinertype="'formats'" items="vm.formats"></sessionize-sessions-refiner>
             <sessionize-sessions-refiner vm="vm" refinertype="'tracks'" items="vm.tracks"></sessionize-sessions-refiner>
             <sessionize-sessions-refiner vm="vm" refinertype="'levels'" items="vm.levels"></sessionize-sessions-refiner>
             <sessionize-sessions-refiner vm="vm" refinertype="'tags'" items="vm.tags"></sessionize-sessions-refiner>
@@ -23,19 +22,19 @@
             <h1>Session Catalog</h1>
 
             <div class="applied-filters">
-                <div ng-repeat="filter in vm.filters.formats">
+                <div ng-repeat="filter in vm.formats | filter:selected">
                     <span ng-bind="filter.name" ng-click="vm.toggle(filter)"></span>
                     <i class="far fa-trash-alt fa-sm"></i>
                 </div>
-                <div ng-repeat="filter in vm.filters.tracks">
+                <div ng-repeat="filter in vm.tracks | filter:selected">
                     <span ng-bind="filter.name" ng-click="vm.toggle(filter)"></span>
                     <i class="far fa-trash-alt fa-sm"></i>
                 </div>
-                <div ng-repeat="filter in vm.filters.levels">
+                <div ng-repeat="filter in vm.levels | filter:selected">
                     <span ng-bind="filter.name" ng-click="vm.toggle(filter)"></span>
                     <i class="far fa-trash-alt fa-sm"></i>
                 </div>
-                <div ng-repeat="filter in vm.filters.tags">
+                <div ng-repeat="filter in vm.tags | filter:selected">
                     <span ng-bind="filter.name" ng-click="vm.toggle(filter)"></span>
                     <i class="far fa-trash-alt fa-sm"></i>
                 </div>
