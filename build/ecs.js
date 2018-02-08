@@ -671,13 +671,13 @@ angular.module("ecs")
 
 		  self.toggle = function (item) {
 
-			  self.vm.filters[type].push(item);
+			  self.vm.filters[refinertype].push(item);
 
 		  };
 
 		  self.$onInit = function () {
 
-			  console.log(self.type);
+			  console.log(self.refinertype);
 
 		  };
 
@@ -688,7 +688,7 @@ angular.module("ecs")
 /* 11 */
 /***/ (function(module, exports) {
 
-module.exports = "<h2 ng-bind=\"$ctrl.type\"></h2>\r\n<ul class=\"ecs-refiner-group\">\r\n    <li ng-repeat=\"item in $ctrl.items | orderBy: '-count'\" ng-click=\"$ctrl.toggle(item)\">\r\n        <div ng-bind=\"item.name\"></div>\r\n        <div ng-bind=\"item.count\"></div>\r\n    </li>\r\n</ul>\r\n";
+module.exports = "<h2 ng-bind=\"$ctrl.refinertype\"></h2>\r\n<ul class=\"ecs-refiner-group\">\r\n    <li ng-repeat=\"item in $ctrl.items | orderBy: '-count'\" ng-click=\"$ctrl.toggle(item)\">\r\n        <div ng-bind=\"item.name\"></div>\r\n        <div ng-bind=\"item.count\"></div>\r\n    </li>\r\n</ul>\r\n";
 
 /***/ })
 /******/ ]);
