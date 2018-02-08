@@ -28,7 +28,7 @@
             <span ng-bind="vm.data.sessions.length"></span> sessions
         </div>
 
-        <div ng-repeat="session in vm.data.sessions | filteredSessions:vm.filters">
+        <div class="sz-session sz-session--full" ng-repeat="session in vm.data.sessions | filteredSessions:vm.filters">
 
             <h3 class="sz-session__title" ng-bind="session.title"></h3>
 
