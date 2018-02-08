@@ -22,19 +22,19 @@
             <h1>Session Catalog</h1>
 
             <div class="applied-filters">
-                <div ng-repeat="item in vm.formats | filter:selected">
+                <div ng-repeat="item in vm.formats | filter:item.selected">
                     <span ng-bind="item.name" ng-click="vm.toggle(item)"></span>
                     <i class="far fa-trash-alt fa-sm"></i>
                 </div>
-                <div ng-repeat="item in vm.tracks | filter:selected">
+                <div ng-repeat="item in vm.tracks | filter:item.selected">
                     <span ng-bind="item.name" ng-click="vm.toggle(item)"></span>
                     <i class="far fa-trash-alt fa-sm"></i>
                 </div>
-                <div ng-repeat="item in vm.levels | filter:selected">
+                <div ng-repeat="item in vm.levels | filter:item.selected">
                     <span ng-bind="item.name" ng-click="vm.toggle(item)"></span>
                     <i class="far fa-trash-alt fa-sm"></i>
                 </div>
-                <div ng-repeat="item in vm.tags | filter:selected">
+                <div ng-repeat="item in vm.tags | filter:item.selected">
                     <span ng-bind="item.name" ng-click="vm.toggle(item)"></span>
                     <i class="far fa-trash-alt fa-sm"></i>
                 </div>
