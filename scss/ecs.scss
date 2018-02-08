@@ -65,7 +65,7 @@ $color-purple: #a5416f;
     width: 70%;
     padding-left: 25px;
 
-    .applied-filters > div {
+    .applied-filters > div, .applied-filters > div > div {
       float: left;
       background-color: #EEEEEE;
       margin-right: 5px;
