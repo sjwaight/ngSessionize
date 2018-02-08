@@ -110,7 +110,7 @@ angular.module("ecs")
 				  vm.filterCount++;
 				  item.selected = true;
 			  }
-			  vm.filteredSessions();
+			  vm.filterSessions();
 		  };
 
 		  vm.clearAll = function () {
