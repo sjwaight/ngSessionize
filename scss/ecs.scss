@@ -175,7 +175,7 @@ $color-purple: #a5416f;
   display: none
 }
 
-#sessionize .sz-session__tags li {
+#sessionize .sz-session__tags div {
   display: inline-block;
   margin-right: .125em;
   font-size: 12px;
@@ -331,7 +331,7 @@ $color-purple: #a5416f;
   overflow: hidden
 }
 
-#sessionize .sz-grid .sz-session__card .sz-session__tags li {
+#sessionize .sz-grid .sz-session__card .sz-session__tags div {
   vertical-align: top
 }
 
@@ -462,7 +462,7 @@ $color-purple: #a5416f;
   margin-top: 8px
 }
 
-#sessionize .sz-session.sz-session--full .sz-session__tags li {
+#sessionize .sz-session.sz-session--full .sz-session__tags div {
   display: inline-block;
   margin-right: .5em;
   font-size: 12px;
