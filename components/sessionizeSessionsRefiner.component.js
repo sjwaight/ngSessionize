@@ -25,7 +25,7 @@ angular.module("ecs")
 
 		  self.$onInit = function () {
 
-			  console.log(self.type);
+			  console.log(self.refinertype);
 
 		  };
 
