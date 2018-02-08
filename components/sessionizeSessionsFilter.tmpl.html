@@ -1,75 +1,85 @@
-<div id="sessionize" ng-cloak ng-if="vm.initialized">
+<div id="sessionize" ng-cloak>
 
-    <div class="ecs-refiners">
+    <div class="sz-spinner" ng-show="!vm.initialized"></div>
 
-        <h5>Refine results</h5>
-
-        <sessionize-sessions-refiner vm="vm" refinertype="'formats'" items="vm.formats"></sessionize-sessions-refiner>
-        <sessionize-sessions-refiner vm="vm" refinertype="'tracks'" items="vm.tracks"></sessionize-sessions-refiner>
-        <sessionize-sessions-refiner vm="vm" refinertype="'levels'" items="vm.levels"></sessionize-sessions-refiner>
-        <sessionize-sessions-refiner vm="vm" refinertype="'tags'" items="vm.tags"></sessionize-sessions-refiner>
-
-    </div>
+    <div ng-if="vm.initialized">
 
 
-    <div class="ecs-sessions">
+        <div class="ecs-refiners">
 
-        <h1>Session Catalog</h1>
+            <h5>Refine results</h5>
 
-        <div class="applied-filters">
-            <div ng-repeat="filter in vm.filters.formats">
-                <span ng-bind="filter.name" ng-click="vm.toggle(filter)"></span>
-                <i class="far fa-trash-alt fa-sm"></i>
-            </div>
-            <div ng-repeat="filter in vm.filters.tracks">
-                <span ng-bind="filter.name" ng-click="vm.toggle(filter)"></span>
-                <i class="far fa-trash-alt fa-sm"></i>
-            </div>
-            <div ng-repeat="filter in vm.filters.levels">
-                <span ng-bind="filter.name" ng-click="vm.toggle(filter)"></span>
-                <i class="far fa-trash-alt fa-sm"></i>
-            </div>
-            <div ng-repeat="filter in vm.filters.tags">
-                <span ng-bind="filter.name" ng-click="vm.toggle(filter)"></span>
-                <i class="far fa-trash-alt fa-sm"></i>
-            </div>
-        </div>
-        <div class="clear"></div>
+            <sessionize-sessions-refiner vm="vm" refinertype="'formats'"
+                                         items="vm.formats"></sessionize-sessions-refiner>
+            <sessionize-sessions-refiner vm="vm" refinertype="'tracks'" items="vm.tracks"></sessionize-sessions-refiner>
+            <sessionize-sessions-refiner vm="vm" refinertype="'levels'" items="vm.levels"></sessionize-sessions-refiner>
+            <sessionize-sessions-refiner vm="vm" refinertype="'tags'" items="vm.tags"></sessionize-sessions-refiner>
 
-        <div>
-            <span ng-bind="vm.data.sessions.length"></span> sessions
         </div>
 
-        <div class="sz-session sz-session--full" ng-repeat="session in vm.data.sessions | filteredSessions:vm.filters">
 
-            <h3 class="sz-session__title" ng-bind="session.title"></h3>
+        <div class="ecs-sessions">
 
-            <div>
-                <ul class="sz-session__speakers">
-                    <li class="sz-session__speaker" ng-repeat="speaker in session.speakers" ng-bind="speaker.name"></li>
-                </ul>
+            <h1>Session Catalog</h1>
 
-                <ul class="ecs-speaker-photos">
-                    <li ng-repeat="speaker in session.speakers">
-                        <img ng-src="{{ vm.getSpeakerPhoto(speaker.id) }}"/>
-                    </li>
-                </ul>
-            </div>
-            <div class="clear"></div>
-
-            <div>
-                <p class="sz-session__description" ng-bind="session.description"></p>
-            </div>
-
-            <div class="ecs-session-tags" ng-repeat="category in session.categories">
-                <div class="sz-session__tags">
-                    <li ng-repeat="item in category.categoryItems" ng-bind="item.name"></li>
+            <div class="applied-filters">
+                <div ng-repeat="filter in vm.filters.formats">
+                    <span ng-bind="filter.name" ng-click="vm.toggle(filter)"></span>
+                    <i class="far fa-trash-alt fa-sm"></i>
+                </div>
+                <div ng-repeat="filter in vm.filters.tracks">
+                    <span ng-bind="filter.name" ng-click="vm.toggle(filter)"></span>
+                    <i class="far fa-trash-alt fa-sm"></i>
+                </div>
+                <div ng-repeat="filter in vm.filters.levels">
+                    <span ng-bind="filter.name" ng-click="vm.toggle(filter)"></span>
+                    <i class="far fa-trash-alt fa-sm"></i>
+                </div>
+                <div ng-repeat="filter in vm.filters.tags">
+                    <span ng-bind="filter.name" ng-click="vm.toggle(filter)"></span>
+                    <i class="far fa-trash-alt fa-sm"></i>
                 </div>
             </div>
             <div class="clear"></div>
 
-        </div>
+            <div>
+                <span ng-bind="vm.data.sessions.length"></span> sessions
+            </div>
 
+            <div class="sz-session sz-session--full"
+                 ng-repeat="session in vm.data.sessions | filteredSessions:vm.filters">
+
+                <h3 class="sz-session__title" ng-bind="session.title"></h3>
+
+                <div>
+                    <ul class="sz-session__speakers">
+                        <li class="sz-session__speaker" ng-repeat="speaker in session.speakers"
+                            ng-bind="speaker.name"></li>
+                    </ul>
+
+                    <ul class="ecs-speaker-photos">
+                        <li ng-repeat="speaker in session.speakers">
+                            <img ng-src="{{ vm.getSpeakerPhoto(speaker.id) }}"/>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+
+                <div>
+                    <p class="sz-session__description" ng-bind="session.description"></p>
+                </div>
+
+                <div class="ecs-session-tags" ng-repeat="category in session.categories">
+                    <div class="sz-session__tags">
+                        <li ng-repeat="item in category.categoryItems" ng-bind="item.name"></li>
+                    </div>
+                </div>
+                <div class="clear"></div>
+
+            </div>
+
+
+        </div>
 
     </div>
 
