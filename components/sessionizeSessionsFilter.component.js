@@ -15,7 +15,12 @@ angular.module("ecs")
 
 		  vm.data = ecsService.ecs;
 
-		  vm.filters = [];
+		  vm.filters = {};
+		  vm.filters.formats = [];
+		  vm.filters.tracks = [];
+		  vm.filters.levels = [];
+		  vm.filters.tags = [];
+
 		  vm.filteredSessions = [];
 
 		  vm.initialized = false;
@@ -88,6 +93,8 @@ angular.module("ecs")
 		  for (var i = 0; i < sessions.length; i++) {
 
 			  var session = sessions[i];
+
+
 
 			  filtered.push(session);
 
