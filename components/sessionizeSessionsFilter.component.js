@@ -82,7 +82,7 @@ angular.module("ecs")
 				  for (var f in vm.filters) {
 					  if (vm.filters.hasOwnProperty(f)) {
 						  console.log(f, vm.filters[f]);
-						  vm.createList(f);
+						  vm.filters[f] = vm.createList(f);
 					  }
 				  }
 /*
