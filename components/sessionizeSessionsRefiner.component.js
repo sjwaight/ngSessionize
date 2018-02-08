@@ -9,10 +9,10 @@ angular.module("ecs")
 
 	  restrict: "E",
 	  bindings: {
-	  	vm: "=",
+		  vm: "=",
+		  type: "=",
 		  items: "="
 	  },
-
 
   })
 
@@ -25,9 +25,13 @@ angular.module("ecs")
 
 		  vm.initialized = false;
 
+		  vm.toggle = function(item) {
+
+		  	vm.vm.filters.push(item);
+
+		  };
 
 		  vm.$onInit = function () {
-
 
 		  };
 

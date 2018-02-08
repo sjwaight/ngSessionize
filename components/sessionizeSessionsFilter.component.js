@@ -15,6 +15,7 @@ angular.module("ecs")
 
 		  vm.data = ecsService.ecs;
 
+		  vm.filters = [];
 		  vm.filteredSessions = [];
 
 		  vm.initialized = false;
