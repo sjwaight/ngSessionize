@@ -18,7 +18,6 @@ $color-purple: #a5416f;
 
 .ecs-refiners {
   width:25%;
-  margin-right:25px;
 
   h2 {
     color: $color-purple;
@@ -51,6 +50,7 @@ $color-purple: #a5416f;
 
 .ecs-sessions {
   width:75%;
+  padding-left:25px;
 
   h3.sz-session__title {
     color: $color-purple;
