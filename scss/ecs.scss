@@ -1026,7 +1026,9 @@ $color-purple: #a5416f;
     }
 
     .ecs-clear {
+      background-color: transparent;
       cursor: pointer;
+      color:$color-purple;
     }
   }
 

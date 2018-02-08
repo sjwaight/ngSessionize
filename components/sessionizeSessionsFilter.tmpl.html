@@ -33,8 +33,8 @@
 
                 <div ng-repeat="(key, value) in vm.filters">
 
-                    <div ng-repeat="item in value | filter:{ selected: true} ">
-                        <span ng-bind="item.name" ng-click="vm.toggle(item)"></span>
+                    <div ng-repeat="item in value | filter:{ selected: true} " ng-click="vm.toggle(item)">
+                        <span ng-bind="item.name"></span>
                         <i class="far fa-trash-alt fa-sm"></i>
                     </div>
 
