@@ -50,6 +50,7 @@ angular.module("ecs")
 					  } else {
 
 						  var newItem = thisItem;
+						  newItem.selected = false;
 						  newItem.count = 1;
 						  list.push(newItem);
 
@@ -82,16 +83,10 @@ angular.module("ecs")
 			  	// Get the filter values
 				  for (var f in vm.filters) {
 					  if (vm.filters.hasOwnProperty(f)) {
-						  console.log(f, vm.filters[f]);
 						  vm.filters[f] = vm.createList(f);
+						  console.log(f, vm.filters[f]);
 					  }
 				  }
-/*
-				  vm.formats = vm.createList("Session format");
-				  vm.tracks = vm.createList("Track");
-				  vm.levels = vm.createList("Level");
-				  vm.tags = vm.createList("Tags");
-*/
 				  vm.initialized = true;
 
 			  });
