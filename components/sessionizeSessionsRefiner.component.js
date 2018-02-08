@@ -4,7 +4,6 @@ angular.module("ecs")
 
   .component("sessionizeSessionsRefiner", {
 	  template: require("./sessionizeSessionsRefiner.tmpl.html"),
-	  controller: "sessionizeSessionsRefinerController",
 	  controllerAs: "vm",
 
 	  restrict: "E",
@@ -12,12 +11,9 @@ angular.module("ecs")
 		  vm: "=",
 		  type: "=",
 		  items: "="
-	  }
+	  },
 
-  })
-
-  .controller("sessionizeSessionsRefinerController", ["$sce", "$q", "$filter", "$location", "ecsService",
-	  function ($sce, $q, $filter, $location, ecsService) {
+	  controller: function (sdbService, $filter, $location) {
 
 		  var vm = this;
 
@@ -25,17 +21,17 @@ angular.module("ecs")
 
 		  vm.initialized = false;
 
-		  vm.toggle = function(item) {
+		  vm.toggle = function (item) {
 
-		  	vm.vm.filters[type].push(item);
+			  vm.vm.filters[type].push(item);
 
 		  };
 
 		  vm.$onInit = function () {
 
-		  	console.log(vm.type);
+			  console.log(vm.type);
 
 		  };
 
 	  }
-  ]);
+  });
