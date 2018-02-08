@@ -3,8 +3,8 @@
 angular.module("ecs")
 
   .component("sessionizeSessionsRefiner", {
+
 	  template: require("./sessionizeSessionsRefiner.tmpl.html"),
-	  controllerAs: "vm",
 
 	  restrict: "E",
 	  bindings: {
