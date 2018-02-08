@@ -128,6 +128,7 @@ angular.module("ecs")
 
 		  vm.data = ecsService.ecs;
 
+		  vm.filters = [];
 		  vm.filteredSessions = [];
 
 		  vm.initialized = false;
@@ -312,7 +313,7 @@ module.exports = function() {
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"sessionize\">\r\n\r\n    <div class=\"ecs-refiners\">\r\n\r\n        <h5>Refine results</h5>\r\n\r\n\r\n        <sessionize-sessions-refiner items=\"vm.formats\"></sessionize-sessions-refiner>\r\n\r\n        <h2>Format</h2>\r\n        <ul class=\"ecs-refiner-group\">\r\n            <li ng-repeat=\"item in vm.formats | orderBy: '-item.count'\">\r\n                <div ng-bind=\"item.name\"></div>\r\n                <div ng-bind=\"item.count\"></div>\r\n            </li>\r\n        </ul>\r\n\r\n        <h2>Track</h2>\r\n        <ul class=\"ecs-refiner-group\">\r\n            <li ng-repeat=\"item in vm.tracks | orderBy: '-item.count'\">\r\n                <div ng-bind=\"item.name\"></div>\r\n                <div ng-bind=\"item.count\"></div>\r\n            </li>\r\n        </ul>\r\n\r\n        <h2>Level</h2>\r\n        <ul class=\"ecs-refiner-group\">\r\n            <li ng-repeat=\"item in vm.levels | orderBy: '-item.count'\">\r\n                <div ng-bind=\"item.name\"></div>\r\n                <div ng-bind=\"item.count\"></div>\r\n            </li>\r\n        </ul>\r\n\r\n        <h2>Tag</h2>\r\n        <ul class=\"ecs-refiner-group\">\r\n            <li ng-repeat=\"item in vm.tags | orderBy: '-item.count'\">\r\n                <div ng-bind=\"item.name\"></div>\r\n                <div ng-bind=\"item.count\"></div>\r\n            </li>\r\n        </ul>\r\n\r\n    </div>\r\n\r\n\r\n    <div class=\"ecs-sessions\">\r\n\r\n        <h1>Session Catalog</h1>\r\n\r\n        <span ng-bind=\"vm.data.sessions.length\"></span> sessions\r\n\r\n        <div ng-repeat=\"session in vm.data.sessions\">\r\n\r\n            <h3 class=\"sz-session__title\" ng-bind=\"session.title\"></h3>\r\n\r\n            <ul class=\"sz-session__speakers\">\r\n                <li class=\"sz-session__speaker\" ng-repeat=\"speaker in session.speakers\" ng-bind=\"speaker.name\"></li>\r\n            </ul>\r\n\r\n            <p class=\"sz-session__description\" ng-bind=\"session.description\"></p>\r\n\r\n            <div class=\"ecs-session-tags\" ng-repeat=\"category in session.categories\">\r\n                <div class=\"sz-session__tags\" ng-repeat=\"item in category.categoryItems\" ng-bind=\"item.name\"></div>\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n</div>";
+module.exports = "<div id=\"sessionize\">\r\n\r\n    <div class=\"ecs-refiners\">\r\n\r\n        <h5>Refine results</h5>\r\n\r\n\r\n        <sessionize-sessions-refiner items=\"vm.formats\"></sessionize-sessions-refiner>\r\n        <sessionize-sessions-refiner items=\"vm.tracks\"></sessionize-sessions-refiner>\r\n        <sessionize-sessions-refiner items=\"vm.levels\"></sessionize-sessions-refiner>\r\n        <sessionize-sessions-refiner items=\"vm.tags\"></sessionize-sessions-refiner>\r\n<!--\r\n        <h2>Format</h2>\r\n        <ul class=\"ecs-refiner-group\">\r\n            <li ng-repeat=\"item in vm.formats | orderBy: '-item.count'\">\r\n                <div ng-bind=\"item.name\"></div>\r\n                <div ng-bind=\"item.count\"></div>\r\n            </li>\r\n        </ul>\r\n\r\n        <h2>Track</h2>\r\n        <ul class=\"ecs-refiner-group\">\r\n            <li ng-repeat=\"item in vm.tracks | orderBy: '-item.count'\">\r\n                <div ng-bind=\"item.name\"></div>\r\n                <div ng-bind=\"item.count\"></div>\r\n            </li>\r\n        </ul>\r\n\r\n        <h2>Level</h2>\r\n        <ul class=\"ecs-refiner-group\">\r\n            <li ng-repeat=\"item in vm.levels | orderBy: '-item.count'\">\r\n                <div ng-bind=\"item.name\"></div>\r\n                <div ng-bind=\"item.count\"></div>\r\n            </li>\r\n        </ul>\r\n\r\n        <h2>Tag</h2>\r\n        <ul class=\"ecs-refiner-group\">\r\n            <li ng-repeat=\"item in vm.tags | orderBy: '-item.count'\">\r\n                <div ng-bind=\"item.name\"></div>\r\n                <div ng-bind=\"item.count\"></div>\r\n            </li>\r\n        </ul>\r\n-->\r\n    </div>\r\n\r\n\r\n    <div class=\"ecs-sessions\">\r\n\r\n        <h1>Session Catalog</h1>\r\n\r\n        <span ng-bind=\"vm.data.sessions.length\"></span> sessions\r\n\r\n        <div ng-repeat=\"session in vm.data.sessions\">\r\n\r\n            <h3 class=\"sz-session__title\" ng-bind=\"session.title\"></h3>\r\n\r\n            <ul class=\"sz-session__speakers\">\r\n                <li class=\"sz-session__speaker\" ng-repeat=\"speaker in session.speakers\" ng-bind=\"speaker.name\"></li>\r\n            </ul>\r\n\r\n            <p class=\"sz-session__description\" ng-bind=\"session.description\"></p>\r\n\r\n            <div class=\"ecs-session-tags\" ng-repeat=\"category in session.categories\">\r\n                <div class=\"sz-session__tags\" ng-repeat=\"item in category.categoryItems\" ng-bind=\"item.name\"></div>\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n</div>";
 
 /***/ }),
 /* 8 */
@@ -621,10 +622,10 @@ angular.module("ecs")
 
 	  restrict: "E",
 	  bindings: {
-	  	vm: "=",
+		  vm: "=",
+		  type: "=",
 		  items: "="
 	  },
-
 
   })
 
@@ -637,9 +638,13 @@ angular.module("ecs")
 
 		  vm.initialized = false;
 
+		  vm.toggle = function(item) {
+
+		  	vm.vm.filters.push(item);
+
+		  };
 
 		  vm.$onInit = function () {
-
 
 		  };
 
@@ -650,7 +655,7 @@ angular.module("ecs")
 /* 11 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ecs-refiners\">\r\n\r\n    <h2>Format</h2>\r\n    <ul class=\"ecs-refiner-group\">\r\n        <li ng-repeat=\"item in vm.items | orderBy: '-item.count'\">\r\n            <div ng-bind=\"item.name\"></div>\r\n            <div ng-bind=\"item.count\"></div>\r\n        </li>\r\n    </ul>\r\n\r\n</div>\r\n\r\n";
+module.exports = "<h2 ng-bind=\"vm.type\"></h2>\r\n<ul class=\"ecs-refiner-group\">\r\n    <li ng-repeat=\"item in vm.items | orderBy: '-count'\" ng-click=\"vm.toggle(item)\">\r\n        <div ng-bind=\"item.name\"></div>\r\n        <div ng-bind=\"item.count\"></div>\r\n    </li>\r\n</ul>\r\n";
 
 /***/ })
 /******/ ]);
