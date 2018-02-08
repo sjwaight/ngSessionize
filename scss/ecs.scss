@@ -1044,9 +1044,12 @@ $color-purple: #a5416f;
     float: left;
   }
 
-  .ecs-session-tags-container > div {
-    float: left;
+  .ecs-session-tags-container {
     display: inline-block;
+
+    > div {
+      float: left;
+    }
 
     .ecs-session-tag {
       float: left;
