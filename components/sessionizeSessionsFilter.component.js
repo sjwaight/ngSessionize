@@ -67,6 +67,22 @@ angular.module("ecs")
 
 		  vm.filterSessions = function () {
 
+			  for (var f in vm.filters) {
+				  if (vm.filters.hasOwnProperty(f)) {
+
+				  	var filterVals = vm.filters[f].map(function(item) {
+				  		if(item.selected) {
+				  			return item;
+					    }
+				    });
+
+					  for(var i=0; i < vm.filters[f].length; i++) {
+						  vm.filters[f][i].selected = false;
+					  }
+				  }
+			  }
+
+
 		  };
 
 		  vm.toggle = function (item) {
@@ -74,9 +90,10 @@ angular.module("ecs")
 				  vm.filterCount--;
 				  item.selected = false;
 			  } else {
-				  vm.filterCount--;
+				  vm.filterCount++;
 			  	item.selected = true;
 			  }
+			  vm.filteredSessions();
 		  };
 
 		  vm.clearAll = function() {
@@ -91,7 +108,7 @@ angular.module("ecs")
 				  }
 			  }
 			  vm.filterCount = 0;
-
+			  vm.filteredSessions = vm.sessions;
 
 		  };
 
@@ -105,7 +122,6 @@ angular.module("ecs")
 				  for (var f in vm.filters) {
 					  if (vm.filters.hasOwnProperty(f)) {
 						  vm.filters[f] = vm.createList(f);
-						  console.log(f, vm.filters[f]);
 					  }
 				  }
 				  vm.initialized = true;
