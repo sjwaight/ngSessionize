@@ -45,15 +45,18 @@
 
             <h3 class="sz-session__title" ng-bind="session.title"></h3>
 
-            <ul class="sz-session__speakers">
-                <li class="sz-session__speaker" ng-repeat="speaker in session.speakers" ng-bind="speaker.name"></li>
-            </ul>
+            <div>
 
-            <ul class="ecs-speaker-photos">
-                <li ng-repeat="speaker in session.speakers">
-                    <img ng-src="{{ vm.getSpeakerPhoto(speaker.id) }}"/>
-                </li>
-            </ul>
+                <ul class="sz-session__speakers">
+                    <li class="sz-session__speaker" ng-repeat="speaker in session.speakers" ng-bind="speaker.name"></li>
+                </ul>
+
+                <ul class="ecs-speaker-photos">
+                    <li ng-repeat="speaker in session.speakers">
+                        <img ng-src="{{ vm.getSpeakerPhoto(speaker.id) }}"/>
+                    </li>
+                </ul>
+            </div>
 
             <div>
                 <p class="sz-session__description" ng-bind="session.description"></p>
