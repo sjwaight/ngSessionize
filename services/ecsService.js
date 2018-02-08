@@ -52,8 +52,8 @@ angular.module("ecsService", [])
 
 			  var p = [];
 
-			  p.push(self.getSessions());
 			  p.push(self.getSpeakers());
+			  p.push(self.getSessions());
 
 			  $q.all(p).then(function () {
 
