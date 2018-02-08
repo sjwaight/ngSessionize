@@ -35,7 +35,7 @@ $color-purple: #a5416f;
       cursor: pointer;
     }
 
-    li.selected {
+    li.selected > div {
       background-color: #EEEEEE;
     }
 
