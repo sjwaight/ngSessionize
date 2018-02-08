@@ -95,7 +95,7 @@ angular.module("ecs")
 				  }
 
 				  if (matches === vm.filterCount) {
-					  showSessions.push(session);
+					  showSessions.push(thisSession);
 				  }
 
 			  }
