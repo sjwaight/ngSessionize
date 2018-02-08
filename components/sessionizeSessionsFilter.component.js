@@ -16,10 +16,10 @@ angular.module("ecs")
 		  vm.data = ecsService.ecs;
 
 		  vm.filters = {
-			  "formats": [],
-			  "tracks": [],
-			  "levels": [],
-			  "tags": [],
+			  "Session format": [],
+			  "Track": [],
+			  "Level": [],
+			  "Tags": [],
 		  };
 
 		  vm.filteredSessions = [];
