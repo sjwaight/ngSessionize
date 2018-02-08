@@ -9,7 +9,8 @@
 
             <h5>Refine results</h5>
 
-            <sessionize-sessions-refiner vm="vm" refinertype="'formats'" items="vm.formats"></sessionize-sessions-refiner>
+            <sessionize-sessions-refiner vm="vm" refinertype="'formats'"
+                                         items="vm.formats"></sessionize-sessions-refiner>
             <sessionize-sessions-refiner vm="vm" refinertype="'tracks'" items="vm.tracks"></sessionize-sessions-refiner>
             <sessionize-sessions-refiner vm="vm" refinertype="'levels'" items="vm.levels"></sessionize-sessions-refiner>
             <sessionize-sessions-refiner vm="vm" refinertype="'tags'" items="vm.tags"></sessionize-sessions-refiner>
@@ -22,6 +23,18 @@
             <h1>Session Catalog</h1>
 
             <div class="applied-filters">
+
+                <div ng-repeat="(key, value) in vm.filters">
+
+                    <div ng-repeat="item in vm[{{key}}] | filter:item.selected">
+                        <span ng-bind="item.selected"></span>
+                        <span ng-bind="item.name" ng-click="vm.toggle(item)"></span>
+                        <i class="far fa-trash-alt fa-sm"></i>
+                    </div>
+
+                </div>
+
+
                 <div ng-repeat="item in vm.formats | filter:item.selected">
                     <span ng-bind="item.selected"></span>
                     <span ng-bind="item.name" ng-click="vm.toggle(item)"></span>

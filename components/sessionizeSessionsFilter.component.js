@@ -15,11 +15,12 @@ angular.module("ecs")
 
 		  vm.data = ecsService.ecs;
 
-		  vm.filters = {};
-		  vm.filters.formats = [];
-		  vm.filters.tracks = [];
-		  vm.filters.levels = [];
-		  vm.filters.tags = [];
+		  vm.filters = {
+			  "formats": [],
+			  "tracks": [],
+			  "levels": [],
+			  "tags": [],
+		  };
 
 		  vm.filteredSessions = [];
 
@@ -78,11 +79,18 @@ angular.module("ecs")
 
 			  ecsService.initEcs().then(function () {
 
+				  for (var f in vm.filters) {
+					  if (vm.filters.hasOwnProperty(f)) {
+						  console.log(f, vm.filters[f]);
+						  vm.createList(f)
+					  }
+				  }
+/*
 				  vm.formats = vm.createList("Session format");
 				  vm.tracks = vm.createList("Track");
 				  vm.levels = vm.createList("Level");
 				  vm.tags = vm.createList("Tags");
-
+*/
 				  vm.initialized = true;
 
 			  });
