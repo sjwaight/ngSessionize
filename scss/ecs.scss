@@ -1016,13 +1016,18 @@ $color-purple: #a5416f;
 
   .applied-filters {
     min-height: 80px;
-  }
-  .applied-filters > div, .applied-filters > div > div {
-    float: left;
-    background-color: #EEEEEE;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    padding: 5px;
+
+    > div, > div > div {
+      float: left;
+      background-color: #EEEEEE;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      padding: 5px;
+    }
+
+    .ecs-clear {
+      cursor: pointer;
+    }
   }
 
   h3.sz-session__title {

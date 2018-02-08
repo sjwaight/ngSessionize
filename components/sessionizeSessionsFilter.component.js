@@ -21,6 +21,7 @@ angular.module("ecs")
 			  "Level": [],
 			  "Tags": [],
 		  };
+		  vm.filterCount = 0;
 
 		  vm.filteredSessions = [];
 
@@ -69,10 +70,28 @@ angular.module("ecs")
 		  };
 
 		  vm.toggle = function (item) {
-			  item.selected = !item.selected;
+			  if(item.selected) {
+				  vm.filterCount--;
+				  item.selected = false;
+			  } else {
+				  vm.filterCount--;
+			  	item.selected = true;
+			  }
 		  };
 
 		  vm.clearAll = function() {
+
+			  // Clear the filter values
+			  for (var f in vm.filters) {
+				  if (vm.filters.hasOwnProperty(f)) {
+
+				  	for(var i=0; i < vm.filters[f].length; i++) {
+					    vm.filters[f][i].selected = false;
+				    }
+				  }
+			  }
+			  vm.filterCount = 0;
+
 
 		  };
 
