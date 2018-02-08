@@ -62,13 +62,15 @@ $color-purple: #a5416f;
   .applied-filters > div {
     float: left;
     background-color: #EEEEEE;
+    margin-right:5px;
+    padding:5px;
   }
 
   h3.sz-session__title {
     color: $color-purple;
   }
 
-  .ecs-speaker-photos {
+  .ecs-speaker-photos li {
     list-style: none;
     float: left;
   }
