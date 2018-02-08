@@ -37,7 +37,7 @@ angular.module("ecsService", [])
 				  url: "https://sessionize.com/api/v2/57c0xuih/view/speakers"
 			  }).then(function (response) {
 
-				  self.ecs.speakers = response.data[0].speakers;
+				  self.ecs.speakers = response.data;
 
 				  deferred.resolve();
 
