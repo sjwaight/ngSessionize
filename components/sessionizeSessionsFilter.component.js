@@ -66,7 +66,7 @@ angular.module("ecs")
 
 		  };
 
-		  self.toggle = function (item) {
+		  vm.toggle = function (item) {
 
 			  item.selected = !item.selected;
 
