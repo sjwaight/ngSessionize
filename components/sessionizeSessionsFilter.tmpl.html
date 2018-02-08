@@ -18,20 +18,20 @@
 
         <div class="applied-filters">
             <div ng-repeat="filter in vm.filters.formats">
-                <div ng-bind="filter.name" ng-click="vm.toggle(filter)"></div>
-                <i class="far fa-trash-alt"></i>
+                <span ng-bind="filter.name" ng-click="vm.toggle(filter)"></span>
+                <i class="far fa-trash-alt fa-sm"></i>
             </div>
             <div ng-repeat="filter in vm.filters.tracks">
-                <div ng-bind="filter.name" ng-click="vm.toggle(filter)"></div>
-                <i class="far fa-trash-alt"></i>
+                <span ng-bind="filter.name" ng-click="vm.toggle(filter)"></span>
+                <i class="far fa-trash-alt fa-sm"></i>
             </div>
             <div ng-repeat="filter in vm.filters.levels">
-                <div ng-bind="filter.name" ng-click="vm.toggle(filter)"></div>
-                <i class="far fa-trash-alt"></i>
+                <span ng-bind="filter.name" ng-click="vm.toggle(filter)"></span>
+                <i class="far fa-trash-alt fa-sm"></i>
             </div>
             <div ng-repeat="filter in vm.filters.tags">
-                <div ng-bind="filter.name" ng-click="vm.toggle(filter)"></div>
-                <i class="far fa-trash-alt"></i>
+                <span ng-bind="filter.name" ng-click="vm.toggle(filter)"></span>
+                <i class="far fa-trash-alt fa-sm"></i>
             </div>
         </div>
         <div class="clear"></div>
