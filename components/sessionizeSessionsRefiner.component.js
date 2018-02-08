@@ -9,7 +9,7 @@ angular.module("ecs")
 	  restrict: "E",
 	  bindings: {
 		  vm: "=",
-		  type: "=",
+		  refinertype: "=",
 		  items: "="
 	  },
 
