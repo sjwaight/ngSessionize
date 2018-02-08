@@ -1045,7 +1045,14 @@ $color-purple: #a5416f;
     float: left;
   }
 
-  .ecs-session-tags > div {
+  .ecs-session-tags-container > div {
     float: left;
+
+    .ecs-session-tag {
+      background-color: rgba(17, 17, 17, 0.1);
+      padding:5px;
+    }
+
   }
+
 }

@@ -64,9 +64,9 @@
                     <p class="sz-session__description" ng-bind="session.description"></p>
                 </div>
 
-                <div class="ecs-session-tags" ng-repeat="category in session.categories">
-                    <div class="sz-session__tags">
-                        <li ng-repeat="item in category.categoryItems" ng-bind="item.name"></li>
+                <div class="ecs-session-tags-container">
+                    <div class="ecs-session-tags" ng-repeat="category in session.categories">
+                        <div class="ecs-session-tag" ng-repeat="item in category.categoryItems" ng-bind="item.name"></div>
                     </div>
                     <div class="clear"></div>
                 </div>
