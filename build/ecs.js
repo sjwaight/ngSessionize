@@ -629,13 +629,9 @@ angular.module("ecs")
 		  items: "="
 	  },
 
-	  controller: function (sdbService, $filter, $location) {
+	  controller: function (ecsService, $filter) {
 
 		  var self = this;
-
-		  self.data = ecsService.ecs;
-
-		  self.initialized = false;
 
 		  self.toggle = function (item) {
 

@@ -17,10 +17,6 @@ angular.module("ecs")
 
 		  var self = this;
 
-		  self.data = ecsService.ecs;
-
-		  self.initialized = false;
-
 		  self.toggle = function (item) {
 
 			  self.vm.filters[type].push(item);
