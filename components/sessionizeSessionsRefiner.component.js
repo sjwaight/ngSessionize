@@ -33,6 +33,8 @@ angular.module("ecs")
 
 		  vm.$onInit = function () {
 
+		  	console.log(vm.type);
+
 		  };
 
 	  }
