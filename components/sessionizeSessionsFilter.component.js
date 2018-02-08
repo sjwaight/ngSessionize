@@ -84,7 +84,9 @@ angular.module("ecs")
 						  });
 
 						  for (var i = 0; i < filterVals.length; i++) {
-							  var thisCategoryItems = $filter("filter")(thisSession.categories, { name: f }).categoryItems;
+							  var thisCategoryItems = $filter("filter")(thisSession.categories, { name: f }).categoryItems.map(function(item) {
+							  	return item.id;
+							  });
 							  if(thisCategoryItems.indexOf(filterVals[i]) === -1) {
 								  match = false;
 							  }
