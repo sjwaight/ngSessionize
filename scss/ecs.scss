@@ -27,10 +27,17 @@ $color-purple: #a5416f;
     padding-left:0;
   }
 
-  ul.ecs-refiner-group li {
-    width:100%;
-    list-style: none;
-    cursor: pointer;
+  ul.ecs-refiner-group {
+
+    li {
+      width: 100%;
+      list-style: none;
+      cursor: pointer;
+    }
+
+    li.selected {
+      background-color: #EEEEEE;
+    }
 
     > div {
       float: left;
@@ -54,6 +61,11 @@ $color-purple: #a5416f;
 
   h3.sz-session__title {
     color: $color-purple;
+  }
+
+  .ecs-speaker-photos {
+    list-style: none;
+    float: left;
   }
 
   .ecs-session-tags > div {

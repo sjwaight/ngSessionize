@@ -20,6 +20,7 @@ angular.module("ecs")
 		  self.toggle = function (item) {
 
 			  self.vm.filters[refinertype].push(item);
+			  item.selected = !item.selected;
 
 		  };
 
