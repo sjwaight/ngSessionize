@@ -12,7 +12,7 @@ angular.module("ecs")
 		  vm: "=",
 		  type: "=",
 		  items: "="
-	  },
+	  }
 
   })
 
