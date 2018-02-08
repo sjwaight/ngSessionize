@@ -79,6 +79,7 @@ angular.module("ecs")
 
 			  ecsService.initEcs().then(function () {
 
+			  	// Get the filter values
 				  for (var f in vm.filters) {
 					  if (vm.filters.hasOwnProperty(f)) {
 						  console.log(f, vm.filters[f]);
