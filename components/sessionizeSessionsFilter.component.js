@@ -66,6 +66,10 @@ angular.module("ecs")
 
 		  };
 
+		  vm.toggle = function(filter) {
+
+		  };
+
 		  vm.$onInit = function () {
 
 			  vm.statusMessage = "Loading sessions...";

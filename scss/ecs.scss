@@ -66,7 +66,7 @@ $color-purple: #a5416f;
     margin-bottom: 5px;
     padding:5px;
   }
-  .applied-filters:after {
+  .applied-filters > div:after {
   content: " x";
   }
 

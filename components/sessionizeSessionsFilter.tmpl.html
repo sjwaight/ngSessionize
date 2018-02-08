@@ -17,10 +17,10 @@
         <h1>Session Catalog</h1>
 
         <div class="applied-filters">
-            <div ng-repeat="filter in vm.filters.formats" ng-bind="filter.name"></div>
-            <div ng-repeat="filter in vm.filters.tracks" ng-bind="filter.name"></div>
-            <div ng-repeat="filter in vm.filters.levels" ng-bind="filter.name"></div>
-            <div ng-repeat="filter in vm.filters.tags" ng-bind="filter.name"></div>
+            <div ng-repeat="filter in vm.filters.formats" ng-bind="filter.name" ng-click="vm.toggle(filter)"></div>
+            <div ng-repeat="filter in vm.filters.tracks" ng-bind="filter.name" ng-click="vm.toggle(filter)"></div>
+            <div ng-repeat="filter in vm.filters.levels" ng-bind="filter.name" ng-click="vm.toggle(filter)"></div>
+            <div ng-repeat="filter in vm.filters.tags" ng-bind="filter.name" ng-click="vm.toggle(filter)"></div>
         </div>
         <div class="clear"></div>
 
