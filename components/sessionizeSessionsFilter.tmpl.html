@@ -49,7 +49,15 @@
 
         <h1>Session Catalog</h1>
 
-        <span ng-bind="vm.data.sessions.length"></span> sessions
+        <div>
+            <div ng-repeat="filter in vm.filters">
+                <div ng-bind="filter.name"></div>
+            </div>
+        </div>
+
+        <div>
+            <span ng-bind="vm.data.sessions.length"></span> sessions
+        </div>
 
         <div ng-repeat="session in vm.data.sessions">
 
