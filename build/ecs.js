@@ -631,21 +631,21 @@ angular.module("ecs")
 
 	  controller: function (sdbService, $filter, $location) {
 
-		  var vm = this;
+		  var self = this;
 
-		  vm.data = ecsService.ecs;
+		  self.data = ecsService.ecs;
 
-		  vm.initialized = false;
+		  self.initialized = false;
 
-		  vm.toggle = function (item) {
+		  self.toggle = function (item) {
 
-			  vm.vm.filters[type].push(item);
+			  self.vm.filters[type].push(item);
 
 		  };
 
-		  vm.$onInit = function () {
+		  self.$onInit = function () {
 
-			  console.log(vm.type);
+			  console.log(self.type);
 
 		  };
 
@@ -656,7 +656,7 @@ angular.module("ecs")
 /* 11 */
 /***/ (function(module, exports) {
 
-module.exports = "<h2 ng-bind=\"vm.type\"></h2>\r\n<ul class=\"ecs-refiner-group\">\r\n    <li ng-repeat=\"item in vm.items | orderBy: '-count'\" ng-click=\"vm.toggle(item)\">\r\n        <div ng-bind=\"item.name\"></div>\r\n        <div ng-bind=\"item.count\"></div>\r\n    </li>\r\n</ul>\r\n";
+module.exports = "<h2 ng-bind=\"$ctrl.type\"></h2>\r\n<ul class=\"ecs-refiner-group\">\r\n    <li ng-repeat=\"item in $ctrl.items | orderBy: '-count'\" ng-click=\"$ctrl.toggle(item)\">\r\n        <div ng-bind=\"item.name\"></div>\r\n        <div ng-bind=\"item.count\"></div>\r\n    </li>\r\n</ul>\r\n";
 
 /***/ })
 /******/ ]);

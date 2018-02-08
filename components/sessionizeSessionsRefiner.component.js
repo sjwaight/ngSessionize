@@ -15,21 +15,21 @@ angular.module("ecs")
 
 	  controller: function (sdbService, $filter, $location) {
 
-		  var vm = this;
+		  var self = this;
 
-		  vm.data = ecsService.ecs;
+		  self.data = ecsService.ecs;
 
-		  vm.initialized = false;
+		  self.initialized = false;
 
-		  vm.toggle = function (item) {
+		  self.toggle = function (item) {
 
-			  vm.vm.filters[type].push(item);
+			  self.vm.filters[type].push(item);
 
 		  };
 
-		  vm.$onInit = function () {
+		  self.$onInit = function () {
 
-			  console.log(vm.type);
+			  console.log(self.type);
 
 		  };
 
