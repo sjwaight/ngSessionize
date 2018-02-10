@@ -949,9 +949,6 @@ $color-purple: #a5416f;
   }
 }
 
-
-
-
 /* Custom CSS */
 #sessionize {
 
@@ -984,31 +981,38 @@ $color-purple: #a5416f;
   }
 
   ul.ecs-refiner-group {
+    list-style: none;
 
     li {
       width: 100%;
-      list-style: none;
+
+      > div.clickable {
+        cursor: pointer;
+      }
+
+      > div {
+
+        div {
+          float:left;
+        }
+
+        div:first-child {
+          width: 80%;
+        }
+        div:last-child {
+          width: 20%;
+          text-align: right;
+          padding-right: 5px;
+        }
+
+      }
+
     }
 
-    li.selected > div {
+    li.selected div {
       background-color: #EEEEEE;
     }
 
-    li > div {
-      float: left;
-    }
-    li > div.clickable {
-      cursor: pointer;
-    }
-
-    div:first-child {
-      width: 80%;
-    }
-    div:last-child {
-      width: 20%;
-      text-align: right;
-      padding-right:5px;
-    }
   }
 
 }
@@ -1027,14 +1031,14 @@ $color-purple: #a5416f;
     > div > div {
       float: left;
       background-color: #EEEEEE;
-      padding:3px 5px 3px 5px;
+      padding: 3px 5px 3px 5px;
       margin: 0 5px 5px 0;
     }
 
     .ecs-clear {
       background-color: transparent;
       cursor: pointer;
-      color:$color-purple;
+      color: $color-purple;
     }
   }
 
@@ -1057,7 +1061,7 @@ $color-purple: #a5416f;
     .ecs-session-tag {
       float: left;
       background-color: rgba(17, 17, 17, 0.1);
-      padding:3px 5px 3px 5px;
+      padding: 3px 5px 3px 5px;
       margin: 0 5px 5px 0;
     }
 
