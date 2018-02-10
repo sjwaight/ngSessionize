@@ -31,7 +31,7 @@ angular.module("ecs")
 			  return $filter("filter")(vm.data.speakers, {id: speakerId})[0].profilePicture;
 		  };
 
-		  vm.createList = function (type) {
+		  vm.getTags = function (type) {
 
 			  var list = [];
 
@@ -46,13 +46,11 @@ angular.module("ecs")
 
 					  var thisListItem = $filter("filter")(list, {name: thisItem.name})[0];
 
-					  if (thisListItem) {
-						  thisListItem.count++;
-					  } else {
+					  if (!thisListItem) {
 
 						  var newItem = thisItem;
 						  newItem.selected = false;
-						  newItem.count = 1;
+						  newItem.count = 0;
 						  list.push(newItem);
 
 					  }
@@ -62,6 +60,35 @@ angular.module("ecs")
 			  }
 
 			  return list;
+
+		  };
+
+		  vm.countTags = function () {
+
+			  for (var i = 0; i < vm.data.sessions.length; i++) {
+
+				  var session = vm.data.sessions[i];
+
+				  for (var f in vm.filters) {
+					  if (vm.filters.hasOwnProperty(f)) {
+
+						  var thisCategory = $filter("filter")(session.categories, {name: f })[0];
+
+						  for (var j = 0; j < thisCategory.categoryItems.length; j++) {
+
+							  var thisItem = thisCategory.categoryItems[j];
+
+							  var thisListItem = $filter("filter")(list, {name: thisItem.name})[0];
+
+							  if (thisListItem) {
+								  thisListItem.count++;
+							  }
+
+						  }
+					  }
+				  }
+
+			  }
 
 		  };
 
@@ -145,7 +172,8 @@ angular.module("ecs")
 				  // Get the filter values
 				  for (var f in vm.filters) {
 					  if (vm.filters.hasOwnProperty(f)) {
-						  vm.filters[f] = vm.createList(f);
+						  vm.filters[f] = vm.getTags(f);
+						  vm.countTags();
 					  }
 				  }
 				  vm.filteredSessions = vm.data.sessions;
