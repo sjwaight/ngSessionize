@@ -78,7 +78,7 @@ angular.module("ecs")
 
 							  var thisItem = thisCategory.categoryItems[j];
 
-							  var thisListItem = $filter("filter")(list, {name: thisItem.name})[0];
+							  var thisListItem = $filter("filter")(vm.filters[f], {name: thisItem.name})[0];
 
 							  if (thisListItem) {
 								  thisListItem.count++;
@@ -142,6 +142,7 @@ angular.module("ecs")
 
 			  if(vm.filterCount > 0) {
 				  vm.filterSessions();
+				  vm.countTags();
 			  } else {
 				  vm.filteredSessions = vm.data.sessions;
 			  }
