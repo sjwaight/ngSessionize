@@ -172,6 +172,7 @@ angular.module("ecs")
 			  }
 			  vm.filterCount = 0;
 			  vm.filteredSessions = vm.data.sessions;
+			  vm.countTags();
 
 		  };
 
