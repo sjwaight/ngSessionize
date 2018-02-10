@@ -992,6 +992,8 @@ $color-purple: #a5416f;
       }
 
       > div {
+        display: inline-block;
+        width: 100%;
 
         div {
           float:left;
