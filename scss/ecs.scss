@@ -988,7 +988,6 @@ $color-purple: #a5416f;
     li {
       width: 100%;
       list-style: none;
-      cursor: pointer;
     }
 
     li.selected > div {
@@ -997,6 +996,9 @@ $color-purple: #a5416f;
 
     li > div {
       float: left;
+    }
+    li > div.clickable {
+      cursor: pointer;
     }
 
     div:first-child {

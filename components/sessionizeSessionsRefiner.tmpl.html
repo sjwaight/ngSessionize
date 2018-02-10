@@ -2,12 +2,26 @@
 
 <ul class="ecs-refiner-group">
 
-    <li ng-class="{ 'selected': item.selected }" ng-repeat="item in $ctrl.items | orderBy: '-count'" ng-click="$ctrl.vm.toggle(item)">
+    <li ng-class="{ 'selected': item.selected }" ng-repeat="item in $ctrl.items | orderBy: '-count'">
 
-        <div ng-bind="item.name"></div>
-        <div ng-if="!item.selected" ng-bind="item.count"></div>
-        <div ng-if="item.selected">
-            <i class="fas fa-times fa-sm"></i>
+        <div class="clickable" ng-if="item.count > 0"  ng-click="$ctrl.vm.toggle(item)">
+
+            <div ng-bind="item.name"></div>
+            <div ng-if="!item.selected" ng-bind="item.count"></div>
+            <div ng-if="item.selected">
+                <i class="fas fa-times fa-sm"></i>
+            </div>
+
+        </div>
+
+        <div ng-if="item.count === 0">
+
+            <div ng-bind="item.name"></div>
+            <div ng-if="!item.selected" ng-bind="item.count"></div>
+            <div ng-if="item.selected">
+                <i class="fas fa-times fa-sm"></i>
+            </div>
+
         </div>
 
     </li>
