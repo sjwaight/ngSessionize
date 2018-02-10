@@ -222,7 +222,7 @@ angular.module("ecs")
 
 							  var thisItem = thisCategory.categoryItems[j];
 
-							  var thisListItem = $filter("filter")(list, {name: thisItem.name})[0];
+							  var thisListItem = $filter("filter")(vm.filters[f], {name: thisItem.name})[0];
 
 							  if (thisListItem) {
 								  thisListItem.count++;
@@ -286,6 +286,7 @@ angular.module("ecs")
 
 			  if(vm.filterCount > 0) {
 				  vm.filterSessions();
+				  vm.countTags();
 			  } else {
 				  vm.filteredSessions = vm.data.sessions;
 			  }
@@ -461,7 +462,7 @@ module.exports = "<div id=\"sessionize\" ng-cloak>\r\n\r\n    <div class=\"sz-sp
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = "<h2 ng-bind=\"$ctrl.refinertype\"></h2>\r\n<ul class=\"ecs-refiner-group\">\r\n    <li ng-class=\"{ 'selected': item.selected }\" ng-repeat=\"item in $ctrl.items | orderBy: '-count'\" ng-click=\"$ctrl.vm.toggle(item)\">\r\n        <div ng-bind=\"item.name\"></div>\r\n        <div ng-if=\"!item.selected\" ng-bind=\"item.count\"></div>\r\n        <div ng-if=\"item.selected\">\r\n            <i class=\"fas fa-times fa-sm\"></i>\r\n        </div>\r\n    </li>\r\n</ul>\r\n";
+module.exports = "<h2 ng-bind=\"$ctrl.refinertype\"></h2>\r\n\r\n<ul class=\"ecs-refiner-group\">\r\n\r\n    <li ng-class=\"{ 'selected': item.selected }\" ng-repeat=\"item in $ctrl.items | orderBy: '-count'\" ng-click=\"$ctrl.vm.toggle(item)\">\r\n\r\n        <div ng-bind=\"item.name\"></div>\r\n        <div ng-if=\"!item.selected\" ng-bind=\"item.count\"></div>\r\n        <div ng-if=\"item.selected\">\r\n            <i class=\"fas fa-times fa-sm\"></i>\r\n        </div>\r\n\r\n    </li>\r\n\r\n</ul>\r\n";
 
 /***/ }),
 /* 10 */
