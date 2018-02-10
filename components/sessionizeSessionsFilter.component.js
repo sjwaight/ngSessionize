@@ -78,7 +78,7 @@ angular.module("ecs")
 			  // Count 'em
 			  for (var i = 0; i < vm.filteredSessions.length; i++) {
 
-				  var session = vm.data.filteredSessions[i];
+				  var session = vm.filteredSessions[i];
 
 				  for (var f in vm.filters) {
 					  if (vm.filters.hasOwnProperty(f)) {
