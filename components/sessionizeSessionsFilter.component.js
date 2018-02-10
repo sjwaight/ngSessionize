@@ -16,10 +16,10 @@ angular.module("ecs")
 		  vm.data = ecsService.ecs;
 
 		  vm.filters = {
-			  "Session format": [],
-			  "Track": [],
-			  "Level": [],
-			  "Tags": [],
+//			  "Session format": [],
+//			  "Track": [],
+//			  "Level": [],
+//			  "Tags": [],
 		  };
 		  vm.filterCount = 0;
 
@@ -183,7 +183,7 @@ angular.module("ecs")
 
 				  vm.filteredSessions = vm.data.sessions;
 
-				  // Get the filter values
+				  // Get the filter values and counts
 				  for (var f in vm.filters) {
 					  if (vm.filters.hasOwnProperty(f)) {
 						  vm.filters[f] = vm.getTags(f);
