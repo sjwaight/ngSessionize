@@ -65,9 +65,20 @@ angular.module("ecs")
 
 		  vm.countTags = function () {
 
-			  for (var i = 0; i < vm.data.sessions.length; i++) {
+			  // Clear the filter counts
+			  for (var f in vm.filters) {
+				  if (vm.filters.hasOwnProperty(f)) {
 
-				  var session = vm.data.sessions[i];
+					  for (var i = 0; i < vm.filters[f].length; i++) {
+						  vm.filters[f][i].count = 0;
+					  }
+				  }
+			  }
+
+			  // Count 'em
+			  for (var i = 0; i < vm.filteredSessions.length; i++) {
+
+				  var session = vm.data.filteredSessions[i];
 
 				  for (var f in vm.filters) {
 					  if (vm.filters.hasOwnProperty(f)) {
@@ -170,6 +181,8 @@ angular.module("ecs")
 
 			  ecsService.initEcs().then(function () {
 
+				  vm.filteredSessions = vm.data.sessions;
+
 				  // Get the filter values
 				  for (var f in vm.filters) {
 					  if (vm.filters.hasOwnProperty(f)) {
@@ -177,7 +190,6 @@ angular.module("ecs")
 						  vm.countTags();
 					  }
 				  }
-				  vm.filteredSessions = vm.data.sessions;
 				  vm.initialized = true;
 
 			  });
