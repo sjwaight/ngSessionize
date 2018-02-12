@@ -1,2 +1,2 @@
-require("./sessionizeSessionsFilter.component");
-require("./sessionizeSessionsRefiner.component");
+require("./ngSessionizeSessions.component");
+require("./ngSessionizeSessionsRefiner.component");

@@ -2,9 +2,9 @@
 
 angular.module("ecs")
 
-  .component("sessionizeSessionsRefiner", {
+  .component("ngSessionizeSessionsRefiner", {
 
-	  template: require("./sessionizeSessionsRefiner.tmpl.html"),
+	  template: require("./ngSessionizeSessionsRefiner.html"),
 
 	  restrict: "E",
 	  bindings: {

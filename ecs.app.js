@@ -21,7 +21,7 @@ var ecs = angular.module("ecs", [
 	  $routeProvider
 
 		.when("/", {
-			template: "<sessionize-sessions-filter></sessionize-sessions-filter>",
+			template: "<ng-sessionize-sessions></ng-sessionize-sessions>",
 			component: "ecs"
 		})
 

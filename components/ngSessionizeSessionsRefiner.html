@@ -4,20 +4,20 @@
 
     <li ng-class="{ 'selected': item.selected }" ng-repeat="item in $ctrl.items | orderBy: '-count'">
 
-        <div class="clickable" ng-if="item.count > 0"  ng-click="$ctrl.vm.toggle(item)">
+        <div class="clickable" ng-if="item.countFiltered > 0"  ng-click="$ctrl.vm.toggle(item)">
 
             <div ng-bind="item.name"></div>
-            <div ng-if="!item.selected" ng-bind="item.count"></div>
+            <div ng-if="!item.selected" ng-bind="item.countFiltered"></div>
             <div ng-if="item.selected">
                 <i class="fas fa-times fa-sm"></i>
             </div>
 
         </div>
 
-        <div ng-if="item.count === 0">
+        <div ng-if="item.countFiltered === 0">
 
             <div ng-bind="item.name"></div>
-            <div ng-if="!item.selected" ng-bind="item.count"></div>
+            <div ng-if="!item.selected" ng-bind="item.countFiltered"></div>
             <div ng-if="item.selected">
                 <i class="fas fa-times fa-sm"></i>
             </div>

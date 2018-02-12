@@ -2,13 +2,13 @@
 
 angular.module("ecs")
 
-  .component("sessionizeSessionsFilter", {
-	  template: require("./sessionizeSessionsFilter.tmpl.html"),
-	  controller: "sessionizeSessionsFilterController",
+  .component("ngSessionizeSessions", {
+	  template: require("./ngSessionizeSessions.tmpl.html"),
+	  controller: "ngSessionizeSessionsController",
 	  controllerAs: "vm"
   })
 
-  .controller("sessionizeSessionsFilterController", ["$sce", "$q", "$filter", "$location", "ecsService",
+  .controller("ngSessionizeSessionsController", ["$sce", "$q", "$filter", "$location", "ecsService",
 	  function ($sce, $q, $filter, $location, ecsService) {
 
 		  var vm = this;
@@ -63,14 +63,14 @@ angular.module("ecs")
 
 		  };
 
-		  vm.countTags = function () {
+		  vm.countTags = function (prop) {
 
 			  // Clear the filter counts
 			  for (var f in vm.filters) {
 				  if (vm.filters.hasOwnProperty(f)) {
 
 					  for (var i = 0; i < vm.filters[f].length; i++) {
-						  vm.filters[f][i].count = 0;
+						  vm.filters[f][i][prop] = 0;
 					  }
 				  }
 			  }
@@ -92,7 +92,7 @@ angular.module("ecs")
 							  var thisListItem = $filter("filter")(vm.filters[f], {name: thisItem.name})[0];
 
 							  if (thisListItem) {
-								  thisListItem.count++;
+								  thisListItem[prop]++;
 							  }
 
 						  }
@@ -153,7 +153,7 @@ angular.module("ecs")
 
 			  if(vm.filterCount > 0) {
 				  vm.filterSessions();
-				  vm.countTags();
+				  vm.countTags("countFiltered");
 			  } else {
 				  vm.filteredSessions = vm.data.sessions;
 			  }
@@ -172,7 +172,7 @@ angular.module("ecs")
 			  }
 			  vm.filterCount = 0;
 			  vm.filteredSessions = vm.data.sessions;
-			  vm.countTags();
+			  vm.countTags("countFiltered");
 
 		  };
 
@@ -188,7 +188,8 @@ angular.module("ecs")
 				  for (var f in vm.filters) {
 					  if (vm.filters.hasOwnProperty(f)) {
 						  vm.filters[f] = vm.getTags(f);
-						  vm.countTags();
+						  vm.countTags("count");
+						  vm.countTags("countFiltered");
 					  }
 				  }
 				  vm.initialized = true;
@@ -200,4 +201,4 @@ angular.module("ecs")
 	  }
   ]);
 
-require("./sessionizeSessionsRefiner.component");
+require("./ngSessionizeSessionsRefiner.component");
