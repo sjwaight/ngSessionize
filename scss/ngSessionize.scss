@@ -996,7 +996,7 @@ $color-purple: #a5416f;
         width: 100%;
 
         div {
-          float:left;
+          float: left;
         }
 
         div:first-child {
@@ -1044,13 +1044,24 @@ $color-purple: #a5416f;
     }
   }
 
+  .ngs-even {
+    background-color: #EEEEEE;
+  }
+
   h3.sz-session__title {
     color: $color-purple;
   }
 
-  .ngs-speaker-photos li {
-    list-style: none;
-    float: left;
+  .ngs-speaker-photos {
+    padding-left: 0;
+
+    li {
+      width: 80px;
+      padding-right: 5px;
+      list-style: none;
+      float: left;
+    }
+
   }
 
   .ngs-session-tags-container {
