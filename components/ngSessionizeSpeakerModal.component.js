@@ -2,15 +2,14 @@
 
 angular.module("ngSessionize")
 
-  .component("ngSessionizeSessionsRefiner", {
+  .component("ngSessionizeSpeakerModal", {
 
-	  template: require("./ngSessionizeSessionsRefiner.tmpl.html"),
+	  template: require("./ngSessionizeSpeakerModal.tmpl.html"),
 
 	  restrict: "E",
 	  bindings: {
 		  vm: "=",
-		  refinertype: "=",
-		  items: "="
+		  speaker: "="
 	  },
 
 	  controller: function () {
