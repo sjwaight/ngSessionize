@@ -1,11 +1,9 @@
 {
-  "projectname": "ECS",
+  "projectname": "ngSessionize",
   "srcFiles": [
     "./build/*.js",
     "./build/*.css",
     "./build/*.html",
     "./build/img/**/*.png"
-  ],
-  "siteCollURL": "",
-  "destFolder": ""
+  ]
 }

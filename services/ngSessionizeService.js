@@ -1,14 +1,14 @@
 "use strict";
 
-angular.module("ecsService", [])
+angular.module("ngSessionizeService", [])
 
-  .service("ecsService", ["$q", "$http", "$rootScope", "$filter",
+  .service("ngSessionizeService", ["$q", "$http", "$rootScope", "$filter",
 	  function ($q, $http, $rootScope, $filter) {
 
 		  var self = this;
 
-		  self.ecs = {};
-		  self.ecs.initialized = false;
+		  self.ngSessionize = {};
+		  self.ngSessionize.initialized = false;
 
 		  self.getSessions = function () {
 
@@ -19,7 +19,7 @@ angular.module("ecsService", [])
 				  url: "https://sessionize.com/api/v2/57c0xuih/view/sessions"
 			  }).then(function (response) {
 
-				  self.ecs.sessions = response.data[0].sessions;
+				  self.ngSessionize.sessions = response.data[0].sessions;
 
 				  deferred.resolve();
 
@@ -37,7 +37,7 @@ angular.module("ecsService", [])
 				  url: "https://sessionize.com/api/v2/57c0xuih/view/speakers"
 			  }).then(function (response) {
 
-				  self.ecs.speakers = response.data;
+				  self.ngSessionize.speakers = response.data;
 
 				  deferred.resolve();
 
@@ -46,7 +46,7 @@ angular.module("ecsService", [])
 			  return deferred.promise;
 		  };
 
-		  self.initEcs = function () {
+		  self.initNgSessionize = function () {
 
 			  var deferred = $q.defer();
 

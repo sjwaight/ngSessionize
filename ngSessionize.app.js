@@ -1,14 +1,14 @@
 "use strict";
 
 // Branding
-import "./scss/ecs.scss";
+import "./scss/ngSessionize.scss";
 
 import "./services";
 
-var ecs = angular.module("ecs", [
+var ecs = angular.module("ngSessionize", [
 	"ngRoute",
 	"angular.filter",
-	"ecsService"
+	"ngSessionizeService"
 ])
 
   .config(function ($routeProvider, $httpProvider, $locationProvider) {
@@ -22,7 +22,7 @@ var ecs = angular.module("ecs", [
 
 		.when("/", {
 			template: "<ng-sessionize-sessions></ng-sessionize-sessions>",
-			component: "ecs"
+			component: "ngSessionize"
 		})
 
 		.otherwise({
@@ -31,8 +31,8 @@ var ecs = angular.module("ecs", [
 
   });
 
-ecs.init = function () {
-	angular.bootstrap(document, ["ecs"]);
+ngSessionize.init = function () {
+	angular.bootstrap(document, ["ngSessionize"]);
 };
 
 require("./components");

@@ -1,1 +1,1 @@
-require("./ecsService");
+require("./ngSessionizeService");

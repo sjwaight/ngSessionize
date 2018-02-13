@@ -1,12 +1,12 @@
 {
-  "name": "ECS",
+  "name": "ngSessionize",
   "version": "0.0.1",
-  "description": "ECS",
+  "description": "An AngularJS app to display sessioninz session data with refiners",
   "license": "UNLICENSED",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/SympraxisConsulting/ECS"
+    "url": "https://github.com/SympraxisConsulting/ngSessionize"
   },
   "scripts": {
     "build": "webpack"

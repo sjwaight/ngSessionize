@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("ecs")
+angular.module("ngSessionize")
 
   .component("ngSessionizeSessions", {
 	  template: require("./ngSessionizeSessions.tmpl.html"),

@@ -9,12 +9,12 @@ var path = require('path');
 /* Replace <FOLDER/FOLDER> with the path to the build directory to output bundle files */
 module.exports = {
 	entry: {
-		"ecs": "./ecs.app.js"
+		"ngSessionize": "./ngSessionize.app.js"
 		/*Include when extracting CSS To keep it out of the bundle
 		 tempstyle: "./client/styles/tempstyle.scss"*/
 	},
 	output: {
-		path: '/WebstormProjects/ECS/build/',
+		path: '/WebstormProjects/ngSessionize/build/',
 		filename: "[name].js",
 		publicPath: '/'
 	},
