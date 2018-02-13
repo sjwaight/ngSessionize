@@ -1021,6 +1021,7 @@ $color-purple: #a5416f;
 }
 
 .ngs-sessions {
+
   width: 70%;
   padding-left: 25px;
 
@@ -1046,6 +1047,10 @@ $color-purple: #a5416f;
 
   .ngs-even {
     background-color: #EEEEEE;
+  }
+
+  .sz-session {
+    padding:20px;
   }
 
   h3.sz-session__title {
