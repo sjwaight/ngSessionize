@@ -153,10 +153,11 @@ angular.module("ngSessionize")
 
 			  if(vm.filterCount > 0) {
 				  vm.filterSessions();
-				  vm.countTags("countFiltered");
 			  } else {
 				  vm.filteredSessions = vm.data.sessions;
 			  }
+			  vm.countTags("countFiltered");
+
 		  };
 
 		  vm.clearAll = function () {
