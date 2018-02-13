@@ -8,12 +8,12 @@ angular.module("ngSessionize")
 	  controllerAs: "vm"
   })
 
-  .controller("ngSessionizeSessionsController", ["$sce", "$q", "$filter", "$location", "ecsService",
-	  function ($sce, $q, $filter, $location, ecsService) {
+  .controller("ngSessionizeSessionsController", ["$sce", "$q", "$filter", "$location", "ngSessionizeService",
+	  function ($sce, $q, $filter, $location, ngSessionizeService) {
 
 		  var vm = this;
 
-		  vm.data = ecsService.ecs;
+		  vm.data = ngSessionizeService.ngSessionize;
 
 		  vm.filters = {
 			  "Session format": [],
@@ -180,7 +180,7 @@ angular.module("ngSessionize")
 
 			  vm.statusMessage = "Loading sessions...";
 
-			  ecsService.initEcs().then(function () {
+			  ngSessionizeService.initNgSessionize().then(function () {
 
 				  vm.filteredSessions = vm.data.sessions;
 

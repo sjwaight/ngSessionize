@@ -2,10 +2,10 @@
 
     <div class="sz-spinner" ng-show="!vm.initialized"></div>
 
-    <div class="ecs-sessions-container" ng-if="vm.initialized">
+    <div class="ngs-sessions-container" ng-if="vm.initialized">
 
 
-        <div class="ecs-refiners">
+        <div class="ngs-refiners">
 
             <h5>Refine results</h5>
 
@@ -18,7 +18,7 @@
         </div>
 
 
-        <div class="ecs-sessions">
+        <div class="ngs-sessions">
 
             <div class="applied-filters">
 
@@ -30,7 +30,7 @@
                     </div>
 
                 </div>
-                <div class="ecs-clear" ng-show="vm.filterCount > 0" ng-click="vm.clearAll()">Clear all</div>
+                <div class="ngs-clear" ng-show="vm.filterCount > 0" ng-click="vm.clearAll()">Clear all</div>
 
             </div>
             <div class="clear"></div>
@@ -50,7 +50,7 @@
                             ng-bind="speaker.name"></li>
                     </ul>
 
-                    <ul class="ecs-speaker-photos">
+                    <ul class="ngs-speaker-photos">
                         <li ng-repeat="speaker in session.speakers">
                             <img ng-src="{{ vm.getSpeakerPhoto(speaker.id) }}"/>
                         </li>
@@ -62,9 +62,9 @@
                     <p class="sz-session__description" ng-bind="session.description"></p>
                 </div>
 
-                <div class="ecs-session-tags-container">
-                    <div class="ecs-session-tags" ng-repeat="category in session.categories">
-                        <div class="ecs-session-tag" ng-repeat="item in category.categoryItems" ng-bind="item.name"></div>
+                <div class="ngs-session-tags-container">
+                    <div class="ngs-session-tags" ng-repeat="category in session.categories">
+                        <div class="ngs-session-tag" ng-repeat="item in category.categoryItems" ng-bind="item.name"></div>
                     </div>
                     <div class="clear"></div>
                 </div>

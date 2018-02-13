@@ -5,7 +5,7 @@ import "./scss/ngSessionize.scss";
 
 import "./services";
 
-var ecs = angular.module("ngSessionize", [
+var ngSessionize = angular.module("ngSessionize", [
 	"ngRoute",
 	"angular.filter",
 	"ngSessionizeService"
