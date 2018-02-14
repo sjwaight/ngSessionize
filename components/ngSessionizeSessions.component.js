@@ -213,3 +213,4 @@ angular.module("ngSessionize")
   ]);
 
 require("./ngSessionizeSessionsRefiner.component");
+require("./ngSessionizeSpeakerModal.component");
