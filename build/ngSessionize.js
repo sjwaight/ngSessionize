@@ -533,7 +533,7 @@ module.exports = "<h2 ng-bind=\"$ctrl.refinertype\"></h2>\r\n\r\n<ul class=\"ngs
 /* 11 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"overlay\" ng-class=\"{'active': $ctrl.vm.showModal}\" ng-click=\"$ctrl.closeModal()\"></div>\r\n<div class=\"modal\" ng-class=\"{'active': $ctrl.vm.showModal}\">\r\n\r\n    <h3>OPEN!</h3>\r\n\r\n\r\n</div>";
+module.exports = "<div class=\"overlay\" ng-class=\"{'active': $ctrl.vm.showModal}\" ng-click=\"$ctrl.closeModal()\"></div>\r\n\r\n\r\n<div class=\"modal\" ng-class=\"{'active': $ctrl.vm.showModal}\">\r\n\r\n    <div ng-bind=\"$ctrl.speaker.name\"></div>\r\n\r\n\r\n</div>";
 
 /***/ }),
 /* 12 */
