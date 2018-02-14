@@ -10,7 +10,7 @@
     <div ng-bind="$ctrl.speaker.tagLine"></div>
 
     <div ng-repeat="link in $ctrl.speaker.links">
-        <a href="{{ link.url }}" ng-bind="link.title"></a>
+        <a href="{{ link.url }}" ng-bind="link.title" target="_blank"></a>
     </div>
 
     <div ng-bind="$ctrl.speaker.bio"></div>

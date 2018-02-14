@@ -26,5 +26,11 @@ angular.module("ngSessionize")
 
 		  };
 
+		  self.$doCheck = function() {
+
+			  console.log(self.speaker);
+
+		  }
+
 	  }
   });
