@@ -1137,7 +1137,18 @@ $color-purple: #a5416f;
 
   .speaker > div {
     float: left;
+
+    .speaker-name, speaker-tagline {
+      color:$color-purple;
+      text-transform: capitalize;
+    }
+
   }
+
+  .speaker img {
+    width: 100px;
+  }
+
   .speaker-details {
     margin-left:10px;
   }

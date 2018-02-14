@@ -15,8 +15,8 @@
 
         <div class="speaker-details">
             <div>
-                <div ng-bind="$ctrl.speaker.fullName"></div>
-                <div ng-bind="$ctrl.speaker.tagLine"></div>
+                <h1 class="speaker-name" ng-bind="$ctrl.speaker.fullName"></h1>
+                <h4 class="speaker-tagline" ng-bind="$ctrl.speaker.tagLine"></h4>
             </div>
             <div class="social">
                 <ul class="links" ng-repeat="link in $ctrl.speaker.links">
@@ -31,6 +31,7 @@
         </div>
 
     </div>
+    <div class="clear"></div>
 
     <div ng-bind="$ctrl.speaker.bio"></div>
 
