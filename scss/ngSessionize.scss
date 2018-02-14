@@ -1127,5 +1127,21 @@ $color-purple: #a5416f;
     display: block;
   }
 
+  .modal-header {
+    width:100%;
+    text-align:right;
+    padding-right:10px;
+    padding-top:5px;
+  }
+
+  .speaker > div {
+    float: left;
+  }
+
+  .social .links {
+    list-style: none;
+    float:left;
+  }
+
 }
 
