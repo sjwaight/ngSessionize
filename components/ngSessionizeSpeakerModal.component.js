@@ -16,6 +16,10 @@ angular.module("ngSessionize")
 
 		  var self = this;
 
+		  self.closeModal = function() {
+		  	self.vm.showModal = false;
+		  };
+
 		  self.$onInit = function () {
 
 		  	console.log(self.speaker);
