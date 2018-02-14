@@ -27,6 +27,7 @@ angular.module("ngSessionize")
 		  vm.filteredSessions = [];
 
 		  vm.showModal = false;
+		  vm.selectedSpeaker = {};
 
 		  vm.initialized = false;
 
@@ -184,6 +185,7 @@ angular.module("ngSessionize")
 		  vm.speakerModal = function(speaker) {
 
 		  	    vm.showModal = true;
+		  	    vm.selectedSpeaker = speaker;
 
 		  };
 

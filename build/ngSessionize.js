@@ -172,6 +172,7 @@ angular.module("ngSessionize")
 		  vm.filteredSessions = [];
 
 		  vm.showModal = false;
+		  vm.selectedSpeaker = {};
 
 		  vm.initialized = false;
 
@@ -329,6 +330,7 @@ angular.module("ngSessionize")
 		  vm.speakerModal = function(speaker) {
 
 		  	    vm.showModal = true;
+		  	    vm.selectedSpeaker = speaker;
 
 		  };
 
@@ -358,6 +360,7 @@ angular.module("ngSessionize")
   ]);
 
 __webpack_require__(0);
+__webpack_require__(5);
 
 /***/ }),
 /* 5 */
@@ -381,6 +384,10 @@ angular.module("ngSessionize")
 	  controller: function () {
 
 		  var self = this;
+
+		  self.closeModal = function() {
+		  	self.vm.showModal = false;
+		  };
 
 		  self.$onInit = function () {
 
@@ -514,7 +521,7 @@ module.exports = function() {
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"sessionize\" ng-cloak>\r\n\r\n    <div class=\"sz-spinner\" ng-show=\"!vm.initialized\"></div>\r\n\r\n    <div class=\"ngs-sessions-container\" ng-if=\"vm.initialized\">\r\n\r\n\r\n        <div class=\"ngs-refiners\">\r\n\r\n            <h5>Refine results</h5>\r\n\r\n            <div ng-repeat=\"(key, value) in vm.filters\">\r\n\r\n                <ng-sessionize-sessions-refiner vm=\"vm\" refinertype=\"key\" items=\"value\"></ng-sessionize-sessions-refiner>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n\r\n        <div class=\"ngs-sessions\">\r\n\r\n            <div class=\"applied-filters\">\r\n\r\n                <div ng-repeat=\"(key, value) in vm.filters\">\r\n\r\n                    <div ng-repeat=\"item in value | filter:{ selected: true} \" ng-click=\"vm.toggle(item)\">\r\n                        <span ng-bind=\"item.name\"></span>\r\n                        <i class=\"fas fa-times fa-sm\"></i>\r\n                    </div>\r\n\r\n                </div>\r\n                <div class=\"ngs-clear\" ng-show=\"vm.filterCount > 0\" ng-click=\"vm.clearAll()\">Clear all</div>\r\n\r\n            </div>\r\n            <div class=\"clear\"></div>\r\n\r\n            <div>\r\n                <span ng-bind=\"vm.filteredSessions.length\"></span> sessions\r\n            </div>\r\n\r\n            <div class=\"sz-session sz-session--full\" ng-class-even=\"'ngs-even'\" ng-repeat=\"session in vm.filteredSessions\">\r\n\r\n                <h3 class=\"sz-session__title\" ng-bind=\"session.title\"></h3>\r\n\r\n                <div>\r\n                    <ul class=\"sz-session__speakers\">\r\n                        <li class=\"sz-session__speaker\" ng-repeat=\"speaker in session.speakers\">\r\n                            <a ng-bind=\"speaker.name\" ng-click=\"vm.speakerModal(speaker)\"></a>\r\n                        </li>\r\n                    </ul>\r\n\r\n                    <ul class=\"ngs-speaker-photos\">\r\n                        <li ng-repeat=\"speaker in session.speakers\">\r\n                            <img ng-src=\"{{ vm.getSpeakerPhoto(speaker.id) }}\"/>\r\n                        </li>\r\n                    </ul>\r\n                </div>\r\n                <div class=\"clear\"></div>\r\n\r\n                <div>\r\n                    <p class=\"sz-session__description\" ng-bind=\"session.description\"></p>\r\n                </div>\r\n\r\n                <div class=\"ngs-session-tags-container\">\r\n                    <div class=\"ngs-session-tags\" ng-repeat=\"category in session.categories\">\r\n                        <div class=\"ngs-session-tag\" ng-repeat=\"item in category.categoryItems\" ng-bind=\"item.name\"></div>\r\n                    </div>\r\n                    <div class=\"clear\"></div>\r\n                </div>\r\n\r\n            </div>\r\n\r\n\r\n            <ng-sessionize-speaker-modal vm=\"vm\" speaker=\"vm.speaker\"></ng-sessionize-speaker-modal>\r\n\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n</div>";
+module.exports = "<div id=\"sessionize\" ng-cloak>\r\n\r\n    <div class=\"sz-spinner\" ng-show=\"!vm.initialized\"></div>\r\n\r\n    <div class=\"ngs-sessions-container\" ng-if=\"vm.initialized\">\r\n\r\n\r\n        <div class=\"ngs-refiners\">\r\n\r\n            <h5>Refine results</h5>\r\n\r\n            <div ng-repeat=\"(key, value) in vm.filters\">\r\n\r\n                <ng-sessionize-sessions-refiner vm=\"vm\" refinertype=\"key\" items=\"value\"></ng-sessionize-sessions-refiner>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n\r\n        <div class=\"ngs-sessions\">\r\n\r\n            <div class=\"applied-filters\">\r\n\r\n                <div ng-repeat=\"(key, value) in vm.filters\">\r\n\r\n                    <div ng-repeat=\"item in value | filter:{ selected: true} \" ng-click=\"vm.toggle(item)\">\r\n                        <span ng-bind=\"item.name\"></span>\r\n                        <i class=\"fas fa-times fa-sm\"></i>\r\n                    </div>\r\n\r\n                </div>\r\n                <div class=\"ngs-clear\" ng-show=\"vm.filterCount > 0\" ng-click=\"vm.clearAll()\">Clear all</div>\r\n\r\n            </div>\r\n            <div class=\"clear\"></div>\r\n\r\n            <div>\r\n                <span ng-bind=\"vm.filteredSessions.length\"></span> sessions\r\n            </div>\r\n\r\n            <div class=\"sz-session sz-session--full\" ng-class-even=\"'ngs-even'\" ng-repeat=\"session in vm.filteredSessions\">\r\n\r\n                <h3 class=\"sz-session__title\" ng-bind=\"session.title\"></h3>\r\n\r\n                <div>\r\n                    <ul class=\"sz-session__speakers\">\r\n                        <li class=\"sz-session__speaker\" ng-repeat=\"speaker in session.speakers\">\r\n                            <a ng-bind=\"speaker.name\" ng-click=\"vm.speakerModal(speaker)\"></a>\r\n                        </li>\r\n                    </ul>\r\n\r\n                    <ul class=\"ngs-speaker-photos\">\r\n                        <li ng-repeat=\"speaker in session.speakers\">\r\n                            <img ng-src=\"{{ vm.getSpeakerPhoto(speaker.id) }}\"/>\r\n                        </li>\r\n                    </ul>\r\n                </div>\r\n                <div class=\"clear\"></div>\r\n\r\n                <div>\r\n                    <p class=\"sz-session__description\" ng-bind=\"session.description\"></p>\r\n                </div>\r\n\r\n                <div class=\"ngs-session-tags-container\">\r\n                    <div class=\"ngs-session-tags\" ng-repeat=\"category in session.categories\">\r\n                        <div class=\"ngs-session-tag\" ng-repeat=\"item in category.categoryItems\" ng-bind=\"item.name\"></div>\r\n                    </div>\r\n                    <div class=\"clear\"></div>\r\n                </div>\r\n\r\n            </div>\r\n\r\n\r\n            <ng-sessionize-speaker-modal vm=\"vm\" speaker=\"vm.selectedSpeaker\"></ng-sessionize-speaker-modal>\r\n\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n</div>";
 
 /***/ }),
 /* 10 */
@@ -526,7 +533,7 @@ module.exports = "<h2 ng-bind=\"$ctrl.refinertype\"></h2>\r\n\r\n<ul class=\"ngs
 /* 11 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"overlay\" ng-class=\"{'active': vm.showModal}\"></div>\r\n<div class=\"modal\" ng-class=\"{'active': vm.showModal}\"></div>";
+module.exports = "<div class=\"overlay\" ng-class=\"{'active': $ctrl.vm.showModal}\" ng-click=\"$ctrl.closeModal()\"></div>\r\n<div class=\"modal\" ng-class=\"{'active': $ctrl.vm.showModal}\"></div>";
 
 /***/ }),
 /* 12 */
