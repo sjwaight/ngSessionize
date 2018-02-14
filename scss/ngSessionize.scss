@@ -1112,13 +1112,12 @@ $color-purple: #a5416f;
 
   .modal {
     display: none;
-    width: 600px;
-    height: 500px;
+    width: 50%;
+    height: auto;
     position: fixed;
     top: 50%;
-    left: 50%;
-    margin-top: -250px;
-    margin-left: -300px;
+    margin-top: -10%;
+    margin-left: -15%;
     padding:20px;
     background-color: #FFFFFF;
     border-radius: 5px;
