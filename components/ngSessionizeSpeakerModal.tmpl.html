@@ -20,7 +20,12 @@
             </div>
             <div class="social">
                 <ul class="links" ng-repeat="link in $ctrl.speaker.links">
-                    <li><a href="{{ link.url }}" ng-bind="link.title" target="_blank"></a></li>
+                    <li>
+                        <a href="{{ link.url }}" ng-bind="link.title" target="_blank">
+                            <i ng-if="link.linkType === 'Twitter'" class="fab fa-twitter"></i>
+                            <i ng-if="link.linkType === 'Blog'" class="fas fa-pencil-alt"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
