@@ -15,6 +15,7 @@ angular.module("ngSessionize")
 
 		  vm.data = ngSessionizeService.ngSessionize;
 
+		  // The order of these properties determines the order of the refiners
 		  vm.filters = {
 			  "Session format": [],
 			  "Track": [],

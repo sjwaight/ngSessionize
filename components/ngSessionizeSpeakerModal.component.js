@@ -9,8 +9,7 @@ angular.module("ngSessionize")
 	  restrict: "E",
 	  bindings: {
 		  vm: "=",
-		  speaker: "=",
-		  active: "="
+		  speaker: "="
 	  },
 
 	  controller: function () {
@@ -18,6 +17,8 @@ angular.module("ngSessionize")
 		  var self = this;
 
 		  self.$onInit = function () {
+
+		  	console.log(self.speaker);
 
 		  };
 
