@@ -7,7 +7,7 @@
 
     <div>
         <div>
-            <img ng-src="$ctrl.speaker.profilePicture"/>
+            <img ng-src="{{ $ctrl.speaker.profilePicture }}"/>
         </div>
 
         <div ng-bind="$ctrl.speaker.name"></div>
@@ -21,7 +21,7 @@
     <div ng-bind="$ctrl.speaker.bio"></div>
 
     <ul ng-repeat="session in $ctrl.speaker.sessions">
-        <li ng-bind="session.title"></li>
+        <li ng-bind="session.name"></li>
     </ul>
 
 </div>
