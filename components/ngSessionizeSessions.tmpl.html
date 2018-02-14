@@ -47,6 +47,7 @@
                     <ul class="sz-session__speakers">
                         <li class="sz-session__speaker" ng-repeat="speaker in session.speakers">
                             <a ng-bind="speaker.name" ng-click="vm.speakerModal(speaker)"></a>
+                            <span ng-if="$index < $count -1">, </span>
                         </li>
                     </ul>
 
