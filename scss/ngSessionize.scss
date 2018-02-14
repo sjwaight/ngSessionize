@@ -1119,7 +1119,7 @@ $color-purple: #a5416f;
     left: 50%;
     margin-top: -250px;
     margin-left: -300px;
-    padding:10px;
+    padding:20px;
     background-color: #FFFFFF;
     border-radius: 5px;
     z-index: 11;
@@ -1142,6 +1142,12 @@ $color-purple: #a5416f;
       color:$color-purple;
       text-transform: capitalize;
     }
+    .speaker-name {
+      font-size: 1.8em;
+    }
+    .speaker-tagline {
+      font-size: 1em;
+    }
 
   }
 
@@ -1155,6 +1161,9 @@ $color-purple: #a5416f;
   .social .links {
     list-style: none;
     float:left;
+  }
+  .session {
+    font-weight: bold;
   }
 
 }
