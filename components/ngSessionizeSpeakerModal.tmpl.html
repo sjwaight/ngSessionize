@@ -35,8 +35,8 @@
 
     <div ng-bind="$ctrl.speaker.bio"></div>
 
-    <ul ng-repeat="session in $ctrl.speaker.sessions">
-        <li class="session" ng-bind="session.name"></li>
+    <ul>
+        <li class="session" ng-repeat="session in $ctrl.speaker.sessions" ng-bind="session.name"></li>
     </ul>
 
 </div>
