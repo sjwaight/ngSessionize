@@ -1119,6 +1119,7 @@ $color-purple: #a5416f;
     left: 50%;
     margin-top: -250px;
     margin-left: -300px;
+    padding:10px;
     background-color: #FFFFFF;
     border-radius: 5px;
     z-index: 11;
@@ -1137,7 +1138,9 @@ $color-purple: #a5416f;
   .speaker > div {
     float: left;
   }
-
+  .speaker-details {
+    margin-left:10px;
+  }
   .social .links {
     list-style: none;
     float:left;
