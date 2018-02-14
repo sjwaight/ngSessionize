@@ -330,7 +330,7 @@ angular.module("ngSessionize")
 		  vm.speakerModal = function(speaker) {
 
 		  	    vm.showModal = true;
-		  	    vm.selectedSpeaker = $filter("filter")(vm.data.speakers, { id: speaker.id });
+		  	    vm.selectedSpeaker = $filter("filter")(vm.data.speakers, { id: speaker.id })[0];
 
 		  };
 
