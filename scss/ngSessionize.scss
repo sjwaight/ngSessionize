@@ -1050,7 +1050,7 @@ $color-purple: #a5416f;
   }
 
   .sz-session {
-    padding:20px;
+    padding: 20px;
   }
 
   h3.sz-session__title {
@@ -1095,3 +1095,37 @@ $color-purple: #a5416f;
     background-color: #EEEEEE;
   }
 }
+
+/* Modal Dialog */
+#sessionize {
+
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+    z-index: 10;
+  }
+
+  .modal {
+    display: none;
+    width: 600px;
+    height: 500px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -250px;
+    margin-left: -300px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    z-index: 11;
+  }
+  .active {
+    display: block;
+  }
+
+}
+

@@ -9,7 +9,8 @@ angular.module("ngSessionize")
 	  restrict: "E",
 	  bindings: {
 		  vm: "=",
-		  speaker: "="
+		  speaker: "=",
+		  active: "="
 	  },
 
 	  controller: function () {

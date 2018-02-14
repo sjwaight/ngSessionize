@@ -45,8 +45,9 @@
 
                 <div>
                     <ul class="sz-session__speakers">
-                        <li class="sz-session__speaker" ng-repeat="speaker in session.speakers"
-                            ng-bind="speaker.name"></li>
+                        <li class="sz-session__speaker" ng-repeat="speaker in session.speakers">
+                            <a ng-bind="speaker.name" ng-click="vm.speakerModal(speaker)"></a>
+                        </li>
                     </ul>
 
                     <ul class="ngs-speaker-photos">
@@ -69,6 +70,9 @@
                 </div>
 
             </div>
+
+
+            <ng-sessionize-speaker-modal></ng-sessionize-speaker-modal>
 
 
         </div>

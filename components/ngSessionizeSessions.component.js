@@ -25,6 +25,8 @@ angular.module("ngSessionize")
 
 		  vm.filteredSessions = [];
 
+		  vm.showModal = false;
+
 		  vm.initialized = false;
 
 		  vm.getSpeakerPhoto = function (speakerId) {
@@ -174,6 +176,13 @@ angular.module("ngSessionize")
 			  vm.filterCount = 0;
 			  vm.filteredSessions = vm.data.sessions;
 			  vm.countTags("countFiltered");
+
+		  };
+
+
+		  vm.speakerModal = function(speaker) {
+
+		  	    vm.showModal = true;
 
 		  };
 
