@@ -17,7 +17,7 @@ angular.module("ngSessionize")
 		  var self = this;
 
 		  self.closeModal = function() {
-		  	self.showModal = false;
+		  	self.showmodal = false;
 		  };
 
 		  self.$onInit = function () {
