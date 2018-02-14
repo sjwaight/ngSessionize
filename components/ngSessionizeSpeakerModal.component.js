@@ -8,8 +8,8 @@ angular.module("ngSessionize")
 
 	  restrict: "E",
 	  bindings: {
-		  vm: "=",
-		  speaker: "="
+		  showmodal: "=",
+		  speaker: "<"
 	  },
 
 	  controller: function () {
@@ -17,7 +17,7 @@ angular.module("ngSessionize")
 		  var self = this;
 
 		  self.closeModal = function() {
-		  	self.vm.showModal = false;
+		  	self.showModal = false;
 		  };
 
 		  self.$onInit = function () {
