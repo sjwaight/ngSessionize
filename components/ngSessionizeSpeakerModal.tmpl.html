@@ -3,16 +3,19 @@
 
 <div class="modal" ng-class="{'active': $ctrl.showModal}">
 
+    <div ng-click="$ctrl.closeModal()">X</div>
+
+
     <div ng-bind="$ctrl.speaker.name"></div>
     <div ng-bind="$ctrl.speaker.tagLine"></div>
 
-    <div ng-repeat="link in link.links">
+    <div ng-repeat="link in $ctrl.speaker.links">
         <a href="{{ link.url }}" ng-bind="link.title"></a>
     </div>
 
     <div ng-bind="$ctrl.speaker.bio"></div>
 
-    <ul ng-repeat="session in link.sessions">
+    <ul ng-repeat="session in $ctrl.speaker.sessions">
         <li ng-bind="session.title"></li>
     </li>
 
