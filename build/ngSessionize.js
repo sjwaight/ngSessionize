@@ -436,7 +436,7 @@ module.exports = "<div class=\"overlay\" ng-class=\"{'active': $ctrl.showmodal}\
 /*! exports provided: sessionizeToken, default */
 /***/ (function(module) {
 
-module.exports = {"sessionizeToken":"xy5so9hy"};
+module.exports = {"sessionizeToken":"9frdgg4y"};
 
 /***/ }),
 
@@ -1156,7 +1156,7 @@ angular.module("ngSessionizeService", [])
 
 		  var self = this;
 
-		  var sessionizeToken = "xy5so9hy";
+		  var sessionizeToken = "9frdgg4y";
 
 		  self.ngSessionize = {};
 		  self.ngSessionize.initialized = false;
