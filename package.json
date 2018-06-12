@@ -9,21 +9,22 @@
     "url": "https://github.com/SympraxisConsulting/ngSessionize"
   },
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --mode=development"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-cache": "^0.4.6",
-    "gulp-watch": "^4.3.11",
+    "gulp-watch": "^5.0.0",
     "map-stream": "~0.0.7",
-    "vinyl-fs": "~3.0.1",
-    "spsave": "~3.1.0",
+    "vinyl-fs": "~3.0.3",
+    "spsave": "~3.1.5",
 
-    "webpack": "~2.7.0",
-    "node-sass": "~4.7.2",
-    "sass-loader": "~4.1.1",
-    "css-loader": "~0.26.4",
-    "html-loader": "~0.4.5",
-    "style-loader": "~0.13.2"
+    "webpack": "~4.8.3",
+    "webpack-cli": "~2.1.4",
+    "node-sass": "~4.9.0",
+    "sass-loader": "~7.0.1",
+    "css-loader": "~0.28.11",
+    "html-loader": "~0.5.5",
+    "style-loader": "~0.21.0"
   }
 }

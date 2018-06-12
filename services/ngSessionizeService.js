@@ -7,6 +7,8 @@ angular.module("ngSessionizeService", [])
 
 		  var self = this;
 
+		  var sessionizeToken = "xy5so9hy";
+
 		  self.ngSessionize = {};
 		  self.ngSessionize.initialized = false;
 
@@ -16,7 +18,7 @@ angular.module("ngSessionizeService", [])
 
 			  $http({
 				  method: "GET",
-				  url: "https://sessionize.com/api/v2/57c0xuih/view/sessions"
+				  url: "https://sessionize.com/api/v2/" + sessionizeToken + "/view/sessions"
 			  }).then(function (response) {
 
 				  self.ngSessionize.sessions = response.data[0].sessions;
@@ -34,7 +36,7 @@ angular.module("ngSessionizeService", [])
 
 			  $http({
 				  method: "GET",
-				  url: "https://sessionize.com/api/v2/57c0xuih/view/speakers"
+				  url: "https://sessionize.com/api/v2/" + sessionizeToken + "/view/speakers"
 			  }).then(function (response) {
 
 				  self.ngSessionize.speakers = response.data;

@@ -33,9 +33,6 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -45,6 +42,11 @@
 /******/ 				get: getter
 /******/ 			});
 /******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -62,84 +64,31 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "/";
 /******/
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = "./ngSessionize.app.js");
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ "./components/index.js":
+/*!*****************************!*\
+  !*** ./components/index.js ***!
+  \*****************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-angular.module("ngSessionize")
-
-  .component("ngSessionizeSessionsRefiner", {
-
-	  template: __webpack_require__(10),
-
-	  restrict: "E",
-	  bindings: {
-		  vm: "=",
-		  refinertype: "=",
-		  items: "="
-	  },
-
-	  controller: function () {
-
-		  var self = this;
-
-		  self.$onInit = function () {
-
-		  };
-
-	  }
-  });
+__webpack_require__(/*! ./ngSessionizeSessions.component */ "./components/ngSessionizeSessions.component.js");
+__webpack_require__(/*! ./ngSessionizeSessionsRefiner.component */ "./components/ngSessionizeSessionsRefiner.component.js");
+__webpack_require__(/*! ./ngSessionizeSpeakerModal.component */ "./components/ngSessionizeSpeakerModal.component.js");
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(4);
-__webpack_require__(0);
-__webpack_require__(5);
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(7);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// add the styles to the DOM
-var update = __webpack_require__(12)(content, {});
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/sass-loader/index.js!./ngSessionize.scss", function() {
-			var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/sass-loader/index.js!./ngSessionize.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(13);
-
-
-/***/ }),
-/* 4 */
+/***/ "./components/ngSessionizeSessions.component.js":
+/*!******************************************************!*\
+  !*** ./components/ngSessionizeSessions.component.js ***!
+  \******************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -148,7 +97,7 @@ __webpack_require__(13);
 angular.module("ngSessionize")
 
   .component("ngSessionizeSessions", {
-	  template: __webpack_require__(9),
+	  template: __webpack_require__(/*! ./ngSessionizeSessions.tmpl.html */ "./components/ngSessionizeSessions.tmpl.html"),
 	  controller: "ngSessionizeSessionsController",
 	  controllerAs: "vm"
   })
@@ -359,11 +308,74 @@ angular.module("ngSessionize")
 	  }
   ]);
 
-__webpack_require__(0);
-__webpack_require__(5);
+__webpack_require__(/*! ./ngSessionizeSessionsRefiner.component */ "./components/ngSessionizeSessionsRefiner.component.js");
+__webpack_require__(/*! ./ngSessionizeSpeakerModal.component */ "./components/ngSessionizeSpeakerModal.component.js");
 
 /***/ }),
-/* 5 */
+
+/***/ "./components/ngSessionizeSessions.tmpl.html":
+/*!***************************************************!*\
+  !*** ./components/ngSessionizeSessions.tmpl.html ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"sessionize\" ng-cloak>\r\n\r\n    <div class=\"sz-spinner\" ng-show=\"!vm.initialized\"></div>\r\n\r\n    <div class=\"ngs-sessions-container\" ng-if=\"vm.initialized\">\r\n\r\n\r\n        <div class=\"ngs-refiners\">\r\n\r\n            <h5>Refine results</h5>\r\n\r\n            <div ng-repeat=\"(key, value) in vm.filters\">\r\n\r\n                <ng-sessionize-sessions-refiner vm=\"vm\" refinertype=\"key\" items=\"value\"></ng-sessionize-sessions-refiner>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n\r\n        <div class=\"ngs-sessions\">\r\n\r\n            <div class=\"applied-filters\">\r\n\r\n                <div ng-repeat=\"(key, value) in vm.filters\">\r\n\r\n                    <div ng-repeat=\"item in value | filter:{ selected: true} \" ng-click=\"vm.toggle(item)\">\r\n                        <span ng-bind=\"item.name\"></span>\r\n                        <i class=\"fas fa-times fa-sm\"></i>\r\n                    </div>\r\n\r\n                </div>\r\n                <div class=\"ngs-clear\" ng-show=\"vm.filterCount > 0\" ng-click=\"vm.clearAll()\">Clear all</div>\r\n\r\n            </div>\r\n            <div class=\"clear\"></div>\r\n\r\n            <div>\r\n                <span ng-bind=\"vm.filteredSessions.length\"></span> sessions\r\n            </div>\r\n\r\n            <div class=\"sz-session sz-session--full\" ng-class-even=\"'ngs-even'\" ng-repeat=\"session in vm.filteredSessions\">\r\n\r\n                <h3 class=\"sz-session__title\" ng-bind=\"session.title\"></h3>\r\n\r\n                <div>\r\n                    <ul class=\"sz-session__speakers\">\r\n                        <li class=\"sz-session__speaker\" ng-repeat=\"speaker in session.speakers\">\r\n                            <a href=\"#\" ng-bind=\"speaker.name\" ng-click=\"vm.speakerModal(speaker)\"></a>\r\n                            <span ng-if=\"$index < $count -1\">, </span>\r\n                        </li>\r\n                    </ul>\r\n\r\n                    <ul class=\"ngs-speaker-photos\">\r\n                        <li ng-repeat=\"speaker in session.speakers\">\r\n                            <img ng-src=\"{{ vm.getSpeakerPhoto(speaker.id) }}\"/>\r\n                        </li>\r\n                    </ul>\r\n                </div>\r\n                <div class=\"clear\"></div>\r\n\r\n                <div>\r\n                    <p class=\"sz-session__description\" ng-bind=\"session.description\"></p>\r\n                </div>\r\n\r\n                <div class=\"ngs-session-tags-container\">\r\n                    <div class=\"ngs-session-tags\" ng-repeat=\"category in session.categories\">\r\n                        <div class=\"ngs-session-tag\" ng-repeat=\"item in category.categoryItems\" ng-bind=\"item.name\"></div>\r\n                    </div>\r\n                    <div class=\"clear\"></div>\r\n                </div>\r\n\r\n            </div>\r\n\r\n\r\n            <ng-sessionize-speaker-modal showmodal=\"vm.showModal\" speaker=\"vm.selectedSpeaker\"></ng-sessionize-speaker-modal>\r\n\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n</div>";
+
+/***/ }),
+
+/***/ "./components/ngSessionizeSessionsRefiner.component.js":
+/*!*************************************************************!*\
+  !*** ./components/ngSessionizeSessionsRefiner.component.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+angular.module("ngSessionize")
+
+  .component("ngSessionizeSessionsRefiner", {
+
+	  template: __webpack_require__(/*! ./ngSessionizeSessionsRefiner.tmpl.html */ "./components/ngSessionizeSessionsRefiner.tmpl.html"),
+
+	  restrict: "E",
+	  bindings: {
+		  vm: "=",
+		  refinertype: "=",
+		  items: "="
+	  },
+
+	  controller: function () {
+
+		  var self = this;
+
+		  self.$onInit = function () {
+
+		  };
+
+	  }
+  });
+
+/***/ }),
+
+/***/ "./components/ngSessionizeSessionsRefiner.tmpl.html":
+/*!**********************************************************!*\
+  !*** ./components/ngSessionizeSessionsRefiner.tmpl.html ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h2 ng-bind=\"$ctrl.refinertype\"></h2>\r\n\r\n<ul class=\"ngs-refiner-group\">\r\n\r\n    <li ng-class=\"{ 'selected': item.selected }\" ng-repeat=\"item in $ctrl.items | orderBy: '-count'\">\r\n\r\n        <div class=\"clickable\" ng-if=\"item.countFiltered > 0\"  ng-click=\"$ctrl.vm.toggle(item)\">\r\n\r\n            <div ng-bind=\"item.name\"></div>\r\n            <div ng-if=\"!item.selected\" ng-bind=\"item.countFiltered\"></div>\r\n            <div ng-if=\"item.selected\">\r\n                <i class=\"fas fa-times fa-sm\"></i>\r\n            </div>\r\n\r\n        </div>\r\n\r\n        <div ng-if=\"item.countFiltered === 0\">\r\n\r\n            <div ng-bind=\"item.name\"></div>\r\n            <div ng-if=\"!item.selected\" ng-bind=\"item.countFiltered\"></div>\r\n            <div ng-if=\"item.selected\">\r\n                <i class=\"fas fa-times fa-sm\"></i>\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </li>\r\n\r\n</ul>\r\n";
+
+/***/ }),
+
+/***/ "./components/ngSessionizeSpeakerModal.component.js":
+/*!**********************************************************!*\
+  !*** ./components/ngSessionizeSpeakerModal.component.js ***!
+  \**********************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -373,7 +385,7 @@ angular.module("ngSessionize")
 
   .component("ngSessionizeSpeakerModal", {
 
-	  template: __webpack_require__(11),
+	  template: __webpack_require__(/*! ./ngSessionizeSpeakerModal.tmpl.html */ "./components/ngSessionizeSpeakerModal.tmpl.html"),
 
 	  restrict: "E",
 	  bindings: {
@@ -405,20 +417,53 @@ angular.module("ngSessionize")
   });
 
 /***/ }),
-/* 6 */
+
+/***/ "./components/ngSessionizeSpeakerModal.tmpl.html":
+/*!*******************************************************!*\
+  !*** ./components/ngSessionizeSpeakerModal.tmpl.html ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"overlay\" ng-class=\"{'active': $ctrl.showmodal}\" ng-click=\"$ctrl.closeModal()\"></div>\r\n\r\n\r\n<div class=\"modal\" ng-class=\"{'active': $ctrl.showmodal}\">\r\n\r\n    <div class=\"modal-header\" ng-click=\"$ctrl.closeModal()\">\r\n        <i class=\"far fa-window-close\"></i>\r\n    </div>\r\n\r\n    <div class=\"speaker\">\r\n\r\n        <div>\r\n            <img ng-src=\"{{ $ctrl.speaker.profilePicture }}\"/>\r\n        </div>\r\n\r\n        <div class=\"speaker-details\">\r\n            <div>\r\n                <div class=\"speaker-name\" ng-bind=\"$ctrl.speaker.fullName\"></div>\r\n                <div class=\"speaker-tagline\" ng-bind=\"$ctrl.speaker.tagLine\"></div>\r\n            </div>\r\n            <div class=\"social\">\r\n                <ul class=\"links\" ng-repeat=\"link in $ctrl.speaker.links\">\r\n                    <li>\r\n                        <a href=\"{{ link.url }}\" title=\"{{link.linkType}}\" target=\"_blank\">\r\n                            <i ng-if=\"link.linkType === 'Twitter'\" class=\"fab fa-twitter\"></i>\r\n                            <i ng-if=\"link.linkType === 'Blog'\" class=\"fas fa-pencil-alt\"></i>\r\n                        </a>\r\n                    </li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n    <div class=\"clear\"></div>\r\n\r\n    <div ng-bind=\"$ctrl.speaker.bio\"></div>\r\n\r\n    <ul>\r\n        <li class=\"session\" ng-repeat=\"session in $ctrl.speaker.sessions\" ng-bind=\"session.name\"></li>\r\n    </ul>\r\n\r\n</div>";
+
+/***/ }),
+
+/***/ "./data/sessionize.json":
+/*!******************************!*\
+  !*** ./data/sessionize.json ***!
+  \******************************/
+/*! exports provided: sessionizeToken, default */
+/***/ (function(module) {
+
+module.exports = {"sessionizeToken":"xy5so9hy"};
+
+/***/ }),
+
+/***/ "./ngSessionize.app.js":
+/*!*****************************!*\
+  !*** ./ngSessionize.app.js ***!
+  \*****************************/
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_ngSessionize_scss__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_ngSessionize_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__scss_ngSessionize_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__services__);
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _data_sessionize_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data/sessionize.json */ "./data/sessionize.json");
+var _data_sessionize_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/Object.assign({}, _data_sessionize_json__WEBPACK_IMPORTED_MODULE_0__, {"default": _data_sessionize_json__WEBPACK_IMPORTED_MODULE_0__});
+/* harmony import */ var _scss_ngSessionize_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./scss/ngSessionize.scss */ "./scss/ngSessionize.scss");
+/* harmony import */ var _scss_ngSessionize_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_scss_ngSessionize_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services */ "./services/index.js");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_services__WEBPACK_IMPORTED_MODULE_2__);
+
+
+// Configuration
 
 
 // Branding
 
 
+// Services
 
 
 var ngSessionize = angular.module("ngSessionize", [
@@ -451,13 +496,18 @@ ngSessionize.init = function () {
 	angular.bootstrap(document, ["ngSessionize"]);
 };
 
-__webpack_require__(1);
+__webpack_require__(/*! ./components */ "./components/index.js");
 
 /***/ }),
-/* 7 */
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./scss/ngSessionize.scss":
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./scss/ngSessionize.scss ***!
+  \***************************************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)();
+exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
@@ -468,7 +518,12 @@ exports.push([module.i, ".clear {\n  clear: both; }\n\n/* Sessionize CSS */\n#sz
 
 
 /***/ }),
-/* 8 */
+
+/***/ "./node_modules/css-loader/lib/css-base.js":
+/*!*************************************************!*\
+  !*** ./node_modules/css-loader/lib/css-base.js ***!
+  \*************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
 /*
@@ -476,21 +531,19 @@ exports.push([module.i, ".clear {\n  clear: both; }\n\n/* Sessionize CSS */\n#sz
 	Author Tobias Koppers @sokra
 */
 // css base code, injected by the css-loader
-module.exports = function() {
+module.exports = function(useSourceMap) {
 	var list = [];
 
 	// return the list of modules as css string
 	list.toString = function toString() {
-		var result = [];
-		for(var i = 0; i < this.length; i++) {
-			var item = this[i];
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
 			if(item[2]) {
-				result.push("@media " + item[2] + "{" + item[1] + "}");
+				return "@media " + item[2] + "{" + content + "}";
 			} else {
-				result.push(item[1]);
+				return content;
 			}
-		}
-		return result.join("");
+		}).join("");
 	};
 
 	// import a list of modules into the list
@@ -522,206 +575,340 @@ module.exports = function() {
 	return list;
 };
 
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports) {
 
-module.exports = "<div id=\"sessionize\" ng-cloak>\r\n\r\n    <div class=\"sz-spinner\" ng-show=\"!vm.initialized\"></div>\r\n\r\n    <div class=\"ngs-sessions-container\" ng-if=\"vm.initialized\">\r\n\r\n\r\n        <div class=\"ngs-refiners\">\r\n\r\n            <h5>Refine results</h5>\r\n\r\n            <div ng-repeat=\"(key, value) in vm.filters\">\r\n\r\n                <ng-sessionize-sessions-refiner vm=\"vm\" refinertype=\"key\" items=\"value\"></ng-sessionize-sessions-refiner>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n\r\n        <div class=\"ngs-sessions\">\r\n\r\n            <div class=\"applied-filters\">\r\n\r\n                <div ng-repeat=\"(key, value) in vm.filters\">\r\n\r\n                    <div ng-repeat=\"item in value | filter:{ selected: true} \" ng-click=\"vm.toggle(item)\">\r\n                        <span ng-bind=\"item.name\"></span>\r\n                        <i class=\"fas fa-times fa-sm\"></i>\r\n                    </div>\r\n\r\n                </div>\r\n                <div class=\"ngs-clear\" ng-show=\"vm.filterCount > 0\" ng-click=\"vm.clearAll()\">Clear all</div>\r\n\r\n            </div>\r\n            <div class=\"clear\"></div>\r\n\r\n            <div>\r\n                <span ng-bind=\"vm.filteredSessions.length\"></span> sessions\r\n            </div>\r\n\r\n            <div class=\"sz-session sz-session--full\" ng-class-even=\"'ngs-even'\" ng-repeat=\"session in vm.filteredSessions\">\r\n\r\n                <h3 class=\"sz-session__title\" ng-bind=\"session.title\"></h3>\r\n\r\n                <div>\r\n                    <ul class=\"sz-session__speakers\">\r\n                        <li class=\"sz-session__speaker\" ng-repeat=\"speaker in session.speakers\">\r\n                            <a href=\"#\" ng-bind=\"speaker.name\" ng-click=\"vm.speakerModal(speaker)\"></a>\r\n                            <span ng-if=\"$index < $count -1\">, </span>\r\n                        </li>\r\n                    </ul>\r\n\r\n                    <ul class=\"ngs-speaker-photos\">\r\n                        <li ng-repeat=\"speaker in session.speakers\">\r\n                            <img ng-src=\"{{ vm.getSpeakerPhoto(speaker.id) }}\"/>\r\n                        </li>\r\n                    </ul>\r\n                </div>\r\n                <div class=\"clear\"></div>\r\n\r\n                <div>\r\n                    <p class=\"sz-session__description\" ng-bind=\"session.description\"></p>\r\n                </div>\r\n\r\n                <div class=\"ngs-session-tags-container\">\r\n                    <div class=\"ngs-session-tags\" ng-repeat=\"category in session.categories\">\r\n                        <div class=\"ngs-session-tag\" ng-repeat=\"item in category.categoryItems\" ng-bind=\"item.name\"></div>\r\n                    </div>\r\n                    <div class=\"clear\"></div>\r\n                </div>\r\n\r\n            </div>\r\n\r\n\r\n            <ng-sessionize-speaker-modal showmodal=\"vm.showModal\" speaker=\"vm.selectedSpeaker\"></ng-sessionize-speaker-modal>\r\n\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n</div>";
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-module.exports = "<h2 ng-bind=\"$ctrl.refinertype\"></h2>\r\n\r\n<ul class=\"ngs-refiner-group\">\r\n\r\n    <li ng-class=\"{ 'selected': item.selected }\" ng-repeat=\"item in $ctrl.items | orderBy: '-count'\">\r\n\r\n        <div class=\"clickable\" ng-if=\"item.countFiltered > 0\"  ng-click=\"$ctrl.vm.toggle(item)\">\r\n\r\n            <div ng-bind=\"item.name\"></div>\r\n            <div ng-if=\"!item.selected\" ng-bind=\"item.countFiltered\"></div>\r\n            <div ng-if=\"item.selected\">\r\n                <i class=\"fas fa-times fa-sm\"></i>\r\n            </div>\r\n\r\n        </div>\r\n\r\n        <div ng-if=\"item.countFiltered === 0\">\r\n\r\n            <div ng-bind=\"item.name\"></div>\r\n            <div ng-if=\"!item.selected\" ng-bind=\"item.countFiltered\"></div>\r\n            <div ng-if=\"item.selected\">\r\n                <i class=\"fas fa-times fa-sm\"></i>\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </li>\r\n\r\n</ul>\r\n";
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"overlay\" ng-class=\"{'active': $ctrl.showmodal}\" ng-click=\"$ctrl.closeModal()\"></div>\r\n\r\n\r\n<div class=\"modal\" ng-class=\"{'active': $ctrl.showmodal}\">\r\n\r\n    <div class=\"modal-header\" ng-click=\"$ctrl.closeModal()\">\r\n        <i class=\"far fa-window-close\"></i>\r\n    </div>\r\n\r\n    <div class=\"speaker\">\r\n\r\n        <div>\r\n            <img ng-src=\"{{ $ctrl.speaker.profilePicture }}\"/>\r\n        </div>\r\n\r\n        <div class=\"speaker-details\">\r\n            <div>\r\n                <div class=\"speaker-name\" ng-bind=\"$ctrl.speaker.fullName\"></div>\r\n                <div class=\"speaker-tagline\" ng-bind=\"$ctrl.speaker.tagLine\"></div>\r\n            </div>\r\n            <div class=\"social\">\r\n                <ul class=\"links\" ng-repeat=\"link in $ctrl.speaker.links\">\r\n                    <li>\r\n                        <a href=\"{{ link.url }}\" title=\"{{link.linkType}}\" target=\"_blank\">\r\n                            <i ng-if=\"link.linkType === 'Twitter'\" class=\"fab fa-twitter\"></i>\r\n                            <i ng-if=\"link.linkType === 'Blog'\" class=\"fas fa-pencil-alt\"></i>\r\n                        </a>\r\n                    </li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n    <div class=\"clear\"></div>\r\n\r\n    <div ng-bind=\"$ctrl.speaker.bio\"></div>\r\n\r\n    <ul>\r\n        <li class=\"session\" ng-repeat=\"session in $ctrl.speaker.sessions\" ng-bind=\"session.name\"></li>\r\n    </ul>\r\n\r\n</div>\r\n\r\n<!--\r\n\r\n{\r\n\"id\": \"adb8c574-f7a7-4f6a-af3e-9a7072c92c27\",\r\n\"firstName\": \"Agnes\",\r\n\"lastName\": \"Molnar\",\r\n\"fullName\": \"Agnes Molnar\",\r\n\"bio\": \"Agnes Molnar is CEO and Managing Consultant of Search Explained, recognized Information Architecture and Search Expert. She has worked for various companies throughout the world, architecting and implementing dozens of SharePoint and FAST Search implementations for both commercial and government organizations. Since 2008, Agnes has been awarded with the Microsoft Most Valuable Professional (MVP) Award, for actively sharing her technical expertise. She is a regular speaker at technical conferences and workshops around the globe. She has also co-authored several books and white papers. She also maintains her passion and dedication on the subject through her blog, https://SearchExplained.com, where she shares troubleshooting tips, best practices, and other useful resources in Information Architecture and Enterprise Search with a light and wholesome approach.\",\r\n\"tagLine\": \"Managing Consultant, Search Explained, Microsoft MVP, Hungary\",\r\n\"profilePicture\": \"https://sessionize.com/image?f=2aab5eeac7a080010657102bdfce2f1e,200,200,True,False,74-f7a7-4f6a-af3e-9a7072c92c27.ac04a9ec-8be2-4f26-aac1-3672fc4ccfb5.JPG\",\r\n\"sessions\": [\r\n{\r\n\"id\": 18877,\r\n\"name\": \"\\\"Quick win\\\" features vs. long term strategy in Search\"\r\n},\r\n{\r\n\"id\": 33664,\r\n\"name\": \"Enterprise Search PowerClass\"\r\n}\r\n],\r\n\"isTopSpeaker\": false,\r\n\"links\": [\r\n{\r\n\"title\": \"Twitter\",\r\n\"url\": \"http://twitter.com/SearchExplained\",\r\n\"linkType\": \"Twitter\"\r\n},\r\n{\r\n\"title\": \"Blog\",\r\n\"url\": \"https://SearchExplained.com\",\r\n\"linkType\": \"Blog\"\r\n}\r\n]\r\n},\r\n\r\n-->";
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports) {
+/***/ "./node_modules/style-loader/lib/addStyles.js":
+/*!****************************************************!*\
+  !*** ./node_modules/style-loader/lib/addStyles.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
 */
-var stylesInDom = {},
-	memoize = function(fn) {
-		var memo;
-		return function () {
-			if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-			return memo;
-		};
-	},
-	isOldIE = memoize(function() {
-		return /msie [6-9]\b/.test(self.navigator.userAgent.toLowerCase());
-	}),
-	getHeadElement = memoize(function () {
-		return document.head || document.getElementsByTagName("head")[0];
-	}),
-	singletonElement = null,
-	singletonCounter = 0,
-	styleElementsInsertedAtTop = [];
+
+var stylesInDom = {};
+
+var	memoize = function (fn) {
+	var memo;
+
+	return function () {
+		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+		return memo;
+	};
+};
+
+var isOldIE = memoize(function () {
+	// Test for IE <= 9 as proposed by Browserhacks
+	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+	// Tests for existence of standard globals is to allow style-loader
+	// to operate correctly into non-standard environments
+	// @see https://github.com/webpack-contrib/style-loader/issues/177
+	return window && document && document.all && !window.atob;
+});
+
+var getTarget = function (target) {
+  return document.querySelector(target);
+};
+
+var getElement = (function (fn) {
+	var memo = {};
+
+	return function(target) {
+                // If passing function in options, then use it for resolve "head" element.
+                // Useful for Shadow Root style i.e
+                // {
+                //   insertInto: function () { return document.querySelector("#foo").shadowRoot }
+                // }
+                if (typeof target === 'function') {
+                        return target();
+                }
+                if (typeof memo[target] === "undefined") {
+			var styleTarget = getTarget.call(this, target);
+			// Special case to return head of iframe instead of iframe itself
+			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+				try {
+					// This will throw an exception if access to iframe is blocked
+					// due to cross-origin restrictions
+					styleTarget = styleTarget.contentDocument.head;
+				} catch(e) {
+					styleTarget = null;
+				}
+			}
+			memo[target] = styleTarget;
+		}
+		return memo[target]
+	};
+})();
+
+var singleton = null;
+var	singletonCounter = 0;
+var	stylesInsertedAtTop = [];
+
+var	fixUrls = __webpack_require__(/*! ./urls */ "./node_modules/style-loader/lib/urls.js");
 
 module.exports = function(list, options) {
-	if(typeof DEBUG !== "undefined" && DEBUG) {
-		if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	if (typeof DEBUG !== "undefined" && DEBUG) {
+		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
 	}
 
 	options = options || {};
+
+	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+
 	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
 	// tags it will allow on a page
-	if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
 
-	// By default, add <style> tags to the bottom of <head>.
-	if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	// By default, add <style> tags to the <head> element
+        if (!options.insertInto) options.insertInto = "head";
 
-	var styles = listToStyles(list);
+	// By default, add <style> tags to the bottom of the target
+	if (!options.insertAt) options.insertAt = "bottom";
+
+	var styles = listToStyles(list, options);
+
 	addStylesToDom(styles, options);
 
-	return function update(newList) {
+	return function update (newList) {
 		var mayRemove = [];
-		for(var i = 0; i < styles.length; i++) {
+
+		for (var i = 0; i < styles.length; i++) {
 			var item = styles[i];
 			var domStyle = stylesInDom[item.id];
+
 			domStyle.refs--;
 			mayRemove.push(domStyle);
 		}
+
 		if(newList) {
-			var newStyles = listToStyles(newList);
+			var newStyles = listToStyles(newList, options);
 			addStylesToDom(newStyles, options);
 		}
-		for(var i = 0; i < mayRemove.length; i++) {
+
+		for (var i = 0; i < mayRemove.length; i++) {
 			var domStyle = mayRemove[i];
+
 			if(domStyle.refs === 0) {
-				for(var j = 0; j < domStyle.parts.length; j++)
-					domStyle.parts[j]();
+				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
+
 				delete stylesInDom[domStyle.id];
 			}
 		}
 	};
-}
+};
 
-function addStylesToDom(styles, options) {
-	for(var i = 0; i < styles.length; i++) {
+function addStylesToDom (styles, options) {
+	for (var i = 0; i < styles.length; i++) {
 		var item = styles[i];
 		var domStyle = stylesInDom[item.id];
+
 		if(domStyle) {
 			domStyle.refs++;
+
 			for(var j = 0; j < domStyle.parts.length; j++) {
 				domStyle.parts[j](item.parts[j]);
 			}
+
 			for(; j < item.parts.length; j++) {
 				domStyle.parts.push(addStyle(item.parts[j], options));
 			}
 		} else {
 			var parts = [];
+
 			for(var j = 0; j < item.parts.length; j++) {
 				parts.push(addStyle(item.parts[j], options));
 			}
+
 			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
 		}
 	}
 }
 
-function listToStyles(list) {
+function listToStyles (list, options) {
 	var styles = [];
 	var newStyles = {};
-	for(var i = 0; i < list.length; i++) {
+
+	for (var i = 0; i < list.length; i++) {
 		var item = list[i];
-		var id = item[0];
+		var id = options.base ? item[0] + options.base : item[0];
 		var css = item[1];
 		var media = item[2];
 		var sourceMap = item[3];
 		var part = {css: css, media: media, sourceMap: sourceMap};
-		if(!newStyles[id])
-			styles.push(newStyles[id] = {id: id, parts: [part]});
-		else
-			newStyles[id].parts.push(part);
+
+		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
+		else newStyles[id].parts.push(part);
 	}
+
 	return styles;
 }
 
-function insertStyleElement(options, styleElement) {
-	var head = getHeadElement();
-	var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+function insertStyleElement (options, style) {
+	var target = getElement(options.insertInto)
+
+	if (!target) {
+		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+	}
+
+	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
+
 	if (options.insertAt === "top") {
-		if(!lastStyleElementInsertedAtTop) {
-			head.insertBefore(styleElement, head.firstChild);
-		} else if(lastStyleElementInsertedAtTop.nextSibling) {
-			head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+		if (!lastStyleElementInsertedAtTop) {
+			target.insertBefore(style, target.firstChild);
+		} else if (lastStyleElementInsertedAtTop.nextSibling) {
+			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
 		} else {
-			head.appendChild(styleElement);
+			target.appendChild(style);
 		}
-		styleElementsInsertedAtTop.push(styleElement);
+		stylesInsertedAtTop.push(style);
 	} else if (options.insertAt === "bottom") {
-		head.appendChild(styleElement);
+		target.appendChild(style);
+	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
+		var nextSibling = getElement(options.insertInto + " " + options.insertAt.before);
+		target.insertBefore(style, nextSibling);
 	} else {
-		throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
 	}
 }
 
-function removeStyleElement(styleElement) {
-	styleElement.parentNode.removeChild(styleElement);
-	var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+function removeStyleElement (style) {
+	if (style.parentNode === null) return false;
+	style.parentNode.removeChild(style);
+
+	var idx = stylesInsertedAtTop.indexOf(style);
 	if(idx >= 0) {
-		styleElementsInsertedAtTop.splice(idx, 1);
+		stylesInsertedAtTop.splice(idx, 1);
 	}
 }
 
-function createStyleElement(options) {
-	var styleElement = document.createElement("style");
-	styleElement.type = "text/css";
-	insertStyleElement(options, styleElement);
-	return styleElement;
+function createStyleElement (options) {
+	var style = document.createElement("style");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+
+	addAttrs(style, options.attrs);
+	insertStyleElement(options, style);
+
+	return style;
 }
 
-function createLinkElement(options) {
-	var linkElement = document.createElement("link");
-	linkElement.rel = "stylesheet";
-	insertStyleElement(options, linkElement);
-	return linkElement;
+function createLinkElement (options) {
+	var link = document.createElement("link");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+	options.attrs.rel = "stylesheet";
+
+	addAttrs(link, options.attrs);
+	insertStyleElement(options, link);
+
+	return link;
 }
 
-function addStyle(obj, options) {
-	var styleElement, update, remove;
+function addAttrs (el, attrs) {
+	Object.keys(attrs).forEach(function (key) {
+		el.setAttribute(key, attrs[key]);
+	});
+}
+
+function addStyle (obj, options) {
+	var style, update, remove, result;
+
+	// If a transform function was defined, run it on the css
+	if (options.transform && obj.css) {
+	    result = options.transform(obj.css);
+
+	    if (result) {
+	    	// If transform returns a value, use that instead of the original css.
+	    	// This allows running runtime transformations on the css.
+	    	obj.css = result;
+	    } else {
+	    	// If the transform function returns a falsy value, don't add this css.
+	    	// This allows conditional loading of css
+	    	return function() {
+	    		// noop
+	    	};
+	    }
+	}
 
 	if (options.singleton) {
 		var styleIndex = singletonCounter++;
-		styleElement = singletonElement || (singletonElement = createStyleElement(options));
-		update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-		remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-	} else if(obj.sourceMap &&
+
+		style = singleton || (singleton = createStyleElement(options));
+
+		update = applyToSingletonTag.bind(null, style, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+
+	} else if (
+		obj.sourceMap &&
 		typeof URL === "function" &&
 		typeof URL.createObjectURL === "function" &&
 		typeof URL.revokeObjectURL === "function" &&
 		typeof Blob === "function" &&
-		typeof btoa === "function") {
-		styleElement = createLinkElement(options);
-		update = updateLink.bind(null, styleElement);
-		remove = function() {
-			removeStyleElement(styleElement);
-			if(styleElement.href)
-				URL.revokeObjectURL(styleElement.href);
+		typeof btoa === "function"
+	) {
+		style = createLinkElement(options);
+		update = updateLink.bind(null, style, options);
+		remove = function () {
+			removeStyleElement(style);
+
+			if(style.href) URL.revokeObjectURL(style.href);
 		};
 	} else {
-		styleElement = createStyleElement(options);
-		update = applyToTag.bind(null, styleElement);
-		remove = function() {
-			removeStyleElement(styleElement);
+		style = createStyleElement(options);
+		update = applyToTag.bind(null, style);
+		remove = function () {
+			removeStyleElement(style);
 		};
 	}
 
 	update(obj);
 
-	return function updateStyle(newObj) {
-		if(newObj) {
-			if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+	return function updateStyle (newObj) {
+		if (newObj) {
+			if (
+				newObj.css === obj.css &&
+				newObj.media === obj.media &&
+				newObj.sourceMap === obj.sourceMap
+			) {
 				return;
+			}
+
 			update(obj = newObj);
 		} else {
 			remove();
@@ -734,67 +921,229 @@ var replaceText = (function () {
 
 	return function (index, replacement) {
 		textStore[index] = replacement;
+
 		return textStore.filter(Boolean).join('\n');
 	};
 })();
 
-function applyToSingletonTag(styleElement, index, remove, obj) {
+function applyToSingletonTag (style, index, remove, obj) {
 	var css = remove ? "" : obj.css;
 
-	if (styleElement.styleSheet) {
-		styleElement.styleSheet.cssText = replaceText(index, css);
+	if (style.styleSheet) {
+		style.styleSheet.cssText = replaceText(index, css);
 	} else {
 		var cssNode = document.createTextNode(css);
-		var childNodes = styleElement.childNodes;
-		if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+		var childNodes = style.childNodes;
+
+		if (childNodes[index]) style.removeChild(childNodes[index]);
+
 		if (childNodes.length) {
-			styleElement.insertBefore(cssNode, childNodes[index]);
+			style.insertBefore(cssNode, childNodes[index]);
 		} else {
-			styleElement.appendChild(cssNode);
+			style.appendChild(cssNode);
 		}
 	}
 }
 
-function applyToTag(styleElement, obj) {
+function applyToTag (style, obj) {
 	var css = obj.css;
 	var media = obj.media;
 
 	if(media) {
-		styleElement.setAttribute("media", media)
+		style.setAttribute("media", media)
 	}
 
-	if(styleElement.styleSheet) {
-		styleElement.styleSheet.cssText = css;
+	if(style.styleSheet) {
+		style.styleSheet.cssText = css;
 	} else {
-		while(styleElement.firstChild) {
-			styleElement.removeChild(styleElement.firstChild);
+		while(style.firstChild) {
+			style.removeChild(style.firstChild);
 		}
-		styleElement.appendChild(document.createTextNode(css));
+
+		style.appendChild(document.createTextNode(css));
 	}
 }
 
-function updateLink(linkElement, obj) {
+function updateLink (link, options, obj) {
 	var css = obj.css;
 	var sourceMap = obj.sourceMap;
 
-	if(sourceMap) {
+	/*
+		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+	*/
+	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+
+	if (options.convertToAbsoluteUrls || autoFixUrls) {
+		css = fixUrls(css);
+	}
+
+	if (sourceMap) {
 		// http://stackoverflow.com/a/26603875
 		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
 	}
 
 	var blob = new Blob([css], { type: "text/css" });
 
-	var oldSrc = linkElement.href;
+	var oldSrc = link.href;
 
-	linkElement.href = URL.createObjectURL(blob);
+	link.href = URL.createObjectURL(blob);
 
-	if(oldSrc)
-		URL.revokeObjectURL(oldSrc);
+	if(oldSrc) URL.revokeObjectURL(oldSrc);
 }
 
 
 /***/ }),
-/* 13 */
+
+/***/ "./node_modules/style-loader/lib/urls.js":
+/*!***********************************************!*\
+  !*** ./node_modules/style-loader/lib/urls.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+/**
+ * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+ * embed the css on the page. This breaks all relative urls because now they are relative to a
+ * bundle instead of the current page.
+ *
+ * One solution is to only use full urls, but that may be impossible.
+ *
+ * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ *
+ * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+ *
+ */
+
+module.exports = function (css) {
+  // get current location
+  var location = typeof window !== "undefined" && window.location;
+
+  if (!location) {
+    throw new Error("fixUrls requires window.location");
+  }
+
+	// blank or null?
+	if (!css || typeof css !== "string") {
+	  return css;
+  }
+
+  var baseUrl = location.protocol + "//" + location.host;
+  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+
+	// convert each url(...)
+	/*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+		// strip quotes (if they exist)
+		var unquotedOrigUrl = origUrl
+			.trim()
+			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+
+		// already a full url? no change
+		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(unquotedOrigUrl)) {
+		  return fullMatch;
+		}
+
+		// convert the url to a full url
+		var newUrl;
+
+		if (unquotedOrigUrl.indexOf("//") === 0) {
+		  	//TODO: should we add protocol?
+			newUrl = unquotedOrigUrl;
+		} else if (unquotedOrigUrl.indexOf("/") === 0) {
+			// path should be relative to the base url
+			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+		} else {
+			// path should be relative to current directory
+			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+		}
+
+		// send back the fixed url(...)
+		return "url(" + JSON.stringify(newUrl) + ")";
+	});
+
+	// send back the fixed css
+	return fixedCss;
+};
+
+
+/***/ }),
+
+/***/ "./scss/ngSessionize.scss":
+/*!********************************!*\
+  !*** ./scss/ngSessionize.scss ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../node_modules/css-loader!../node_modules/sass-loader/lib/loader.js!./ngSessionize.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./scss/ngSessionize.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./services/index.js":
+/*!***************************!*\
+  !*** ./services/index.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ./ngSessionizeService */ "./services/ngSessionizeService.js");
+
+
+/***/ }),
+
+/***/ "./services/ngSessionizeService.js":
+/*!*****************************************!*\
+  !*** ./services/ngSessionizeService.js ***!
+  \*****************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -807,6 +1156,8 @@ angular.module("ngSessionizeService", [])
 
 		  var self = this;
 
+		  var sessionizeToken = "xy5so9hy";
+
 		  self.ngSessionize = {};
 		  self.ngSessionize.initialized = false;
 
@@ -816,7 +1167,7 @@ angular.module("ngSessionizeService", [])
 
 			  $http({
 				  method: "GET",
-				  url: "https://sessionize.com/api/v2/57c0xuih/view/sessions"
+				  url: "https://sessionize.com/api/v2/" + sessionizeToken + "/view/sessions"
 			  }).then(function (response) {
 
 				  self.ngSessionize.sessions = response.data[0].sessions;
@@ -834,7 +1185,7 @@ angular.module("ngSessionizeService", [])
 
 			  $http({
 				  method: "GET",
-				  url: "https://sessionize.com/api/v2/57c0xuih/view/speakers"
+				  url: "https://sessionize.com/api/v2/" + sessionizeToken + "/view/speakers"
 			  }).then(function (response) {
 
 				  self.ngSessionize.speakers = response.data;
@@ -869,5 +1220,6 @@ angular.module("ngSessionizeService", [])
   ]);
 
 /***/ })
-/******/ ]);
+
+/******/ });
 //# sourceMappingURL=ngSessionize.js.map

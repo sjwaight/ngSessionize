@@ -1,8 +1,12 @@
 "use strict";
 
+// Configuration
+import sessionize from './data/sessionize.json';
+
 // Branding
 import "./scss/ngSessionize.scss";
 
+// Services
 import "./services";
 
 var ngSessionize = angular.module("ngSessionize", [
