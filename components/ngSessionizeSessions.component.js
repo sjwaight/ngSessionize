@@ -17,10 +17,10 @@ angular.module("ngSessionize")
 
 		  // The order of these properties determines the order of the refiners
 		  vm.filters = {
-			  "Session format": [],
+//			  "Session format": [],
 			  "Track": [],
 			  "Level": [],
-			  "Tags": [],
+//			  "Tags": [],
 		  };
 		  vm.filterCount = 0;
 
