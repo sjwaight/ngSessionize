@@ -43,6 +43,7 @@ $time-background-color: #b85757;
 
   ul.ngs-refiner-group {
     list-style: none;
+    margin-left:0;
 
     li {
       list-style: none;
@@ -66,7 +67,6 @@ $time-background-color: #b85757;
         div:last-child {
           width: 20%;
           text-align: right;
-          padding-right: 5px;
         }
 
       }
