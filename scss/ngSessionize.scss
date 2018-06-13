@@ -3,7 +3,6 @@
 $major-text-color: #b85757;
 /* Change these colors to match your event's palette */
 
-
 .clear {
   clear: both;
 }
@@ -24,205 +23,209 @@ $major-text-color: #b85757;
 
     .sz-spinner {
       margin: auto;
-      color:$major-text-color;
-    }
-  }
-}
-
-.ngs-refiners {
-  width: 30%;
-
-  h2 {
-    color: $major-text-color;
-  }
-
-  ul.ngs-refiner-group {
-    padding-left: 0;
-  }
-
-  ul.ngs-refiner-group {
-    list-style: none;
-    margin-left:0;
-
-    li {
-      list-style: none;
-      width: 100%;
-
-      > div.clickable {
-        cursor: pointer;
-      }
-
-      > div {
-        display: inline-block;
-        width: 100%;
-
-        div {
-          float: left;
-        }
-
-        div:first-child {
-          width: 80%;
-        }
-        div:last-child {
-          width: 20%;
-          text-align: right;
-        }
-
-      }
-
-    }
-
-    li.selected div {
-      background-color: #EEEEEE;
-    }
-
-  }
-
-}
-
-.ngs-sessions {
-
-  width: 70%;
-
-  .applied-filters {
-
-    > div {
-      float: left;
-    }
-
-    > div > div {
-      float: left;
-      background-color: #EEEEEE;
-      padding: 3px 5px 3px 5px;
-      margin: 0 5px 5px 0;
-    }
-
-    .ngs-clear {
-      background-color: transparent;
-      cursor: pointer;
       color: $major-text-color;
     }
   }
 
-  .ngs-even {
-    background-color: #EEEEEE;
+  .ngs-refiners {
+    width: 30%;
+
+    h2 {
+      color: $major-text-color;
+    }
+
+    ul.ngs-refiner-group {
+      padding-left: 0;
+    }
+
+    ul.ngs-refiner-group {
+      list-style: none;
+      margin-left: 0;
+
+      li {
+        list-style: none;
+        width: 100%;
+
+        > div.clickable {
+          cursor: pointer;
+        }
+
+        > div {
+          display: inline-block;
+          width: 100%;
+
+          div {
+            float: left;
+          }
+
+          div:first-child {
+            width: 80%;
+          }
+          div:last-child {
+            width: 20%;
+            text-align: right;
+          }
+
+        }
+
+      }
+
+      li.selected div {
+        background-color: #EEEEEE;
+      }
+
+    }
+
   }
 
-  .sz-session {
+  .ngs-sessions {
+
+    width: 70%;
+
+    .applied-filters {
+
+      > div {
+        float: left;
+      }
+
+      > div > div {
+        float: left;
+        background-color: #EEEEEE;
+        padding: 3px 5px 3px 5px;
+        margin: 0 5px 5px 0;
+      }
+
+      .ngs-clear {
+        background-color: transparent;
+        cursor: pointer;
+        color: $major-text-color;
+      }
+    }
+
+    .ngs-even {
+      background-color: #EEEEEE;
+    }
+
+    .sz-session {
       margin: 10px;
       padding: 10px;
+    }
+    .sz-session.sz-session--full {
+
+      .sz-session__title {
+        font-size: 1em !important;
+        color: $major-text-color;
+      }
+
+      .ngs-speaker-photos {
+        padding-left: 0;
+
+        li {
+          width: 80px;
+          padding-right: 5px;
+          list-style: none;
+          float: left;
+        }
+
+      }
+
+      .ngs-session-tags-container {
+        display: inline-block;
+
+        > div {
+          float: left;
+        }
+
+        .ngs-session-tag {
+          float: left;
+          background-color: rgba(17, 17, 17, 0.1);
+          padding: 3px 5px 3px 5px;
+          margin: 0 5px 5px 0;
+        }
+
+      }
+    }
+
   }
 
-  h3.sz-session__title {
-    color: $major-text-color;
+  .ngs-modal {
+
+    .ngs-overlay {
+      width: 100%;
+      height: 100%;
+      background-color: #EEEEEE;
+    }
   }
 
-  .ngs-speaker-photos {
-    padding-left: 0;
+  /* Modal Dialog */
+  #sessionize {
 
-    li {
-      width: 80px;
-      padding-right: 5px;
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.05);
+      z-index: 10;
+    }
+
+    .modal {
+      display: none;
+      width: 50%;
+      height: auto;
+      position: fixed;
+      top: 50%;
+      margin-top: -10%;
+      margin-left: -15%;
+      padding: 20px;
+      background-color: #FFFFFF;
+      border-radius: 5px;
+      z-index: 11;
+    }
+    .active {
+      display: block;
+    }
+
+    .modal-header {
+      width: 100%;
+      text-align: right;
+      padding-right: 10px;
+      padding-top: 5px;
+    }
+
+    .speaker > div {
+      float: left;
+
+      .speaker-name, speaker-tagline {
+        color: $major-text-color;
+        text-transform: capitalize;
+      }
+      .speaker-name {
+        font-size: 1.8em;
+      }
+      .speaker-tagline {
+        font-size: 1em;
+      }
+
+    }
+
+    .speaker img {
+      width: 100px;
+    }
+
+    .speaker-details {
+      margin-left: 10px;
+    }
+    .social .links {
       list-style: none;
       float: left;
     }
-
-  }
-
-  .ngs-session-tags-container {
-    display: inline-block;
-
-    > div {
-      float: left;
+    .session {
+      font-weight: bold;
     }
 
-    .ngs-session-tag {
-      float: left;
-      background-color: rgba(17, 17, 17, 0.1);
-      padding: 3px 5px 3px 5px;
-      margin: 0 5px 5px 0;
-    }
-
-  }
-
-}
-
-.ngs-modal {
-
-  .ngs-overlay {
-    width: 100%;
-    height: 100%;
-    background-color: #EEEEEE;
-  }
-}
-
-/* Modal Dialog */
-#sessionize {
-
-  .overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.05);
-    z-index: 10;
-  }
-
-  .modal {
-    display: none;
-    width: 50%;
-    height: auto;
-    position: fixed;
-    top: 50%;
-    margin-top: -10%;
-    margin-left: -15%;
-    padding:20px;
-    background-color: #FFFFFF;
-    border-radius: 5px;
-    z-index: 11;
-  }
-  .active {
-    display: block;
-  }
-
-  .modal-header {
-    width:100%;
-    text-align:right;
-    padding-right:10px;
-    padding-top:5px;
-  }
-
-  .speaker > div {
-    float: left;
-
-    .speaker-name, speaker-tagline {
-      color:$major-text-color;
-      text-transform: capitalize;
-    }
-    .speaker-name {
-      font-size: 1.8em;
-    }
-    .speaker-tagline {
-      font-size: 1em;
-    }
-
-  }
-
-  .speaker img {
-    width: 100px;
-  }
-
-  .speaker-details {
-    margin-left:10px;
-  }
-  .social .links {
-    list-style: none;
-    float:left;
-  }
-  .session {
-    font-weight: bold;
   }
 
 }
