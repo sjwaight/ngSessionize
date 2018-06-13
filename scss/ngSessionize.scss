@@ -158,74 +158,70 @@ $major-text-color: #b85757;
   }
 
   /* Modal Dialog */
-  #sessionize {
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+    z-index: 10;
+  }
 
-    .overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.05);
-      z-index: 10;
+  .modal {
+    display: none;
+    width: 50%;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    margin-top: -10%;
+    margin-left: -15%;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    z-index: 11;
+  }
+  .active {
+    display: block;
+  }
+
+  .modal-header {
+    width: 100%;
+    text-align: right;
+    padding-right: 10px;
+    padding-top: 5px;
+  }
+
+  .speaker > div {
+    float: left;
+
+    .speaker-name, speaker-tagline {
+      color: $major-text-color;
+      text-transform: capitalize;
+    }
+    .speaker-name {
+      font-size: 1.8em;
+    }
+    .speaker-tagline {
+      font-size: 1em;
     }
 
-    .modal {
-      display: none;
-      width: 50%;
-      height: auto;
-      position: fixed;
-      top: 50%;
-      margin-top: -10%;
-      margin-left: -15%;
-      padding: 20px;
-      background-color: #FFFFFF;
-      border-radius: 5px;
-      z-index: 11;
-    }
-    .active {
-      display: block;
-    }
+  }
 
-    .modal-header {
-      width: 100%;
-      text-align: right;
-      padding-right: 10px;
-      padding-top: 5px;
-    }
+  .speaker img {
+    width: 100px;
+  }
 
-    .speaker > div {
-      float: left;
-
-      .speaker-name, speaker-tagline {
-        color: $major-text-color;
-        text-transform: capitalize;
-      }
-      .speaker-name {
-        font-size: 1.8em;
-      }
-      .speaker-tagline {
-        font-size: 1em;
-      }
-
-    }
-
-    .speaker img {
-      width: 100px;
-    }
-
-    .speaker-details {
-      margin-left: 10px;
-    }
-    .social .links {
-      list-style: none;
-      float: left;
-    }
-    .session {
-      font-weight: bold;
-    }
-
+  .speaker-details {
+    margin-left: 10px;
+  }
+  .social .links {
+    list-style: none;
+    float: left;
+  }
+  .session {
+    font-weight: bold;
   }
 
 }
