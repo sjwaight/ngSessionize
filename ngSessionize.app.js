@@ -4,7 +4,7 @@
 import sessionize from './data/sessionize.json';
 
 // Branding
-import "./scss/ngSessionize.scss";
+import "./scss";
 
 // Services
 import "./services";
