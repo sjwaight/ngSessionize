@@ -1,8 +1,6 @@
-/* Change these colors to match your event's palette */
+/* TODO: Change these colors to match your event's palette */
 /* They will be replaced in the CSS below when the SASS file is processed */
 $major-text-color: #b85757;
-$room-background-color: #934545;
-$time-background-color: #b85757;
 /* Change these colors to match your event's palette */
 
 
@@ -26,6 +24,7 @@ $time-background-color: #b85757;
 
     .sz-spinner {
       margin: auto;
+      color:$major-text-color;
     }
   }
 }
