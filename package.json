@@ -1,9 +1,8 @@
 {
   "name": "ngSessionize",
   "version": "0.0.1",
-  "description": "An AngularJS app to display sessioninz session data with refiners",
-  "license": "UNLICENSED",
-  "private": true,
+  "description": "An AngularJS app to display sessionize session data with refiners",
+  "license": "MIT License",
   "repository": {
     "type": "git",
     "url": "https://github.com/SympraxisConsulting/ngSessionize"
