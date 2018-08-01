@@ -1,17 +1,19 @@
-<script type="text/javascript" src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.6/angular-route.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.17/angular-filter.min.js"></script>
+    <div ng-controller="ngSessionizeSessionsController as vm">
 
+        <ng-sessionize-sessions></ng-sessionize-sessions>
 
-<script type="text/javascript" src="https://rawgit.com/SympraxisConsulting/ngSessionize/master/build/ngSessionize.js"></script>
+    </div>
 
-<div ng-app="ngSessionize">
-
-    <!-- TODO: Replace this base with your own -->
-    <base href="http://spsnewengland.org/sessions-2017/">
-
-    <div ng-view ></div>
+    <script type="text/javascript" src="/city/Boston/Boston2018/Documents/pnp-ww.min.js"
+            ww-appName="ngSessionize"
+            ww-appType="Angular"
+            ww-appCss='[]'
+            ww-appScripts='[{"src": "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js", "priority":0},
+                    {"src": "https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.17/angular-filter.min.js", "priority":1},
+                    {"src": "https://use.fontawesome.com/releases/v5.0.6/js/all.js", "priority":1},
+                    {"src": "~/ngSessionize.js", "priority":2}]'>
+    </script>
 
 </div>
