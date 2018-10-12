@@ -1,7 +1,7 @@
 /* TODO: Change these colors to match your event's palette */
 /* They will be replaced in the CSS below when the SASS file is processed */
-$major-text-color: rgb(147, 69, 69);
-$minor-text-color: rgb(184, 87, 87);
+$major-text-color: rgb(42, 100, 150);
+$minor-text-color: rgb(66, 139, 202);
 /* Change these colors to match your event's palette */
 
 .clear {
@@ -17,7 +17,6 @@ $minor-text-color: rgb(184, 87, 87);
 
   .ngs-sessions-container > div {
     float: left;
-
   }
   .sz-spinner-container {
     width: 100%;
@@ -106,6 +105,12 @@ $minor-text-color: rgb(184, 87, 87);
     .ngs-even {
       background-color: #EEEEEE;
     }
+    
+    .applied-filters,
+    .ngs-session-count {
+      margin: 0 10px;
+      padding: 0 10px;
+    }
 
     .sz-session {
       margin: 10px;
@@ -116,10 +121,13 @@ $minor-text-color: rgb(184, 87, 87);
       .sz-session__title {
         font-size: 1em !important;
         color: $major-text-color;
+        margin: 0 auto 12px auto;
       }
 
       .sz-session__speaker a {
         color:$minor-text-color;
+        display: flex;
+        flex-direction: column;
       }
 
       .ngs-speaker-photos {
@@ -153,6 +161,28 @@ $minor-text-color: rgb(184, 87, 87);
 
   }
 
+  /* Smartphones (portrait and landscape) ----------- */
+  @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .ngs-sessions,
+    .ngs-refiners {
+      width: 100%;
+    }
+    .ngs-sessions-container > div {
+      float: none;
+    }
+    .ngs-sessions {
+      .applied-filters,
+      .ngs-session-count {
+        margin: 0;
+        padding: 0;
+      }
+      .sz-session {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+
   .ngs-modal {
 
     .ngs-overlay {
@@ -177,15 +207,15 @@ $minor-text-color: rgb(184, 87, 87);
   .modal {
     display: none;
     width: 50%;
-    height: auto;
+    height: 50%;
     position: fixed;
-    top: 50%;
-    margin-top: -10%;
-    margin-left: -15%;
+    top: 25%;
+    left: 25%;
     padding: 20px;
     background-color: #FFFFFF;
     border-radius: 5px;
     z-index: 11;
+    overflow: hidden;
   }
   .active {
     display: block;
