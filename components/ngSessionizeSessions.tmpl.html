@@ -35,7 +35,7 @@
             </div>
             <div class="clear"></div>
 
-            <div>
+            <div class="ngs-session-count">
                 <span ng-bind="vm.filteredSessions.length"></span> sessions
             </div>
 
@@ -46,14 +46,10 @@
                 <div>
                     <ul class="sz-session__speakers">
                         <li class="sz-session__speaker" ng-repeat="speaker in session.speakers">
-                            <a href="#" ng-bind="speaker.name" ng-click="vm.speakerModal(speaker)"></a>
-                            <span ng-if="$index < $count -1">, </span>
-                        </li>
-                    </ul>
-
-                    <ul class="ngs-speaker-photos">
-                        <li ng-repeat="speaker in session.speakers">
-                            <img ng-src="{{ vm.getSpeakerPhoto(speaker.id) }}"/>
+                            <a href="#" ng-click="vm.speakerModal(speaker)">
+                                <img ng-src="{{ vm.getSpeakerPhoto(speaker.id) }}" class="sz-speaker-photo"/>
+                                <span class="sz-session__speaker-name" ng-bind="speaker.name"></span>
+                            </a>
                         </li>
                     </ul>
                 </div>

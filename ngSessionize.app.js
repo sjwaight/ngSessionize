@@ -1,8 +1,5 @@
 "use strict";
 
-// Configuration
-import sessionize from './data/sessionize.json';
-
 // Branding
 import "./scss";
 
