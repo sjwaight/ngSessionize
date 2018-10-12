@@ -8,7 +8,7 @@ angular.module("ngSessionizeService", [])
 		  var self = this;
 
 		  // TODO: Replace this token with your own
-		  var sessionizeToken = "1cvo9d7r";
+		  var sessionizeToken = "tnr13xob";
 
 		  self.ngSessionize = {};
 		  self.ngSessionize.initialized = false;
