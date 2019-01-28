@@ -6,7 +6,7 @@ This is a solution which takes session and speaker data from [Sessionize's](http
 Please fork this repository and use as you need :)
 There's a few steps you need to be aware of to make changes:
 * Go to Sessionize and generate a new api key, update line 11 of `./services/ngSessionizeService.js` with that key
-* Update line 17 of `webpack.config.js` to use an abolute path that matches to `./build` in this project
+* Update line 17 of `webpack.config.js` to use an absolute path that matches to `./build` in this project
 * Run `yarn` or `npm install`
 * Run `yarn build` or `npm run build` to have webpack regenerate the `./build/ngSessionize.js` file with your changed code.
 * If you make changes to the `scss` files these are not currently watched so you will need to make a change to a javascript file to trigger a regeneration of the `./build/ngSessionize.js`
