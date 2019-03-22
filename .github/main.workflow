@@ -1,15 +1,15 @@
 workflow "New workflow" {
   on = "push"
-  resolves = ["Test"]
+  resolves = ["Build"]
 }
 
-action "Build" {
+action "Install" {
   uses = "borales/actions-yarn@master"
   args = "install"
 }
 
-action "Test" {
-  needs = "Build"
+action "Build" {
+  needs = "Install"
   uses = "borales/actions-yarn@master"
-  args = "test"
+  args = "build"
 }
